@@ -5,31 +5,30 @@
         <h2>Registrarse:</h2>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Usuario:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe un nombre de usuario">
+            <input [(ngModel)]="newUser.name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe un nombre de usuario">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com">
+            <input [(ngModel)]="newUser.email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@gmail.com">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Contraseña:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe una contraseña">
+            <input [(ngModel)]="newUser.password" type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe una contraseña">
         </div>
         <div>
-            <button type="button" class="btn btn-info">Registrarse</button>
-        </div>
-        
+            <button (click)="register()" type="button" class="btn btn-info">Registrarse</button>
+        </div>    
     </div>
 
     <div class="sub-container">
         <h2>Iniciar sesión:</h2>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Usuario:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe tu nombre de usuario">
+            <input [(ngModel)]="logUser.name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe tu nombre de usuario">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Contraseña:</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe tu contraseña">
+            <input [(ngModel)]="logUser.password" type="text" class="form-control" id="exampleFormControlInput1" placeholder="escribe tu contraseña">
         </div>
         <div>
             <button type="button" class="btn btn-info">Entrar</button>
