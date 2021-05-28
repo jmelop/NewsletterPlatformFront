@@ -1,7 +1,8 @@
 export interface User {
     name: string,
     email: string,
-    password: string
+    password: string,
+    tag: string[]
 }
 
 export interface LogUser {

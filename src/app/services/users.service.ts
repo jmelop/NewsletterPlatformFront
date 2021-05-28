@@ -14,7 +14,9 @@ export class UserService {
   postUser(user : User) {
     return axios.post(this.apiUrl, user)
       .then(res => {
+        console.log('hola');
         return 'Ok'
-      });
+      }).catch((err) => {
+        throw err});
   }
 }
