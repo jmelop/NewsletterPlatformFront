@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Tag } from 'src/app/models/tags.model';
 import { User } from 'src/app/models/user.model';
+import { TagsService } from 'src/app/services/tags/tags.service';
 import { UserService } from 'src/app/services/users.service';
 
 @Component({
@@ -10,34 +12,46 @@ import { UserService } from 'src/app/services/users.service';
 export class RegisterComponent implements OnInit {
 
   newUser: User = {name: '', email: '', password: '', tag: []};
+
+  tags: Tag[] = [];
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private tagsService: TagsService) { }
 
   ngOnInit(): void {
+    this.tagsService.getAlltags()
+    .then(taglist => this.tags = taglist)
   }
 
-  setTag(event: any) {
-    if (event.target.checked) {
-      this.newUser.tag.push(event.target.value)
+  setTag(tag: Tag) {
+    let existTag = this.newUser.tag.find(t => t === tag.name);
+
+    if (typeof existTag === "undefined" || existTag == null || existTag === "") {
+      this.newUser.tag.push(tag.name)
     }
     else {
-      this.newUser.tag.filter(value => value != event.target.value)
+      const filteredTags = this.newUser.tag.filter(t => t != tag.name);
+      this.newUser.tag = filteredTags;
     }
   }
 
+  @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
+
   register() { 
-    console.log(this.newUser.tag)
     this.userService.postUser(this.newUser)
       .then(res => {
         alert('¡El usuario ha sido creado!');
+        this.newUser.name = '';
+        this.newUser.email = '';
+        this.newUser.password = '';
+        this.newUser.tag = [];
+        this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
       })
       .catch(err  => {
           throw err
-      })
-      this.newUser.name = '';
-      this.newUser.email = '';
-      this.newUser.password = '';
-      this.newUser.tag = [];
+      });
   }
+
+
+
 }
 

@@ -19,26 +19,10 @@
 
 <div class="list">
   <h4>Elige las categorías que te interesen:</h4>
-    <ul class="list-group">
+    <ul class="list-group" *ngFor="let tag of tags">
         <li class="list-group-item">
-          <input (click)="setTag($event)" class="form-check-input me-1" type="checkbox" value="tecnologia" aria-label="...">
-          Tecnología
-        </li>
-        <li class="list-group-item">
-          <input (click)="setTag($event)" class="form-check-input me-1" type="checkbox" value="medioAmbiente" aria-label="...">
-          Medio ambiente
-        </li>
-        <li class="list-group-item">
-          <input (click)="setTag($event)" class="form-check-input me-1" type="checkbox" value="turismo" aria-label="...">
-          Turismo
-        </li>
-        <li class="list-group-item">
-          <input (click)="setTag($event)" class="form-check-input me-1" type="checkbox" value="salud" aria-label="...">
-          Salud
-        </li>
-        <li class="list-group-item">
-          <input (click)="setTag($event)" class="form-check-input me-1" type="checkbox" value="cienciasMar" aria-label="...">
-          Ciencias del mar
+          <input #checkboxes class="form-check-input me-1" type="checkbox" [value]="tag.name" (change)="setTag(tag)">
+          <label>{{tag.name}}</label>
         </li>
       </ul>
       <div>
