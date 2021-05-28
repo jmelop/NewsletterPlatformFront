@@ -1,0 +1,54 @@
+<div class="user-form">
+    <p>Add new User:</p>
+    <ul class="create-form">
+        <li>
+            <label>Name: </label>
+            <input type="text" id="name" [(ngModel)]="newUser.name">
+        </li>
+        <li>
+            <label>Email: </label>
+            <input type="text" id="email" [(ngModel)]="newUser.email">
+        </li>
+        <li>
+            <label>Role: </label>
+            <input type="text" id="role" [(ngModel)]="newUser.role">
+        </li>
+
+        <li>
+            <p class="" *ngFor="let tag of tags">
+
+                <input type="checkbox"  [value]="tag.name" (change)="getCheckBox(tag)">
+                <label> {{tag.name}}</label><br>
+            </p>
+
+
+        </li>
+        <li>
+
+            <input (click)="addUser()" class="crypto-submit" type="submit" value="Submit">
+        </li>
+    </ul>
+
+</div>
+
+
+<div class="">
+
+    <p>Users list!</p>
+
+    <ul>
+        <p class="" *ngFor="let user of users" routerLink="/users">
+            <li>
+                <span>Nombre: {{user.name}}</span> - <br>
+                <span>Correo: {{user.email}}</span> - <br>
+                <span>Rol: {{user.role}}</span> - <br>
+                <span>Tags: </span>
+                <p class="" *ngFor="let tag of user.tag">
+                    <label>- {{tag}}</label><br>
+                </p>
+                <button class="btn-delete" (click)="deleteUser(user._id)">Delete</button>
+            </li>
+        </p>
+    </ul>
+
+</div>

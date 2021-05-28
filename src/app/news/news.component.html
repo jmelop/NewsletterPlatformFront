@@ -1,0 +1,51 @@
+<div class="user-form">
+    <p>Add new news:</p>
+    <ul class="create-form">
+        <li>
+            <label>Titulo: </label>
+            <input type="text" id="name" [(ngModel)]="newNew.title">
+        </li>
+        <li>
+            <label>Body: </label>
+            <input type="text" id="email" [(ngModel)]="newNew.body">
+        </li>
+        <li>
+            <label>Link: </label>
+            <input type="text" id="role" [(ngModel)]="newNew.link">
+        </li>
+        <li>
+            <p class="" *ngFor="let tag of tags">
+
+                <input type="checkbox"  [value]="tag.name" (change)="getCheckBox(tag)">
+                <label> {{tag.name}}</label><br>
+            </p>
+
+
+        </li>
+        <li>
+
+            <input (click)="addNew(newNew)" class="crypto-submit" type="submit" value="Submit">
+        </li>
+    </ul>
+
+</div>
+
+<div class="user-list">
+
+    <p>News list!</p>
+
+    <ul>
+        <p class="task m-3 py-3 px-5 w-50 mx-auto " *ngFor="let new of news" routerLink="/news">
+            <li>
+                <span>Nombre: {{new.title}}</span> - <br>
+                <span>Cuerpo: {{new.body}}</span> - <br>
+                <span>Link: {{new.link}}</span> - <br>
+                <span>Tags: {{new.tag}} </span>
+
+                <button class="btn-delete" (click)="deleteNew(new._id)">Delete</button>
+
+            </li>
+        </p>
+    </ul>
+
+</div>

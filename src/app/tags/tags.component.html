@@ -1,0 +1,27 @@
+<div class="user-form">
+    <p>Add new User:</p>
+    <ul class="create-form">
+        <li>
+            <label>Tag: </label>
+            <input type="text" id="name" [(ngModel)]="newTag.name">
+        </li>
+            <input (click)="addTag()" class="crypto-submit" type="submit" value="Submit">
+    </ul>
+
+</div>
+
+<div class="user-list">
+
+
+    <p>Tags list!</p>
+
+    <ul>
+        <p class="task m-3 py-3 px-5 w-50 mx-auto " *ngFor="let tag of tags" routerLink="/tags">
+            <li>
+                <span>Nombre: {{tag.name}}</span> - <br>
+                <button class="btn-delete" (click)="deleteTag(tag._id)">Delete</button>
+            </li>
+        </p>
+    </ul>
+
+</div>
