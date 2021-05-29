@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular
 import { Tag } from 'src/app/models/tags.model';
 import { User } from 'src/app/models/user.model';
 import { TagsService } from 'src/app/services/tags/tags.service';
-import { UserService } from 'src/app/services/users.service';
+import { UserService } from 'src/app/services/users/users.service';
 
 @Component({
   selector: 'app-register',

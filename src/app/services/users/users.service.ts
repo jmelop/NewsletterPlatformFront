@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { environment } from '../../../environments/environment';
-import { Tag } from 'src/app/models/tags.model';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TagsService {
-  apiUrl = `${environment.apiUrl}/tags`;
+export class UserService {
+  apiUrl = `${environment.apiUrl}/users`;
 
   token = environment.token
 
@@ -19,8 +19,12 @@ export class TagsService {
 
   constructor() { }
 
-  getAlltags(): Promise<Tag[]> {
-    return axios.get(this.apiUrl, this.options)
-    .then(res => res.data)
+
+  postUser(user : User) {
+    return axios.post(this.apiUrl, user, this.options)
+      .then(res => {
+        return 'Ok'
+      }).catch((err) => {
+        throw err});
   }
 }
