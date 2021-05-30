@@ -1,4 +1,4 @@
-<div class="user-form">
+<div class="news-form">
     <p>Add new news:</p>
     <ul class="create-form">
         <li>
@@ -30,31 +30,38 @@
 
 </div>
 
-<div class="user-list">
 
-    <p>News list!</p>
 
-    <ul>
-        <p class="task m-3 py-3 px-5 w-50 mx-auto " *ngFor="let new of news" routerLink="/news">
-            <li>
-                <span>Nombre: {{new.title}}</span> - <br>
-                <input type="text" *ngIf="new.editable" [(ngModel)]="new.title" /><br>
-                <span>Cuerpo: {{new.body}}</span> - <br>
-                <input type="text" *ngIf="new.editable" [(ngModel)]="new.body" /><br>
-                <span>Link: {{new.link}}</span> - <br>
-                <input type="text" *ngIf="new.editable" [(ngModel)]="new.link" /><br>
-                <span>Tags:</span>
-                <p class="" *ngFor="let tag of new.tag">
-                    <label>- {{tag.name}}</label><br>
-                    <input type="checkbox" *ngIf="new.editable" [(ngModel)]="tag.checked" /><br>
-                </p>
+<div class="news-list">
 
-                <button class="btn-delete" (click)="deleteNew(new._id)">Delete</button>
-                <button class="btn-delete" *ngIf="!new.editable" (click)="editState(new)">Update</button>
-                <button class="btn-delete" *ngIf="new.editable" (click)="updateNews(new)">OK</button>
+    <div class="drop">
+        <div class="drop__container" id="drop-items">
+            <p>News list!</p>
+            <div class="drop__card">
+                <ul>
+                    <p class="" *ngFor="let new of news" routerLink="/news">
+                        <li>
+                            <span>Nombre: {{new.title}}</span> - <br>
+                            <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.title" /><br>
+                            <span>Cuerpo: {{new.body}}</span> - <br>
+                            <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.body" /><br>
+                            <span>Link: {{new.link}}</span> - <br>
+                            <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.link" /><br>
+                            <span>Tags:</span>
+                            <p class="" *ngFor="let tag of new.tag">
+                                <label>- {{tag.name}}</label><br>
+                                <input type="checkbox" *ngIf="new.editable" [(ngModel)]="tag.checked" /><br>
+                            </p>
 
-            </li>
-        </p>
-    </ul>
+                            <button class="btn-delete" (click)="deleteNew(new._id)">Delete</button>
+                            <button class="btn-delete" *ngIf="!new.editable" (click)="editState(new)">Update</button>
+                            <button class="btn-delete" *ngIf="new.editable" (click)="updateNews(new)">OK</button>
+                            <hr>
 
-</div>
+                        </li>
+
+                    </p>
+                </ul>
+            </div>
+        </div>
+    </div>

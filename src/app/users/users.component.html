@@ -24,43 +24,50 @@
                 <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked" />
                 <label> {{tag.name}}</label><br>
             </p>
-
-
         </li>
         <li>
 
-            <input (click)="addUser()" class="submit" type="submit" value="Submit">
+            <input class="btn-create" (click)="addUser()" class="submit" type="submit" value="Submit">
         </li>
     </ul>
 
 </div>
 
 
-<div class="">
+<div class="user-list">
 
-    <p>Users list!</p>
+    <div class="drop">
+        <div class="drop__container" id="drop-items">
+            <p>Users list!</p>
 
-    <ul>
-        <p class="" *ngFor="let user of users" routerLink="/users">
-            <li>
-                <span>Nombre: {{user.name}}</span>
-                <input type="text" *ngIf="user.editable" [(ngModel)]="user.name" /><br>
-                <span>Correo: {{user.email}}</span>
-                <input type="text" *ngIf="user.editable" [(ngModel)]="user.email" /><br>
-                <span>Rol: {{user.role}}</span>
-                <input type="text" *ngIf="user.editable" [(ngModel)]="user.role" /><br>
-                <span>Tags: </span>
-                <p class="" *ngFor="let tag of user.tag">
-                    <label>- {{tag.name}}</label><br>
-                    <input type="checkbox" *ngIf="user.editable" 
-                        [(ngModel)]="tag.checked" /><br>
-                </p>
+            <div class="drop__card">
+                <ul>
+                    <p class="" *ngFor="let user of users" routerLink="/users">
 
-                <button class="btn-delete" (click)="deleteUser(user._id)">Delete</button>
-                <button class="btn-delete" *ngIf="!user.editable" (click)="editState(user)">Update</button>
-                <button class="btn-delete" *ngIf="user.editable" (click)="updateUser(user)">OK</button>
-            </li>
-        </p>
-    </ul>
+                        <li>
+                            <span>Nombre: {{user.name}}</span>
+                            <input class="input-list" type="text" *ngIf="user.editable" [(ngModel)]="user.name" /><br>
+                            <span>Correo: {{user.email}}</span>
+                            <input class="input-list" type="text" *ngIf="user.editable" [(ngModel)]="user.email" /><br>
+                            <span>Rol: {{user.role}}</span>
+                            <input class="input-list" type="text" *ngIf="user.editable" [(ngModel)]="user.role" /><br>
+                            <span>Tags: </span>
+                            <p class="" *ngFor="let tag of user.tag">
+                                <label>- {{tag.name}}</label><br>
+                                <input type="checkbox" *ngIf="user.editable" [(ngModel)]="tag.checked" /><br>
+                            </p>
 
-</div>
+                            <button class="btn-delete" (click)="deleteUser(user._id)">Delete</button>
+                            <button class="btn-delete" *ngIf="!user.editable" (click)="editState(user)">Update</button>
+                            <button class="btn-delete" *ngIf="user.editable" (click)="updateUser(user)">OK</button>
+                            <hr>
+
+                        </li>
+
+                    </p>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
