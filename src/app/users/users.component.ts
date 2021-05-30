@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Tag } from '../models/tag.model';
-import { User } from '../models/user.model';
-import { TagsService } from '../services/tags.service';
-import { UsersService } from '../services/users.service';
+import { User } from '../models/admin/user.model';
+import { TagsService } from '../services/admin/tags.service';
+import { UsersService } from '../services/admin/users.service';
 
 
 

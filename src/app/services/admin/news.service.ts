@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { New } from '../models/new.model';
+import { New } from '../../models/admin/new.model';
 import axios from 'axios';
 import { config } from 'rxjs';
 import { environment } from 'src/environments/environment';

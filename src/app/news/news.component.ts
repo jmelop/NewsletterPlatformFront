@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { New } from '../models/new.model';
-import { Tag } from '../models/tag.model';
-import { NewsService } from '../services/news.service';
-import { TagsService } from '../services/tags.service';
+import { New } from '../models/admin/new.model';
+import { NewsService } from '../services/admin/news.service';
+import { TagsService } from '../services/admin/tags.service';
 
 @Component({
   selector: 'app-news',

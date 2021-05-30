@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
-import { User } from '../models/user.model'
+import { User } from '../../models/admin/user.model'
 
 
 const apiUrl = `${environment.apiUrl}users/`
@@ -18,7 +18,6 @@ const options = {
   providedIn: 'root'
 })
 export class UsersService {
-
 
   constructor() { }
 

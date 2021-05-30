@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tag } from '../models/tag.model';
+import { Tag } from '../../models/admin/tag.model';
 import axios from 'axios';
 import { environment } from 'src/environments/environment';
 
