@@ -5,7 +5,7 @@
             <label>Tag: </label>
             <input type="text" id="name" [(ngModel)]="newTag.name">
         </li>
-            <input (click)="addTag()" class="crypto-submit" type="submit" value="Submit">
+            <input (click)="addTag()" class="submit" type="submit" value="Submit">
     </ul>
 
 </div>
@@ -19,7 +19,10 @@
         <p class="task m-3 py-3 px-5 w-50 mx-auto " *ngFor="let tag of tags" routerLink="/tags">
             <li>
                 <span>Nombre: {{tag.name}}</span> - <br>
+                <input type="text" *ngIf="tag.editable" [(ngModel)]="tag.name" /><br>
                 <button class="btn-delete" (click)="deleteTag(tag._id)">Delete</button>
+                <button class="btn-delete" *ngIf="!tag.editable" (click)="editState(tag)">Update</button>
+                <button class="btn-delete" *ngIf="tag.editable" (click)="updateTag(tag)">OK</button>
             </li>
         </p>
     </ul>

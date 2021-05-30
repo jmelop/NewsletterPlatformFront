@@ -18,6 +18,15 @@ export class TagsComponent implements OnInit {
     this.tagServices.getAllTags().then(u => { this.tags = u })
   }
 
+  editState(tag: any) {
+
+    this.tags.map((u: any) => {
+      u.editable = false
+      tag.editable = true;
+    })
+
+  }
+
   addTag() {
     this.tagServices.postTag(this.newTag).then(u => {
       if (typeof u !== 'undefined') {
@@ -34,6 +43,11 @@ export class TagsComponent implements OnInit {
         this.tags = tagFiltered;
       }
     })
+  }
+
+  updateTag(tag: any) {
+    tag.editable = false;
+    this.tagServices.updateTag(tag._id, tag)
   }
 
 }

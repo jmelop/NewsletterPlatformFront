@@ -23,9 +23,26 @@ export class NewsComponent implements OnInit {
     this.tagsService.getAllTags().then(u => { this.tags = u });
   }
 
-  addNew(newNotice: New) {
-    this.newNew.tag = this.newTags;
-    this.newsService.postNew(newNotice).then(u => {
+  editState(news: any) {
+    this.newTags = news.tag;
+
+    this.tags.map((u: any) => {
+      u.editable = false
+      news.editable = true;
+    })
+
+
+  this.tags.map(u => {
+      let exist = news.tag.find(b => b.name == u.name);
+      if (!exist) {
+        news.tag.push(u)
+      }
+    }) 
+  }
+
+  addNew() {
+    this.newNew.tag = this.tags.filter(u => u.checked == true);
+    this.newsService.postNew(this.newNew).then(u => {
       if (typeof u !== "undefined") {
         this.news.push(u);
         this.newNew = { title: '', body: '', link: '', tag: '' }
@@ -42,17 +59,10 @@ export class NewsComponent implements OnInit {
     })
   }
 
-  getCheckBox(tag: Tag) {
-    let elem = this.newTags.find(element => element === tag.name);
-
-    if (typeof elem === "undefined" || elem == null || elem === '') {
-      this.newTags.push(tag.name);
-    } else {
-      const newTagsFilyeted = this.newTags.filter(elem => elem != tag.name)
-
-      this.newTags = newTagsFilyeted;
-
-    }
+  updateNews(news: any) {
+    news.tag = news.tag.filter(u => u.checked == true);
+    news.editable = false;
+    this.newsService.updateNew(news._id, news)
   }
 
 

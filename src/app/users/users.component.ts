@@ -13,11 +13,9 @@ import { UsersService } from '../services/users.service';
 export class UsersComponent implements OnInit {
 
   newTags: any = [];
+  newUser: User = { name: '', email: '', role: '', tag: this.newTags, password: '' }
   tags: any = [];
   users: any = [];
-  newUser: User = { name: '', email: '', role: '', tag: this.newTags }
-
-
 
   constructor(private userServices: UsersService, private tagsServices: TagsService) { }
 
@@ -26,35 +24,44 @@ export class UsersComponent implements OnInit {
     this.tagsServices.getAllTags().then(u => { this.tags = u });
   }
 
+  editState(user: any) {
+    this.users.map((u: any) => {
+      u.editable = false
+      user.editable = true;
+    })
+
+
+  this.tags.map(u => {
+      let exist = user.tag.find(b => b.name == u.name);
+      if (!exist) {
+        user.tag.push(u)
+      }
+    }) 
+  }
+
   addUser() {
-    this.newUser.tag = this.newTags;
-    this.userServices.post(this.newUser).then(u => {
-      if (typeof u !== 'undefined') {
-        this.users.push(u);
+    this.newUser.tag = this.tags.filter(u => u.checked == true);
+    this.userServices.post(this.newUser).then(res => {
+      if (typeof res !== 'undefined') {
+        this.users.push(res);
         this.newTags = [];
-        this.newUser = { name: '', email: '', role: '', tag: this.newTags };
+        this.newUser = { name: '', email: '', role: '', tag: this.newTags, password: '' };
       }
     })
   }
 
   deleteUser(id: string) {
     this.userServices.deleteUser(id)
-      .then(u => {
+      .then(() => {
         const userFiltered = this.users.filter((user: any) => user._id != id);
         this.users = userFiltered;
       })
   }
 
-  getCheckBox(tag: Tag) {
-    let elem = this.newTags.find(element => element === tag.name);
-
-    if (typeof elem === "undefined" || elem == null || elem === '') {
-      this.newTags.push(tag.name);
-    } else {
-      const newTagsFilyeted = this.newTags.filter(elem => elem != tag.name)
-
-      this.newTags = newTagsFilyeted;
-
-    }
+  updateUser(user: any) {
+    user.tag = user.tag.filter(u => u.checked == true);
+    user.editable = false;
+    this.userServices.updateUser(user._id, user)
   }
+
 }

@@ -3,6 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlcnZlckBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE2MjIyMzE4MzB9.aKVId1_PFN1CNZp3a3HIgMPHzUXVBZz6GxYR5dikuL0',
+  apiUrl: "http://ec2-34-253-221-22.eu-west-1.compute.amazonaws.com:4000/",
   production: false
 };
 

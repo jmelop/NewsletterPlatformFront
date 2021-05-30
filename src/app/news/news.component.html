@@ -16,7 +16,7 @@
         <li>
             <p class="" *ngFor="let tag of tags">
 
-                <input type="checkbox"  [value]="tag.name" (change)="getCheckBox(tag)">
+                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked">
                 <label> {{tag.name}}</label><br>
             </p>
 
@@ -24,7 +24,7 @@
         </li>
         <li>
 
-            <input (click)="addNew(newNew)" class="crypto-submit" type="submit" value="Submit">
+            <input (click)="addNew()" class="submit" type="submit" value="Submit">
         </li>
     </ul>
 
@@ -38,11 +38,20 @@
         <p class="task m-3 py-3 px-5 w-50 mx-auto " *ngFor="let new of news" routerLink="/news">
             <li>
                 <span>Nombre: {{new.title}}</span> - <br>
+                <input type="text" *ngIf="new.editable" [(ngModel)]="new.title" /><br>
                 <span>Cuerpo: {{new.body}}</span> - <br>
+                <input type="text" *ngIf="new.editable" [(ngModel)]="new.body" /><br>
                 <span>Link: {{new.link}}</span> - <br>
-                <span>Tags: {{new.tag}} </span>
+                <input type="text" *ngIf="new.editable" [(ngModel)]="new.link" /><br>
+                <span>Tags:</span>
+                <p class="" *ngFor="let tag of new.tag">
+                    <label>- {{tag.name}}</label><br>
+                    <input type="checkbox" *ngIf="new.editable" [(ngModel)]="tag.checked" /><br>
+                </p>
 
                 <button class="btn-delete" (click)="deleteNew(new._id)">Delete</button>
+                <button class="btn-delete" *ngIf="!new.editable" (click)="editState(new)">Update</button>
+                <button class="btn-delete" *ngIf="new.editable" (click)="updateNews(new)">OK</button>
 
             </li>
         </p>

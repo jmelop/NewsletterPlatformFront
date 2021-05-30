@@ -13,11 +13,15 @@
             <label>Role: </label>
             <input type="text" id="role" [(ngModel)]="newUser.role">
         </li>
+        <li>
+            <label>Password: </label>
+            <input type="text" id="password" [(ngModel)]="newUser.password">
+        </li>
 
         <li>
             <p class="" *ngFor="let tag of tags">
 
-                <input type="checkbox"  [value]="tag.name" (change)="getCheckBox(tag)">
+                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked" />
                 <label> {{tag.name}}</label><br>
             </p>
 
@@ -25,7 +29,7 @@
         </li>
         <li>
 
-            <input (click)="addUser()" class="crypto-submit" type="submit" value="Submit">
+            <input (click)="addUser()" class="submit" type="submit" value="Submit">
         </li>
     </ul>
 
@@ -39,14 +43,22 @@
     <ul>
         <p class="" *ngFor="let user of users" routerLink="/users">
             <li>
-                <span>Nombre: {{user.name}}</span> - <br>
-                <span>Correo: {{user.email}}</span> - <br>
-                <span>Rol: {{user.role}}</span> - <br>
+                <span>Nombre: {{user.name}}</span>
+                <input type="text" *ngIf="user.editable" [(ngModel)]="user.name" /><br>
+                <span>Correo: {{user.email}}</span>
+                <input type="text" *ngIf="user.editable" [(ngModel)]="user.email" /><br>
+                <span>Rol: {{user.role}}</span>
+                <input type="text" *ngIf="user.editable" [(ngModel)]="user.role" /><br>
                 <span>Tags: </span>
                 <p class="" *ngFor="let tag of user.tag">
-                    <label>- {{tag}}</label><br>
+                    <label>- {{tag.name}}</label><br>
+                    <input type="checkbox" *ngIf="user.editable" 
+                        [(ngModel)]="tag.checked" /><br>
                 </p>
+
                 <button class="btn-delete" (click)="deleteUser(user._id)">Delete</button>
+                <button class="btn-delete" *ngIf="!user.editable" (click)="editState(user)">Update</button>
+                <button class="btn-delete" *ngIf="user.editable" (click)="updateUser(user)">OK</button>
             </li>
         </p>
     </ul>
