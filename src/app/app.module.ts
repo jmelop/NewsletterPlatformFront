@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NewsComponent } from './news/news.component';
 import { TagsComponent } from './tags/tags.component';
 import { FormsModule } from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     NavbarComponent,
     NewsComponent,
-    TagsComponent
+    TagsComponent,
+    ButtonModule
   ],
   imports: [
     BrowserModule,
