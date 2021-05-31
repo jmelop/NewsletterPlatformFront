@@ -26,7 +26,7 @@ export class UsersComponent implements OnInit {
 
   editState(user: any) {
     this.users.map((u: any) => {
-      u.editable = false
+      u.editable = false;
       user.editable = true;
     })
 

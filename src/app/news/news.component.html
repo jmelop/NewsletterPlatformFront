@@ -37,10 +37,9 @@
     <div class="drop">
         <div class="drop__container" id="drop-items">
             <p>News list!</p>
-            <div class="drop__card">
                 <ul>
                     <p class="" *ngFor="let new of news" routerLink="/news">
-                        <li>
+                        <li class="drop__card">
                             <span>Nombre: {{new.title}}</span> - <br>
                             <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.title" /><br>
                             <span>Cuerpo: {{new.body}}</span> - <br>
@@ -56,12 +55,8 @@
                             <button class="btn-delete" (click)="deleteNew(new._id)">Delete</button>
                             <button class="btn-delete" *ngIf="!new.editable" (click)="editState(new)">Update</button>
                             <button class="btn-delete" *ngIf="new.editable" (click)="updateNews(new)">OK</button>
-                            <hr>
-
                         </li>
-
                     </p>
                 </ul>
-            </div>
         </div>
     </div>

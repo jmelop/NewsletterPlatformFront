@@ -40,11 +40,7 @@
   box-shadow: 4px 4px 16px #cfcfcf;
   background: rgb(255, 255, 255);
   border-radius: 2.5rem;
-
-}
-
-.drop__info {
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 
@@ -52,18 +48,11 @@
   width: 660px;
   justify-content: space-between;
   padding: 1.75rem 2.25rem 1.75rem 1.75rem;
-  background-color: var(--first-color-lighten);
   box-shadow: 4px 4px 16px #cac9c9, -2px -2px 16px rgb(197, 195, 195);
   border-radius: 2.5rem;
   background: rgb(255, 255, 255);
+  list-style:none;
 }
-
-.drop__name {
-    font-size: var(--normal-font-size);
-    color: var(--first-color);
-    font-weight: 500;
-  }
-  
 
   .input-list{
       background: rgb(216, 216, 216);
