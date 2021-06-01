@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { User } from '../../models/users/user.model'
+import { LogUser, User } from '../../models/users/user.model'
 import axios from 'axios';
+import { stringify } from '@angular/compiler/src/util';
 
 
 
@@ -30,3 +31,4 @@ export class UsersService {
       });
   }
 }
+

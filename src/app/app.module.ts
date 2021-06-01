@@ -10,6 +10,7 @@ import { TagsComponent } from './tags/tags.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import {RegisterComponent} from './components/register/register.component';
+import { HomeUserComponent } from './components/home-user/home-user.component';
 
 
 
@@ -22,7 +23,8 @@ import {RegisterComponent} from './components/register/register.component';
     TagsComponent,
     LoginComponent,
     MainComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeUserComponent
   ],
   imports: [
     BrowserModule,
