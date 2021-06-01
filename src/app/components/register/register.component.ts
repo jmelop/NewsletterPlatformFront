@@ -11,7 +11,7 @@ import { UsersService } from '../../services/user/users.service';
 })
 export class RegisterComponent implements OnInit {
 
-  newUser: User = {name: '', email: '', password: '', tag: []};
+  newUser: User = {name: '', email: '', password: '', tags: []};
 
   tags: Tag[] = [];
   
@@ -22,35 +22,37 @@ export class RegisterComponent implements OnInit {
     .then(taglist => this.tags = taglist)
   }
 
-  setTag(tag: any) {
-    let existTag = this.newUser.tag.find(t => t === tag.name);
+  setTag(tags: any) {
+    let existTag = this.newUser.tags.find(t => t === tags.name);
 
     if (typeof existTag === "undefined" || existTag == null || existTag === "") {
       //Cambiado temporalmente
-      this.newUser.tag.push(tag)
+      this.newUser.tags.push(tags)
     }
     else {
-      const filteredTags = this.newUser.tag.filter(t => t != tag.name);
-      this.newUser.tag = filteredTags;
+      const filteredTags = this.newUser.tags.filter(t => t != tags.name);
+      this.newUser.tags = filteredTags;
     }
   }
 
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 
-  register() { 
+  register() {
     this.usersService.postUser(this.newUser)
       .then(res => {
         alert('¡El usuario ha sido creado!');
         this.newUser.name = '';
         this.newUser.email = '';
         this.newUser.password = '';
-        this.newUser.tag = [];
+        this.newUser.tags = [];
         this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
       })
       .catch(err  => {
           throw err
       });
   }
+
+  
 
 
 

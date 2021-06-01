@@ -9,12 +9,12 @@
                 <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" />
                 <!-- <i class="fa fa-key"></i> -->
                 <a href="#">¿Has olvidado tu contraseña?</a>
-                <button routerLink="home-user" type="button" class="btn" >
+                <button (click)="login()" routerLink="home-user" type="button" class="btn" >
                   <i class="spinner"></i>
                   <span class="state">Log in</span>
                 </button>
               </form>
         </div>    
-        <footer>¿No tienes una cuenta aún?<a class="register" target="blank" routerLink="register"> Regístrate</a></footer>
+        <footer>¿No tienes cuenta aún?<a class="register" routerLink="/register"> Regístrate</a></footer>
     </div>
 </div>

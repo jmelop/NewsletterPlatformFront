@@ -7,7 +7,7 @@ import { Tag } from '../../models/users/tag.model';
   providedIn: 'root'
 })
 export class TagsService {
-  apiUrl = `${environment.apiUrl}tags`;
+  apiUrl = `${environment.apiUrl}tags/`;
 
   token = environment.token
 

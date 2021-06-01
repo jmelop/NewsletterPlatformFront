@@ -127,14 +127,20 @@ footer {
     font-size: 1.1em;
 }
 
-a, a:link {
-      color: #fff;
-      text-decoration: none;
+a, a:link  {     
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-left: 5px;
+    background-color: none;
+      
 }
 
 .register {
-    font-size: 15px;
+    color: #fff;
 }
+
+
+
 
     
 
