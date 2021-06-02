@@ -1,65 +1,126 @@
-<div class="user-form">
-    <p>Add new User:</p>
-    <ul class="create-form">
-        <li>
-            <label>Name: </label>
-            <input type="text" id="name" [(ngModel)]="newUser.name">
-        </li>
-        <li>
-            <label>Email: </label>
-            <input type="text" id="email" [(ngModel)]="newUser.email">
-        </li>
-        <li>
-            <label>Role: </label>
-            <input type="text" id="role" [(ngModel)]="newUser.role">
-        </li>
-        <li>
-            <label>Password: </label>
-            <input type="password" id="password" [(ngModel)]="newUser.password">
-        </li>
+<!-- Add user -->
+<div class="bg-gray-100	flex flex-col" id="section-1">
+    <label class="block">
+        <span class="text-gray-700">Name: </span>
+        <input type="text" id="name" [(ngModel)]="newUser.name" class="form-input mt-1 block w-full"
+            placeholder="Nombre">
+    </label>
 
-        <li>
-            <p class="" *ngFor="let tag of tags">
+    <label class="block">
+        <span class="text-gray-700">Correo: </span>
+        <input type="text" id="email" [(ngModel)]="newUser.email" class="form-input mt-1 block w-full"
+            placeholder="Email">
+    </label>
 
-                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked" />
-                <label> {{tag.name}}</label><br>
-            </p>
-        </li>
-        <li>
+    <div class="mt-4">
+        <span class="text-gray-700">Role: </span>
+        <div class="mt-2">
+            <label class="inline-flex items-center">
+                <input type="radio" class="form-radio" name="accountType" value="personal">
+                <span [(ngModel)]="newUser.role" class="ml-2">User</span>
+            </label>
+            <label class="inline-flex items-center ml-6">
+                <input [(ngModel)]="newUser.role" type="radio" class="form-radio" name="accountType" value="busines">
+                <span class="ml-2">Admin</span>
+            </label>
+        </div>
+    </div>
 
-            <input class="btn-create" (click)="addUser()" class="submit" type="submit" value="Submit">
-        </li>
-    </ul>
+    <label class="block">
+        <span class="text-gray-700">Password: </span>
+        <input type="password" id="password" [(ngModel)]="newUser.password" class="form-input mt-1 block w-full"
+            placeholder="Email">
+    </label>
 
+    <label *ngFor="let tag of tags" class="block mt-4">
+        <span class="text-gray-700">Tags</span>
+        <select class="form-select mt-1 block w-full">
+            <option>{{tag.name}}</option>
+        </select>
+    </label>
+
+    <div class="flex mt-6">
+        <label class="flex items-center">
+            <input type="checkbox" class="form-checkbox">
+            <span class="ml-2">I agree to the <span class="underline">privacy policy</span></span>
+        </label>
+    </div>
 </div>
 
 
-<div class="user-list">
 
-    <div class="drop">
-        <div class="drop__container" id="drop-items">
-            <p>Users list!</p>
-            <ul>
-                <p class="" *ngFor="let user of users" routerLink="/users">
 
-                    <li class="drop__card">
-                        <span>Nombre: {{user.name}}</span>
-                        <input class="input-list" type="text" *ngIf="user.editable" [(ngModel)]="user.name" /><br>
-                        <span>Correo: {{user.email}}</span>
-                        <input class="input-list" type="text" *ngIf="user.editable" [(ngModel)]="user.email" /><br>
-                        <span>Rol: {{user.role}}</span>
-                        <input class="input-list" type="text" *ngIf="user.editable" [(ngModel)]="user.role" /><br>
-                        <span>Tags: </span>
-                        <p class="" *ngFor="let tag of user.tag">
-                            <label>- {{tag.name}}</label><br>
-                            <input type="checkbox" *ngIf="user.editable" [(ngModel)]="tag.checked" /><br>
-                        </p>
+<div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section2">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                User
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Email
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Rol
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Tags
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr *ngFor="let user of users" routerLink="/users">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">
+                                            {{user.name}}
+                                            <input type="text" *ngIf="false" [(ngModel)]="user.name" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    {{user.email}}
+                                    <input type="text" *ngIf="false" [(ngModel)]="user.email" />
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    {{user.role}}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span *ngFor="let user of users">
+                                    <span class="px-2 inline-flex text-xs leading-5 ">
+                                        {{user.tags}}
+                                    </span>
+                                </span>
+                            </td>
 
-                        <button class="btn-delete" (click)="deleteUser(user._id)">Delete</button>
-                        <button class="btn-delete" *ngIf="!user.editable" (click)="editState(user)">Update</button>
-                        <button class="btn-delete" *ngIf="user.editable" (click)="updateUser(user)">OK</button>
-                    </li>
-                </p>
-            </ul>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a *ngIf="!user.editable" class="text-indigo-600 hover:text-indigo-900">Delete </a>
+                                <a>/</a>
+                                <a *ngIf="!user.editable " class="text-indigo-600 hover:text-indigo-900"> Edit</a>
+                            </td>
+                        </tr>
+
+                        <!-- More people... -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+</div>

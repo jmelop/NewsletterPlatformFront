@@ -24,7 +24,11 @@ export class UsersService {
 
   getAllUsers(): Promise<User[]> {
     return axios.get(apiUrl, options)
-      .then(rest => rest.data)
+      .then(rest => { 
+        console.log(rest.data)
+        return rest.data
+      })
+      
   }
 
   post(user: User) {

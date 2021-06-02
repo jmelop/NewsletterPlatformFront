@@ -1,63 +1,16 @@
-.user-list button{
-    outline: none !important;
-    display: flex;
-    background: linear-gradient(to right, #ff5f6d, #ffc371);
-    border-radius: 4px;
-    will-change: transform;
-	padding: 0.6em 1.2em;
-	text-align: center;
-	cursor: pointer;
-	user-select: none;
-	color: white;
-    border: 0px;
-    margin: 5px;
-}
-
-.user-form{
-    margin-top: 98px;
-    text-align: center;
-}
-
-.user-form ul li{
-    list-style:none;
+#section1{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 190px;
+  margin-bottom: 190px;
 
 }
 
-.drop,
-.drop__container {
-  display: grid;
+#section2{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 90px;
+
 }
-
-.drop {
-  align-items: center;
-  justify-content: center;
-  margin-top: 4rem;
-}
-
-.drop__container {
-  row-gap: 1rem;
-  padding: 5rem;
-  box-shadow: 4px 4px 16px #cfcfcf;
-  background: rgb(255, 255, 255);
-  border-radius: 2.5rem;
-  margin-bottom: 20px;
-}
-
-.drop__card {
-  width: 360px;
-  justify-content: space-between;
-  padding: 1.75rem 2.25rem 1.75rem 1.75rem;
-  box-shadow: 4px 4px 16px #cac9c9, -2px -2px 16px rgb(197, 195, 195);
-  border-radius: 2.5rem;
-  background: rgb(255, 255, 255);
-  list-style:none;
-}
-
-  .input-list{
-      background: rgb(216, 216, 216);
-  }
-  
-
-
-  
-

@@ -13,7 +13,7 @@ import { UsersService } from '../services/admin/users.service';
 export class UsersComponent implements OnInit {
 
   newTags: any = [];
-  newUser: User = { name: '', email: '', role: '', tag: this.newTags, password: '' }
+  newUser: User = { name: '', email: '', role: '', tags: this.newTags, password: '' }
   tags: any = [];
   users: any = [];
 
@@ -40,12 +40,12 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
-    this.newUser.tag = this.tags.filter(u => u.checked == true);
+    this.newUser.tags = this.tags.filter(u => u.checked == true);
     this.userServices.post(this.newUser).then(res => {
       if (typeof res !== 'undefined') {
         this.users.push(res);
         this.newTags = [];
-        this.newUser = { name: '', email: '', role: '', tag: this.newTags, password: '' };
+        this.newUser = { name: '', email: '', role: '', tags: this.newTags, password: '' };
       }
     })
   }
