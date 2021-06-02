@@ -31,19 +31,25 @@ export class UsersComponent implements OnInit {
     })
 
 
-  this.tags.map(u => {
+    this.tags.map(u => {
       let exist = user.tag.find(b => b.name == u.name);
       if (!exist) {
         user.tag.push(u)
       }
-    }) 
+    })
   }
 
   addUser() {
     this.newUser.tags = this.tags.filter(u => u.checked == true);
+    let newMappedUser = []; 
+    this.newUser.tags.map(u => {
+      newMappedUser.push(u._id)
+    });
+
+    this.newUser.tags = newMappedUser;
     this.userServices.post(this.newUser).then(res => {
       if (typeof res !== 'undefined') {
-        this.users.push(res);
+        this.users.push(this.newUser);
         this.newTags = [];
         this.newUser = { name: '', email: '', role: '', tags: this.newTags, password: '' };
       }
