@@ -1,62 +1,140 @@
-<div class="news-form">
-    <p>Add new news:</p>
-    <ul class="create-form">
-        <li>
-            <label>Titulo: </label>
-            <input type="text" id="name" [(ngModel)]="newNew.title">
-        </li>
-        <li>
-            <label>Body: </label>
-            <input type="text" id="email" [(ngModel)]="newNew.body">
-        </li>
-        <li>
-            <label>Link: </label>
-            <input type="text" id="role" [(ngModel)]="newNew.link">
-        </li>
-        <li>
-            <p class="" *ngFor="let tag of tags">
+<div class="mt-10 sm:mt-0 ">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section1">
 
-                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked">
-                <label> {{tag.name}}</label><br>
-            </p>
+        <div class="mt-5 md:mt-0 md:col-span-2">
+            <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 py-5 bg-white sm:p-6">
+
+                    <p class="mb-8" id="span-section1">Add new news:</p>
+
+                    <div class="grid grid-cols-6 gap-6">
+
+                        <div class="col-span-6 sm:col-span-3">
+
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">Titulo:</label>
+                            <input type="text" name="first_name" id="first_name" [(ngModel)]="newNew.title"
+                                autocomplete="given-name"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-3">
+                            <label for="last_name" class="block text-sm font-medium text-gray-700">Link:</label>
+                            <input type="text" name="email_address" id="email_address" [(ngModel)]="newNew.link"
+                                autocomplete="email"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        </div>
+
+                        <div class="col-span-6 sm:col-span-4">
+                            <label for="email_address" class="block text-sm font-medium text-gray-700">Body: </label>
+                            <textarea _ngcontent-ptd-c49="" required="" name="message" id=""
+                                placeholder="Enter your body" spellcheck="false"
+                                class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched"
+                                ng-reflect-required="" ng-reflect-name="message" ng-reflect-model="" [(ngModel)]="newNew.body"></textarea>
+                        </div>
 
 
-        </li>
-        <li>
 
-            <input (click)="addNew()" class="submit" type="submit" value="Submit">
-        </li>
-    </ul>
+                        <div class="col-span-6">
+                            <label for="street_address" class="block text-sm font-medium text-gray-700">Tags</label>
+                            <p class="" *ngFor="let tag of tags">
 
+                                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked"
+                                    class="mt-1 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <label> {{tag.name}}</label><br>
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <button type="submit"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Add New
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 
-<div class="news-list">
 
-    <div class="drop">
-        <div class="drop__container" id="drop-items">
-            <p>News list!</p>
-                <ul>
-                    <p class="" *ngFor="let new of news" routerLink="/news">
-                        <li class="drop__card">
-                            <span>Nombre: {{new.title}}</span> - <br>
-                            <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.title" /><br>
-                            <span>Cuerpo: {{new.body}}</span> - <br>
-                            <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.body" /><br>
-                            <span>Link: {{new.link}}</span> - <br>
-                            <input class="input-list" type="text" *ngIf="new.editable" [(ngModel)]="new.link" /><br>
-                            <span>Tags:</span>
-                            <p class="" *ngFor="let tag of new.tag">
-                                <label>- {{tag.name}}</label><br>
-                                <input type="checkbox" *ngIf="new.editable" [(ngModel)]="tag.checked" /><br>
-                            </p>
+<div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section2">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Titulo:
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Cuerpo:
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Link
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Tags
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr *ngFor="let new of news" routerLink="/news">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">
+                                            {{new.title}}
+                                            <input type="text" *ngIf="false" [(ngModel)]="new.title" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    {{new.body}}
+                                    <input type="text" *ngIf="false" [(ngModel)]="new.body" />
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">
+                                    {{new.link}}
+                                    <input type="text" *ngIf="false" [(ngModel)]="new.link" />
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span *ngFor="let tag of news.tags">
+                                    <span class="px-2 inline-flex text-xs leading-5 ">
+                                        {{tag.name}} -
+                                    </span>
+                                </span>
+                            </td>
 
-                            <button class="btn-delete" (click)="deleteNew(new._id)">Delete</button>
-                            <button class="btn-delete" *ngIf="!new.editable" (click)="editState(new)">Update</button>
-                            <button class="btn-delete" *ngIf="new.editable" (click)="updateNews(new)">OK</button>
-                        </li>
-                    </p>
-                </ul>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a style="cursor: pointer;" *ngIf="!new.editable"
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteNew(new._id)">Delete
+                                </a>
+                                <a>/</a>
+                                <a *ngIf="!new.editable " class="text-indigo-600 hover:text-indigo-900"> Edit</a>
+
+                            </td>
+                        </tr>
+
+                        <!-- More people... -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+</div>

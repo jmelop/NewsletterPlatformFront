@@ -3,6 +3,7 @@ import { New } from '../models/admin/new.model';
 import { NewsService } from '../services/admin/news.service';
 import { TagsService } from '../services/admin/tags.service';
 
+
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
