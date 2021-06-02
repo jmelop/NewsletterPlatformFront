@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { errorMonitor } from 'events';
 import { error } from 'selenium-webdriver';
 import { LoginService } from 'src/app/services/user/login.service';
 import { LogUser } from '../../models/users/user.model';
@@ -10,10 +12,10 @@ import { LogUser } from '../../models/users/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  logUser: LogUser = {name: '', password: ''};
+  logUser: LogUser = {email: '', password: ''};
   
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -21,10 +23,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.logUser)
     .then(res => {
-      console.log('estas logueado')
+      alert('estas logueado');
+        this.logUser.email = '';
+        this.logUser.password = '';
+        this.router.navigate(['home-user'])
     })
-    .catch( e => {
-      
+    .catch( err => {
+      throw err
     })
   }
 

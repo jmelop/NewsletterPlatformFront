@@ -4,12 +4,12 @@
         <div class="sub-container">
             <form class="login">
                 <p class="title">Log in</p>
-                <input [(ngModel)]="logUser.name" type="text" placeholder="Username" autofocus/>
+                <input [(ngModel)]="logUser.email" type="email" placeholder="Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
                 <!-- <i class="fa fa-user"></i> -->
-                <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" />
+                <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
                 <!-- <i class="fa fa-key"></i> -->
                 <a href="#">¿Has olvidado tu contraseña?</a>
-                <button (click)="login()" routerLink="home-user" type="button" class="btn" >
+                <button (click)="login()" type="button" class="btn" >
                   <i class="spinner"></i>
                   <span class="state">Log in</span>
                 </button>

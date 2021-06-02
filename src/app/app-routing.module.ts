@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: 'home-user',
     component: HomeUserComponent,
-    canActivate: [AuthGuard]
+    //canActivate: [AuthGuard]
   }
 ];
 

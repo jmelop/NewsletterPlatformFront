@@ -6,6 +6,6 @@ export interface User {
 }
 
 export interface LogUser {
-    name: string,
+    email: string,
     password: string,
 }

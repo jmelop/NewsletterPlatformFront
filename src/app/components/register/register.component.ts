@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tag } from '../../models/users/tag.model';
 import { User } from '../../models/users/user.model';
 import { TagsService } from '../../services/user/tags.service';
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   tags: Tag[] = [];
   
-  constructor(private usersService: UsersService, private tagsService: TagsService) { }
+  constructor(private usersService: UsersService, private tagsService: TagsService, private router: Router) { }
 
   ngOnInit(): void {
     this.tagsService.getAlltags()
@@ -46,6 +47,7 @@ export class RegisterComponent implements OnInit {
         this.newUser.password = '';
         this.newUser.tags = [];
         this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
+        this.router.navigate(['home-user'])
       })
       .catch(err  => {
           throw err
