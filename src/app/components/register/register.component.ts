@@ -15,7 +15,7 @@ import { TagsService } from '../../services/user/tags.service';
 })
 export class RegisterComponent implements OnInit {
 
-  newUser: User = {name: '', email: '', password: '', tags: []};
+  newUser: User = {name: '', email: '', password: '', tag: []};
 
   tags: Tag[] = [];
   
@@ -31,16 +31,16 @@ export class RegisterComponent implements OnInit {
     .then(taglist => this.tags = taglist)
   }
 
-  setTag(tags: any) {
-    let existTag = this.newUser.tags.find(t => t === tags.name);
+  setTag(tag: any) {
+    let existTag = this.newUser.tag.find(t => t === tag.name);
 
     if (typeof existTag === "undefined" || existTag == null || existTag === "") {
       //Cambiado temporalmente
-      this.newUser.tags.push(tags)
+      this.newUser.tag.push(tag)
     }
     else {
-      const filteredTags = this.newUser.tags.filter(t => t != tags.name);
-      this.newUser.tags = filteredTags;
+      const filteredTags = this.newUser.tag.filter(t => t != tag.name);
+      this.newUser.tag = filteredTags;
     }
   }
 
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
           this.newUser.name = '';
           this.newUser.email = '';
           this.newUser.password = '';
-          this.newUser.tags = [];
+          this.newUser.tag = [];
           this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
         });
       })

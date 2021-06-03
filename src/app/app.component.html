@@ -1,2 +1,12 @@
-<app-navbar></app-navbar>
+
+<div *ngIf='isLoggedIn && currentUser?.role === "user"'>
+    <app-user-navbar></app-user-navbar>
+</div>
+<div *ngIf='isLoggedIn && currentUser?.role === "admin"'>
+    <app-navbar></app-navbar>
+</div>
+
+
+
+
 <router-outlet></router-outlet>

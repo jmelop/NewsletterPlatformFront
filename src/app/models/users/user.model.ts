@@ -2,7 +2,8 @@ export interface User {
     name: string,
     email: string,
     password: string,
-    tags: string[]
+    role?: string,
+    tag: string[]
 }
 
 export interface LogUser {

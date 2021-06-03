@@ -11,7 +11,7 @@ import { TagsService } from '../../services/user/tags.service';
 export class UserTagsComponent implements OnInit {
   [x: string]: any;
 
-  newUser: User = {name: '', email: '', password: '', tags: []};
+  newUser: User = {name: '', email: '', password: '', tag: []};
 
   tags: Tag[] = [];
 
@@ -23,15 +23,15 @@ export class UserTagsComponent implements OnInit {
   }
 
   setTag(tags: any) {
-    let existTag = this.newUser.tags.find(t => t === tags.name);
+    let existTag = this.newUser.tag.find(t => t === tags.name);
 
     if (typeof existTag === "undefined" || existTag == null || existTag === "") {
       //Cambiado temporalmente
-      this.newUser.tags.push(tags)
+      this.newUser.tag.push(tags)
     }
     else {
-      const filteredTags = this.newUser.tags.filter(t => t != tags.name);
-      this.newUser.tags = filteredTags;
+      const filteredTags = this.newUser.tag.filter(t => t != tags.name);
+      this.newUser.tag = filteredTags;
     }
   }
   
