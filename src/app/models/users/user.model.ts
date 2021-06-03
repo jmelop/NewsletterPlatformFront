@@ -1,9 +1,12 @@
+import { Tag } from "./tag.model";
+
 export interface User {
     name: string,
     email: string,
     password: string,
     role?: string,
-    tag: string[]
+    _id?: string,
+    tags: Tag[]
 }
 
 export interface LogUser {

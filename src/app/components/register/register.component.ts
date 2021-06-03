@@ -15,9 +15,9 @@ import { TagsService } from '../../services/user/tags.service';
 })
 export class RegisterComponent implements OnInit {
 
-  newUser: User = {name: '', email: '', password: '', tag: []};
+  newUser: User = {name: '', email: '', password: '', tags: []};
 
-  tags: Tag[] = [];
+  checkTagList: Tag[] = [];
   
   constructor(
     private authenticationService: AuthenticationService, 
@@ -28,25 +28,31 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.tagsService.getAlltags()
-    .then(taglist => this.tags = taglist)
+    .then(taglist => this.checkTagList = taglist)
   }
 
-  setTag(tag: any) {
-    let existTag = this.newUser.tag.find(t => t === tag.name);
+  // setTag(tag: any) {
+  //   let existTag = this.newUser.tags.find(t => t === tag.id);
 
-    if (typeof existTag === "undefined" || existTag == null || existTag === "") {
-      //Cambiado temporalmente
-      this.newUser.tag.push(tag)
-    }
-    else {
-      const filteredTags = this.newUser.tag.filter(t => t != tag.name);
-      this.newUser.tag = filteredTags;
-    }
-  }
+  //   if (typeof existTag === "undefined" || existTag == null || existTag === "") {
+  //     //Cambiado temporalmente
+  //     this.newUser.tags.push(tag)
+  //   }
+  //   else {
+  //     const filteredTags = this.newUser.tags.filter(t => t != tag.name);
+  //     this.newUser.tags = filteredTags;
+  //   }
+  // }
 
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 
   register() {
+    this.newUser.tags = this.checkTagList.filter(tag => tag.checked == true);
+    let newTagList = [];
+    this.newUser.tags.map(tag => newTagList.push(tag._id));
+    this.newUser.tags = newTagList;
+    console.log(newTagList);
+    console.log(this.newUser.tags);
     this.authenticationService.register(this.newUser)
       .then(res => {
         this.authenticationService.login({email: this.newUser.email, password: this.newUser.password})
@@ -55,7 +61,7 @@ export class RegisterComponent implements OnInit {
           this.newUser.name = '';
           this.newUser.email = '';
           this.newUser.password = '';
-          this.newUser.tag = [];
+          this.newUser.tags = [];
           this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
         });
       })

@@ -11,9 +11,9 @@ import { TagsService } from '../../services/user/tags.service';
 export class UserTagsComponent implements OnInit {
   [x: string]: any;
 
-  newUser: User = {name: '', email: '', password: '', tag: []};
+  newUser: User = {name: '', email: '', password: '', tags: []};
 
-  tags: Tag[] = [];
+  checkTagList: Tag[] = [];
 
   constructor(private tagsService: TagsService) { }
 
@@ -22,18 +22,18 @@ export class UserTagsComponent implements OnInit {
     .then(taglist => this.tags = taglist)
   }
 
-  setTag(tags: any) {
-    let existTag = this.newUser.tag.find(t => t === tags.name);
+  // setTag(tags: any) {
+  //   let existTag = this.newUser.tags.find(t => t === tags.name);
 
-    if (typeof existTag === "undefined" || existTag == null || existTag === "") {
-      //Cambiado temporalmente
-      this.newUser.tag.push(tags)
-    }
-    else {
-      const filteredTags = this.newUser.tag.filter(t => t != tags.name);
-      this.newUser.tag = filteredTags;
-    }
-  }
+  //   if (typeof existTag === "undefined" || existTag == null || existTag === "") {
+  //     //Cambiado temporalmente
+  //     this.newUser.tags.push(tags)
+  //   }
+  //   else {
+  //     const filteredTags = this.newUser.tags.filter(t => t != tags.name);
+  //     this.newUser.tags = filteredTags;
+  //   }
+  // }
   
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 

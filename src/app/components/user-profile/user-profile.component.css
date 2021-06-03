@@ -1,19 +1,35 @@
 .container {
-    width: 50%;
+    width: 30%;
     margin-top: 100px;
+    padding: 20px;
+}
+
+.img-container {
+    text-align: center;
+}
+
+.sub-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
 
 li {
     padding: 5px;
+    margin-top: 10px;
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 25px;
+    padding: 5px;
+}
+
+img {
+    width: 25%;
 }
 
 .btn {
     border: 1px solid orange;
     padding: 8px;
-    float: right;
-    margin: 5px;
+    margin: 20px 5px 5px 5px;
 }

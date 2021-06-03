@@ -53,5 +53,4 @@ export class StorageService {
     var session: Session = this.currentSession;
     return (session && session.user) ? session.user : null;
   }
-
 }
