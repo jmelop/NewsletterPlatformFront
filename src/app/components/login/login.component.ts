@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { errorMonitor } from 'events';
 import { error } from 'selenium-webdriver';
-import { LoginService } from 'src/app/services/user/login.service';
+import { Session } from 'src/app/models/users/session.model';
+import { AuthenticationService } from 'src/app/services/user/authentication.service';
+import { StorageService } from 'src/app/services/user/storage.service';
 import { LogUser } from '../../models/users/user.model';
 
 @Component({
@@ -15,26 +17,31 @@ export class LoginComponent implements OnInit {
   logUser: LogUser = {email: '', password: ''};
   
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(
+    private authenticationService: AuthenticationService , 
+    private router: Router, 
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
   }
 
   login() {
-    this.loginService.login(this.logUser)
+    this.authenticationService.login(this.logUser)
     .then(res => {
-      alert('estas logueado');
         this.logUser.email = '';
         this.logUser.password = '';
-        this.router.navigate(['home-user'])
+        this.setSessionData(res);
     })
     .catch( err => {
       throw err
     })
   }
 
+  setSessionData(data: Session) {
+    this.storageService.setCurrentSession(data);
+    this.router.navigate(['home-user'])
+  }
 
-
-  
 }
 

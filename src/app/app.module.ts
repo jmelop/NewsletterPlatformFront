@@ -11,6 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import {RegisterComponent} from './components/register/register.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserTagsComponent } from './components/user-tags/user-tags.component';
+import { UserNavbarComponent } from './components/user-navbar/user-navbar.component';
 
 
 
@@ -24,7 +27,10 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     LoginComponent,
     MainComponent,
     RegisterComponent,
-    HomeUserComponent
+    HomeUserComponent,
+    UserProfileComponent,
+    UserTagsComponent,
+    UserNavbarComponent
   ],
   imports: [
     BrowserModule,

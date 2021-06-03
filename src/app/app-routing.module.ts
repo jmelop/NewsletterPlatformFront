@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { AuthGuard } from './guards/auth.guard';
+import { UserTagsComponent } from './components/user-tags/user-tags.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
     path: 'home-user',
     component: HomeUserComponent,
     //canActivate: [AuthGuard]
+  },
+  {
+    path: 'user-tags',
+    component: UserTagsComponent
   }
 ];
 

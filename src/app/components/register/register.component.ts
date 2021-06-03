@@ -1,9 +1,12 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { Router } from '@angular/router';
+import { Session } from 'src/app/models/users/session.model';
+import { AuthenticationService } from 'src/app/services/user/authentication.service';
+import { StorageService } from 'src/app/services/user/storage.service';
 import { Tag } from '../../models/users/tag.model';
 import { User } from '../../models/users/user.model';
 import { TagsService } from '../../services/user/tags.service';
-import { UsersService } from '../../services/user/users.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +19,12 @@ export class RegisterComponent implements OnInit {
 
   tags: Tag[] = [];
   
-  constructor(private usersService: UsersService, private tagsService: TagsService, private router: Router) { }
+  constructor(
+    private authenticationService: AuthenticationService, 
+    private tagsService: TagsService, 
+    private router: Router, 
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
     this.tagsService.getAlltags()
@@ -39,23 +47,25 @@ export class RegisterComponent implements OnInit {
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 
   register() {
-    this.usersService.postUser(this.newUser)
+    this.authenticationService.register(this.newUser)
       .then(res => {
-        alert('¡El usuario ha sido creado!');
-        this.newUser.name = '';
-        this.newUser.email = '';
-        this.newUser.password = '';
-        this.newUser.tags = [];
-        this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
-        this.router.navigate(['home-user'])
+        this.authenticationService.login({email: this.newUser.email, password: this.newUser.password})
+        .then(res => {
+          this.setSessionData(res);
+          this.newUser.name = '';
+          this.newUser.email = '';
+          this.newUser.password = '';
+          this.newUser.tags = [];
+          this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
+        });
       })
       .catch(err  => {
           throw err
       });
   }
 
-  
-
-
-
+  setSessionData(data: Session) {
+    this.storageService.setCurrentSession(data);
+    this.router.navigate(['home-user'])
+  }
 }
