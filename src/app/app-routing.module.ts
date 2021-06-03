@@ -9,6 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UserTagsComponent } from './components/user-tags/user-tags.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'user-tags',
     component: UserTagsComponent
+  },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent
   }
 ];
 
