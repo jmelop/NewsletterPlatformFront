@@ -1,2 +1,21 @@
-<h1>Noticias</h1>
-
+<div class="background-container">
+    <div class="container">
+        <div class="sub-container">
+            <h1>Noticias</h1>
+            <p>Todas las últimas novedades</p>
+            <ul>
+                <div class="list-container" *ngFor="let new of news">
+                    <li class="drop__card">
+                        <h2>{{new.title}}</h2>
+                        <p>{{new.body}}</p>
+                        <p>Tags:</p>
+                        <p *ngFor="let tag of new.tag">
+                            <label>- {{tag.name}}</label>
+                        </p>
+                        <p class="link">Link: {{new.link}}</p>
+                    </li>
+                </div>
+            </ul>
+        </div>  
+    </div>     
+</div>
