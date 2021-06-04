@@ -40,8 +40,15 @@ export class LoginComponent implements OnInit {
 
   setSessionData(data: Session) {
     this.storageService.setCurrentSession(data);
-    this.router.navigate(['home-user'])
+    if (data.user.role === 'user') {
+      this.router.navigate(['home-user'])
+    }
+    if (data.user.role === 'admin') {
+      this.router.navigate(['users']);
+    }
+
   }
+
 
 }
 
