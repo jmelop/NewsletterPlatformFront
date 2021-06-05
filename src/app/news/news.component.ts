@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { New } from '../models/admin/new.model';
 import { NewsService } from '../services/admin/news.service';
 import { TagsService } from '../services/admin/tags.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { TagsService } from '../services/admin/tags.service';
 })
 export class NewsComponent implements OnInit {
 
+  public Editor = ClassicEditor;
   newTags: any = [];
   tags: any = [];
   news: any = [];

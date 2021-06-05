@@ -1,16 +1,59 @@
-<p>reports works!</p>
-<div>
-    <div class="bt-1" style="display: block">
-        <canvas
-        baseChart
-        [chartType]="'line'"
-        [legend]="true"
-        [datasets]="chartData"
-        [labels]="chartLabels"
-        [options]="chartOptions"
+  <div class="md:py-20">
+      <div class="max-w-3xl mx-auto text-center ">
+          <h2 class="md:text-6xl text-4xl text-black dark:text-white font-bold mb-4">Compruebe los datos</h2>
+          <p class="text-xl text-gray-600 dark:text-gray-400">En la parte de reportes podrá ver en directo los datos, pudiendo filtrarlos para su comodidad</p>
+      </div>
+  </div>
 
-      >
+<div class=" grid grid-cols-2 gap-4 ml-16 mr-16 mb-20">
+  <div class="py-4 px-8 bg-white shadow-lg rounded-lg"> 
+    <canvas 
+    baseChart 
+    [chartType]="'line'" 
+    [legend]="true"
+    [datasets]="chartData" 
+    [labels]="chartLabels" 
+    [options]="chartOptions">
+    </canvas>
+  </div>
+    <div class="py-4 px-8 bg-white shadow-lg rounded-lg">
+      <canvas 
+      baseChart 
+      [data]="pieChartData" 
+      [labels]="pieChartLabels" 
+      [chartType]="pieChartType"
+      [options]="pieChartOptions" 
+      [plugins]="pieChartPlugins" 
+      [colors]="pieChartColors" 
+      [legend]="pieChartLegend">
       </canvas>
-
     </div>
+</div>
+
+<div class="min-w-screen mt-40 mb-8 left-0 top-0 flex justify-center items-center outline-none ">
+  <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <div class="flex flex-col ml-3">
+          <p class="text-sm text-gray-600 leading-none mt-1">Número de emails enviados o pendientes de enviar
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="py-4 px-8 bg-white shadow-lg rounded-lg ml-56 mr-56 mb-16">
+  <canvas baseChart
+  [datasets]="bubbleChartData"
+  [options]="bubbleChartOptions"
+  [legend]="bubbleChartLegend"
+  [chartType]="bubbleChartType">
+</canvas>
 </div>

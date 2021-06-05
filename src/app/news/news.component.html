@@ -26,11 +26,10 @@
 
                         <div class="col-span-6 sm:col-span-4">
                             <label for="email_address" class="block text-sm font-medium text-gray-700">Body: </label>
-                            <textarea _ngcontent-ptd-c49="" required="" name="message" id=""
-                                placeholder="Enter your body" spellcheck="false"
-                                class="w-full min-h-[100px] max-h-[300px] h-28 appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched"
-                                ng-reflect-required="" ng-reflect-name="message" ng-reflect-model="" [(ngModel)]="newNew.body"></textarea>
                                 
+                                <ckeditor [editor]="Editor" placeholder="Enter your body" spellcheck="false"  [(ngModel)]="newNew.body"  
+                                class="w-full min-h-[100px] max-h-[300px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched"></ckeditor>
+
                         </div>
 
 

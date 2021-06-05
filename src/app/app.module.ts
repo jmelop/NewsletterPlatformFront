@@ -12,6 +12,7 @@ import { MainComponent } from './components/main/main.component';
 import {RegisterComponent} from './components/register/register.component';
 import { ChartsModule } from 'ng2-charts';
 import { ReportsComponent } from './reports/reports.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ReportsComponent } from './reports/reports.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
