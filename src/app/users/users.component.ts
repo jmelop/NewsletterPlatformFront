@@ -32,9 +32,9 @@ export class UsersComponent implements OnInit {
 
 
     this.tags.map(u => {
-      let exist = user.tag.find(b => b.name == u.name);
+      let exist = user.tags.find(b => b.name == u.name);
       if (!exist) {
-        user.tag.push(u)
+        user.tags.push(u)
       }
     })
   }
@@ -65,7 +65,15 @@ export class UsersComponent implements OnInit {
   }
 
   updateUser(user: any) {
-    user.tag = user.tag.filter(u => u.checked == true);
+    user.tags = user.tags.filter(u => u.checked == true);
+    let newMappedUser = []; 
+    user.tags.map(u => {
+      newMappedUser.push(u._id)
+    });
+
+    console.log(user)
+
+    user.tags = newMappedUser;
     user.editable = false;
     this.userServices.updateUser(user._id, user)
   }

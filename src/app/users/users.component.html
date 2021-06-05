@@ -32,10 +32,10 @@
 
                         <div class="col-span-6 sm:col-span-3">
                             <label for="country" class="block text-sm font-medium text-gray-700">Role</label>
-                            <select id="country" name="country" autocomplete="country"
+                            <select id="country" name="country" autocomplete="country" [(ngModel)]="newUser.role"
                                 class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                <option>User</option>
-                                <option>Admin</option>
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
                             </select>
                         </div>
 
@@ -43,7 +43,8 @@
                             <label for="street_address" class="block text-sm font-medium text-gray-700">Tags</label>
                             <p class="" *ngFor="let tag of tags">
 
-                                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked" class="mt-1 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <input type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked"
+                                    class="mt-1 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 <label> {{tag.name}}</label><br>
                             </p>
                         </div>
@@ -100,24 +101,31 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">
+                                        <span class="text-sm font-medium text-gray-900">
                                             {{user.name}}
                                             <input type="text" *ngIf="false" [(ngModel)]="user.name" />
-                                        </div>
+                                        </span>
+                                        <input type="text" [(ngModel)]="user.name" *ngIf="user.editable"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">
+                                <span class="text-sm text-gray-900">
                                     {{user.email}}
                                     <input type="text" *ngIf="false" [(ngModel)]="user.email" />
-                                </div>
+                                </span>
+                                <input type="text" [(ngModel)]="user.email" *ngIf="user.editable"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span
                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                     {{user.role}}
+
                                 </span>
+                                <input type="text" [(ngModel)]="user.role" *ngIf="user.editable"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span *ngFor="let tag of user.tags">
@@ -128,11 +136,15 @@
                             </td>
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a *ngIf="!user.editable" class="text-indigo-600 hover:text-indigo-900"
+                                    style="cursor: pointer" (click)="editState(user)"> Edit </a>
+                                <a *ngIf="!user.editable">/</a>
                                 <a style="cursor: pointer;" *ngIf="!user.editable"
-                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteUser(user._id)">Delete
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteUser(user._id)"> Delete
                                 </a>
-                                <a>/</a>
-                                <a *ngIf="!user.editable " class="text-indigo-600 hover:text-indigo-900"> Edit</a>
+
+                                <a *ngIf="user.editable " style="cursor: pointer"
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="updateUser(user)"> OK</a>
 
                             </td>
                         </tr>
@@ -144,3 +156,37 @@
         </div>
     </div>
 </div>
+
+<footer class="footer bg-white relative pt-1 border-b-2 border-blue-700">
+    <div class="container mx-auto px-6">
+
+        <div class="sm:flex sm:mt-8">
+            <div class="mt-8 sm:mt-0 sm:w-full sm:px-8 flex flex-col md:flex-row justify-between">
+                <div class="flex flex-col">
+                    <span class="font-bold text-gray-700 uppercase mb-2">Footer header 1</span>
+                    <span class="my-2"><a href="#" class="text-blue-700  text-md hover:text-blue-500">link 1</a></span>
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-gray-700 uppercase mt-4 md:mt-0 mb-2">Footer header 2</span>
+                    <span class="my-2"><a href="#" class="text-blue-700 text-md hover:text-blue-500">link 1</a></span>
+
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-gray-700 uppercase mt-4 md:mt-0 mb-2">Footer header 3</span>
+                    <span class="my-2"><a href="#" class="text-blue-700  text-md hover:text-blue-500">link 1</a></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mx-auto px-6">
+        <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
+            <div class="sm:w-2/3 text-center py-6">
+                <p class="text-sm text-blue-700 font-bold mb-2">
+                    © 2020 by Pavlove BIOKOU
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

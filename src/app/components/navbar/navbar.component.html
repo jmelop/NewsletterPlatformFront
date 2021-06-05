@@ -9,16 +9,19 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              <a href="/" class="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
   
-              <a href="#/users"
+              <a href="#/users" routerLinkActive="bg-gray-700 text-white" [routerLink]="['/users']" [routerLinkActiveOptions]="{exact: true}"
                 class="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Users</a>
   
-              <a href="#/news"
+              <a href="#/news" routerLinkActive="bg-gray-700 text-white" [routerLink]="['/news']" [routerLinkActiveOptions]="{exact: true}"
                 class="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">News</a>
   
-              <a href="#/tags"
+              <a href="#/tags" routerLinkActive="bg-gray-700 text-white" [routerLink]="['/tags']" [routerLinkActiveOptions]="{exact: true}"
                 class="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Tags</a>
+
+              <a href="#/reports" routerLinkActive="bg-gray-700 text-white" [routerLink]="['/reports']" [routerLinkActiveOptions]="{exact: true}"
+                class="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Reports</a>
             </div>
           </div>
         </div>

@@ -10,7 +10,8 @@ import { TagsComponent } from './tags/tags.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import {RegisterComponent} from './components/register/register.component';
-
+import { ChartsModule } from 'ng2-charts';
+import { ReportsComponent } from './reports/reports.component';
 
 
 @NgModule({
@@ -22,12 +23,14 @@ import {RegisterComponent} from './components/register/register.component';
     TagsComponent,
     LoginComponent,
     MainComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

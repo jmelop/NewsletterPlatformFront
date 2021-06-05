@@ -2,14 +2,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 body{
     font-family: sans-serif;
-    background: #FF5F6D;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    background: #ff5f6d26;
+    background: linear-gradient(to right, #ffc37199, #ff5f6d38);
 }
+    
+    
+    
+    
+
 
 input{
     border-radius: 0.25rem;
