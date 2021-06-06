@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Label } from 'ng2-charts';
 import { ChartType, ChartOptions, ChartDataSets} from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { UsersService } from '../../../services/admin/users.service';
+import { User } from '../../../models/admin/user.model';
+import { TagsService } from '../../../services/admin/tags.service';
 
 
 @Component({
@@ -11,7 +14,15 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 })
 export class ReportsComponent implements OnInit {
 
+  // Data
 
+  users: any = [];
+  tags: any = [];
+  tagInformation = {type: 'Tec', amount: 2};
+  numberTags = [];
+
+
+  // First Char
 
   chartData = [
     {
@@ -54,6 +65,8 @@ export class ReportsComponent implements OnInit {
       },
     }
   };
+
+  // Second Chart
 
   public pieChartLabels: Label[] = [['Tecnologia'], ['Trabajos'], 'Gobierno de Canarias'];
   public pieChartData: number[] = [300, 500, 100];
@@ -99,24 +112,29 @@ export class ReportsComponent implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor(private userService: UsersService, private tagService: TagsService) { }
 
   ngOnInit(): void {
     const DATA_COUNT = 12;
     const labels = [];
     for (let i = 0; i < DATA_COUNT; ++i) {
       labels.push(i.toString());
-    }
+    };
+
+    this.userService.getAllUsers().then(u => this.users = u);
+    this.tagService.getAllTags().then(u => this.tags = u);
+
+    this.numberTags.push(this.tagInformation);
+    this.numberTags.push(this.tagInformation);
+    console.log(this.numberTags)
+
+  }
+
+  calculateNumberTypeTags(){
+
   }
 
   // events
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
 
   changeLabels(): void {
     const words = ['hen'];
