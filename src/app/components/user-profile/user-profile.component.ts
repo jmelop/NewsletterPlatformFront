@@ -10,9 +10,6 @@ import { StorageService } from 'src/app/services/user/storage.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  // name: string = '';
-  // email: string = '';
-  // role: string = '';
   _id: string = '';
   user: User = null;
   editable: boolean = false;
@@ -23,9 +20,6 @@ export class UserProfileComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) { 
     this.user = storageService.getCurrentUser();
-    // this.name = this.user.name;
-    // this.email = this.user.email;
-    // this.role = this.user.role;
     this._id = this.user._id;
   }
 

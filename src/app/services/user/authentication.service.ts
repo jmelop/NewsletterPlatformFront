@@ -20,17 +20,37 @@ export class AuthenticationService {
 
   constructor(private storageService: StorageService) { }
 
+
   register(user: User) {
     return axios.post(`${apiUrl}register/`, user, options)
       .then(res => res.data)
       .catch((err) => {
+        if (err.response.status === 403) {
+          err.response.data = "Faltan campos por rellenar";
+        }
+        else if (err.response.status === 404) {
+          err.response.data = 'Email ya existente';
+        }
+        else if (err.response.status === 500) {
+          err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
+        }
         throw err
       });
-  }
+    }
 
   login(loginData: LogUser) {
     return axios.post(`${apiUrl}login/`, loginData)
-    .then(res => res.data);
+    .then(res => res.data)
+    .catch((err) => {
+      console.log('prueba serv', err.response);
+      if (err.response.status === 403) {
+        err.response.data = "Faltan campos por rellenar";
+      }
+      else if (err.response.status === 404) {
+        err.response.data = 'Email y/o contraseña incorrecta';
+      }
+      throw err
+    });
   }
 
   deleteUser(id: string) {

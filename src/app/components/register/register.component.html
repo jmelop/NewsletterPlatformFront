@@ -1,15 +1,17 @@
 <div class="background-container">
   <div class="container">
     <div class="sub-container">
-      <form class="register">
+      <form class="register" >
         <p class="title">Registro:</p>
         <input class="register-inputs" [(ngModel)]="newUser.name" type="text" placeholder="Username" name="username" autofocus/>
       
         <!-- <i class="fa fa-user"></i> -->
-        <input class="register-inputs" [(ngModel)]="newUser.email" type="email" placeholder="email" name="email" />
-        <spam *ngIf="newUser.email === '' || null">El email es requerido</spam>
-       
-        <input class="register-inputs" [(ngModel)]="newUser.password" type="password" placeholder="Contraseña" name="password" />
+        <input
+          class="register-inputs" [(ngModel)]="newUser.email" type="email" placeholder="email" name="email"/>
+
+        <input 
+          class="register-inputs register-password" [(ngModel)]="newUser.password" type="password" placeholder="Contraseña" name="password"/>
+
         <!-- <i class="fa fa-key"></i> -->
         <div class="list">
           <h4>Elige las categorías que te interesen:</h4>
@@ -19,7 +21,8 @@
                   <label>{{tag.name}}</label>
                 </li>
             </ul>
-        </div>             
+        </div>
+        <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div>          
         <button (click)="register()" type="button" class="btn" >
           <i class="spinner"></i>
           <span class="state">Registrarse</span>

@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Session } from 'src/app/models/users/session.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
@@ -18,31 +19,22 @@ export class RegisterComponent implements OnInit {
   newUser: User = {name: '', email: '', password: '', tags: []};
 
   checkTagList: Tag[] = [];
-  
+ 
+  errorMessage: string;
+
   constructor(
     private authenticationService: AuthenticationService, 
     private tagsService: TagsService, 
     private router: Router, 
-    private storageService: StorageService
-  ) { }
+    private storageService: StorageService,
+  ) { 
+  }
 
   ngOnInit(): void {
     this.tagsService.getAlltags()
     .then(taglist => this.checkTagList = taglist)
   }
 
-  // setTag(tag: any) {
-  //   let existTag = this.newUser.tags.find(t => t === tag.id);
-
-  //   if (typeof existTag === "undefined" || existTag == null || existTag === "") {
-  //     //Cambiado temporalmente
-  //     this.newUser.tags.push(tag)
-  //   }
-  //   else {
-  //     const filteredTags = this.newUser.tags.filter(t => t != tag.name);
-  //     this.newUser.tags = filteredTags;
-  //   }
-  // }
 
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 
@@ -51,8 +43,6 @@ export class RegisterComponent implements OnInit {
     let newTagList = [];
     this.newUser.tags.map(tag => newTagList.push(tag._id));
     this.newUser.tags = newTagList;
-    console.log(newTagList);
-    console.log(this.newUser.tags);
     this.authenticationService.register(this.newUser)
       .then(res => {
         this.authenticationService.login({email: this.newUser.email, password: this.newUser.password})
@@ -66,8 +56,8 @@ export class RegisterComponent implements OnInit {
         });
       })
       .catch(err  => {
-          throw err
-      });
+        this.errorMessage = err.response.data
+    });
   }
 
   setSessionData(data: Session) {

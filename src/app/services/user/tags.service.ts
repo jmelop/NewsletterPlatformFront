@@ -25,12 +25,14 @@ export class TagsService {
       .then(res => res.data)
   }
 
-  getTagsFromUser(email : string): Promise<User> {
-    return axios.get(this.apiUrl + email, this.options)
-    .then(res => res.data)
-    .then(res => {
-      console.log(res.tags);
-      return res.tags
-    })
-  }
+  // getTagName(id: string): Promise<Tag> {
+  //   return axios.get(`${this.apiUrl}${id}`, this.options)
+  //     .then(res => {
+  //       return res.data
+  //     })
+  // }
+
+  
+  
+
 }

@@ -18,11 +18,23 @@
 
 .container {
     width: 50%;
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 h5 {
     font-size: 16px;
+}
+.tag-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tag-list-db {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 li {

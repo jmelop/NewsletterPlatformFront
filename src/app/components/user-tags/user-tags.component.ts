@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { User } from 'src/app/models/users/user.model';
+import { AuthenticationService } from 'src/app/services/user/authentication.service';
+import { StorageService } from 'src/app/services/user/storage.service';
+import { UserService } from 'src/app/services/user/user.service';
 import { Tag } from '../../models/users/tag.model';
 import { TagsService } from '../../services/user/tags.service';
 
@@ -11,41 +14,45 @@ import { TagsService } from '../../services/user/tags.service';
 export class UserTagsComponent implements OnInit {
   [x: string]: any;
 
-  newUser: User = {name: '', email: '', password: '', tags: []};
-
+  sessionToken: string = '';
+  sessionUser: User = {name: '', email: '', password: '', tags: []}; 
   checkTagList: Tag[] = [];
+  sessionUserId: string = ''; 
 
-  constructor(private tagsService: TagsService) { }
+  constructor(
+    private tagsService: TagsService,
+    private storageService: StorageService,
+    private authenticationService: AuthenticationService,
+    private userService: UserService
+    ) {
+      this.sessionToken = storageService.getCurrentToken();
+      this.sessionUserId = storageService.getCurrentUser()._id;
+      this.userService.getUserById(this.sessionUserId)
+      .then(res => this.sessionUser = res);
+     }
 
   ngOnInit(): void {
     this.tagsService.getAlltags()
-    .then(taglist => this.tags = taglist)
+    .then(taglist => this.checkTagList = taglist)
   }
-
-  // setTag(tags: any) {
-  //   let existTag = this.newUser.tags.find(t => t === tags.name);
-
-  //   if (typeof existTag === "undefined" || existTag == null || existTag === "") {
-  //     //Cambiado temporalmente
-  //     this.newUser.tags.push(tags)
-  //   }
-  //   else {
-  //     const filteredTags = this.newUser.tags.filter(t => t != tags.name);
-  //     this.newUser.tags = filteredTags;
-  //   }
-  // }
   
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 
   add() {
-    this.usersService.postUser(this.newUser)
-      .then(res => {
-        alert('se han añadido nuevas categorías');
-        this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
-        this.router.navigate(['home-user'])
-      })
-      .catch(err  => {
-          throw err
-      });
+    let newTagList: Tag[]= [];
+    newTagList = this.checkTagList.filter(tag => tag.checked == true)
+    newTagList.map(tag => {
+      let exist = this.sessionUser.tags.find(t => t.name == tag.name);
+      if (!exist) this.sessionUser.tags.push(tag);
+    });
+    this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
+    this.authenticationService.updateUser(this.sessionUser._id, this.sessionUser);
+    this.storageService.setCurrentSession({token: this.sessionToken, user: this.sessionUser});
+  }
+
+  delete(name: string) {
+    this.sessionUser.tags = this.sessionUser.tags.filter(tag => tag.name != name);
+    this.authenticationService.updateUser(this.sessionUser._id, this.sessionUser);
+    this.storageService.setCurrentSession({token: this.sessionToken, user: this.sessionUser});
   }
 }

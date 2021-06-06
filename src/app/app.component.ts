@@ -10,14 +10,9 @@ import { StorageService } from './services/user/storage.service';
 export class AppComponent {
   title = 'NewsletterPlatform';
 
-  constructor(private storageService: StorageService) { 
-    
-    console.log("esta logeado???? --> ", this.isLoggedIn)
-  }
+  constructor(private storageService: StorageService) { }
 
-isLoggedIn = this.storageService.isAuthenticated();
-currentUser = this.storageService.getCurrentUser();
-
-
+  isLoggedIn = this.storageService.isAuthenticated();
+  currentUser = this.storageService.getCurrentUser();
 
 }

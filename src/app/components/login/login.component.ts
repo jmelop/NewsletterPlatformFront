@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   logUser: LogUser = {email: '', password: ''};
   
+  errorMessage: string;
 
   constructor(
     private authenticationService: AuthenticationService , 
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
         this.setSessionData(res);
     })
     .catch( err => {
-      throw err
+      this.errorMessage = err.response.data
     })
   }
 

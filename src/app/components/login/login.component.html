@@ -8,6 +8,7 @@
                 <!-- <i class="fa fa-user"></i> -->
                 <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
                 <!-- <i class="fa fa-key"></i> -->
+                <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div> 
                 <a href="#">¿Has olvidado tu contraseña?</a>
                 <button (click)="login()" type="button" class="btn" >
                   <i class="spinner"></i>
