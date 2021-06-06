@@ -7,8 +7,8 @@
             <ul>
                 <div class="list-container" *ngFor="let new of news">
                     <li class="drop__card">
-                        <h2>{{new.title}}</h2>
-                        <p>{{new.body}}</p>
+                        <h2 [innerHTML]="new.title"></h2>
+                        <p [innerHTML]="new.body"></p>
                         <p>Tags:</p>
                         <p *ngFor="let tag of new.tag">
                             <label>- {{tag.name}}</label>
