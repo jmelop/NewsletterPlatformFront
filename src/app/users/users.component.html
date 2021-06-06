@@ -130,7 +130,9 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span *ngFor="let tag of user.tags">
                                     <span class="px-2 inline-flex text-xs leading-5 ">
-                                        {{tag.name}} -
+                                        <label>{{tag.name}}</label>
+                                        <input type="checkbox" *ngIf="user.editable" [(ngModel)]="tag.checked" /><br>
+
                                     </span>
                                 </span>
                             </td>
@@ -180,13 +182,5 @@
             </div>
         </div>
     </div>
-    <div class="container mx-auto px-6">
-        <div class="mt-16 border-t-2 border-gray-300 flex flex-col items-center">
-            <div class="sm:w-2/3 text-center py-6">
-                <p class="text-sm text-blue-700 font-bold mb-2">
-                    © 2020 by Pavlove BIOKOU
-                </p>
-            </div>
-        </div>
-    </div>
+
 </footer>

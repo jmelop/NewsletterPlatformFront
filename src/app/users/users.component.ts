@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
   constructor(private userServices: UsersService, private tagsServices: TagsService) { }
 
   ngOnInit(): void {
-    this.userServices.getAllUsers().then(u => { this.users = u });
+    this.userServices.getAllUsers().then(u => { this.users = u});
     this.tagsServices.getAllTags().then(u => { this.tags = u });
   }
 
@@ -30,9 +30,14 @@ export class UsersComponent implements OnInit {
       user.editable = true;
     })
 
-
     this.tags.map(u => {
       let exist = user.tags.find(b => b.name == u.name);
+      user.tags.find(b => {
+        if(b.name == u.name){
+          b.checked = true;
+        }
+      });
+      
       if (!exist) {
         user.tags.push(u)
       }
@@ -66,16 +71,17 @@ export class UsersComponent implements OnInit {
 
   updateUser(user: any) {
     user.tags = user.tags.filter(u => u.checked == true);
+    let tempTags = user.tags;
     let newMappedUser = []; 
     user.tags.map(u => {
       newMappedUser.push(u._id)
     });
 
-    console.log(user)
-
     user.tags = newMappedUser;
     user.editable = false;
-    this.userServices.updateUser(user._id, user)
+    this.userServices.updateUser(user._id, user).then(() => {
+      user.tags = tempTags;
+    })
   }
 
 }

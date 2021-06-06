@@ -1,3 +1,4 @@
+
 <div class="mt-10 sm:mt-0 ">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section1">
 
@@ -26,14 +27,13 @@
 
                         <div class="col-span-6 sm:col-span-4">
                             <label for="email_address" class="block text-sm font-medium text-gray-700">Body: </label>
-                                
-                                <ckeditor [editor]="Editor" placeholder="Enter your body" spellcheck="false"  [(ngModel)]="newNew.body"  
-                                class="w-full min-h-[100px] max-h-[300px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched"></ckeditor>
+
+                            <ckeditor [editor]="Editor" placeholder="Enter your body" spellcheck="false" id="editor1" name="editor1"
+                                [(ngModel)]="newNew.body"
+                                class="w-full min-h-[100px] max-h-[300px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched">
+                            </ckeditor>
 
                         </div>
-
-
-
 
 
                         <div class="col-span-6">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <button type="submit"
+                    <button type="submit" (click)="addNew()"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Add New
                     </button>
@@ -98,7 +98,8 @@
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
                                             {{new.title}}
-                                            <input type="text" *ngIf="false" [(ngModel)]="new.title" />
+                                            <input type="text" [(ngModel)]="new.title" *ngIf="new.editable"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                                         </div>
                                     </div>
                                 </div>
@@ -106,29 +107,41 @@
                             <td class="px-6 py-4">
                                 <div class="text-sm text-gray-900">
                                     {{new.body}}
-                                    <input type="text" *ngIf="false" [(ngModel)]="new.body" />
+                                    <ckeditor [editor]="Editor" placeholder="Enter your body" spellcheck="false" *ngIf="new.editable"
+                                    [(ngModel)]="new.body"
+                                    class="w-full min-h-[100px] max-h-[300px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched">
+                                </ckeditor>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">
                                     {{new.link}}
-                                    <input type="text" *ngIf="false" [(ngModel)]="new.link" />
+                                    <input type="text" [(ngModel)]="new.link" *ngIf="new.editable"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span *ngFor="let tag of news.tags">
+                                <span *ngFor="let tag of new.tag">
                                     <span class="px-2 inline-flex text-xs leading-5 ">
-                                        {{tag.name}} -
+                                        <label>{{tag.name}}</label>
+                                        <input type="checkbox" *ngIf="new.editable" [(ngModel)]="tag.checked" /><br>
                                     </span>
                                 </span>
                             </td>
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a style="cursor: pointer;" *ngIf="!new.editable"
+                                <a style="cursor: pointer" *ngIf="!new.editable "
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="editState(new)" > Edit</a>
+                                <a *ngIf="!new.editable">/</a>
+
+                                <a style="cursor: pointer" *ngIf="!new.editable"
                                     class="text-indigo-600 hover:text-indigo-900" (click)="deleteNew(new._id)">Delete
                                 </a>
-                                <a>/</a>
-                                <a *ngIf="!new.editable " class="text-indigo-600 hover:text-indigo-900"> Edit</a>
+
+                                <a *ngIf="new.editable " style="cursor: pointer"
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="updateNews(new)">OK</a>
+
 
                             </td>
                         </tr>

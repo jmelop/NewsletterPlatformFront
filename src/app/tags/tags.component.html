@@ -56,18 +56,23 @@
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
                                             {{tag.name}}
-                                            <input type="text" *ngIf="false" [(ngModel)]="new.title" />
+                                            <input type="text" [(ngModel)]="tag.name" *ngIf="tag.editable"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
                                         </div>
                                     </div>
                                 </div>
                             </td>
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a style="cursor: pointer;" *ngIf="!tag.editable"
+                                <a style="cursor: pointer" *ngIf="!tag.editable " class="text-indigo-600 hover:text-indigo-900" (click)="editState(tag)"> Edit</a>
+                                <a *ngIf="!tag.editable">/</a>
+                                <a style="cursor: pointer" *ngIf="!tag.editable"
                                     class="text-indigo-600 hover:text-indigo-900" (click)="deleteTag(tag._id)">Delete
                                 </a>
-                                <a>/</a>
-                                <a *ngIf="!tag.editable " class="text-indigo-600 hover:text-indigo-900"> Edit</a>
+
+                                <a *ngIf="tag.editable " style="cursor: pointer"
+                                class="text-indigo-600 hover:text-indigo-900" (click)="updateTag(tag)">OK</a>
+
 
                             </td>
                         </tr>

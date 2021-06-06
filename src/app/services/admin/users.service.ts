@@ -38,6 +38,13 @@ export class UsersService {
       }).catch((err) => console.log(err))
   }
 
+  getById(id: string){
+    return axios.get(apiUrl+id, options)
+    .then( res =>{
+      return res.data;
+    })
+  }
+
 
 
   deleteUser(id: string) {

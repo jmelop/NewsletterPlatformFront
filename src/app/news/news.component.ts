@@ -21,25 +21,30 @@ export class NewsComponent implements OnInit {
   constructor(private newsService: NewsService, private tagsService: TagsService) { }
 
   ngOnInit(): void {
-    this.newsService.getAllNews().then(u => { this.news = u });
+    this.newsService.getAllNews().then(u => { this.news = u});
     this.tagsService.getAllTags().then(u => { this.tags = u });
   }
 
-  editState(news: any) {
-    this.newTags = news.tag;
+  editState(notice: any) {
 
     this.tags.map((u: any) => {
-      u.editable = false
-      news.editable = true;
+      u.editable = false;
+      notice.editable = true;
     })
 
+    this.tags.map(u => {
+      let exist = notice.tag.find(b => b.name == u.name);
 
-  this.tags.map(u => {
-      let exist = news.tag.find(b => b.name == u.name);
+      notice.tag.find(b => {
+        if(b.name == u.name){
+          b.checked = true;
+        }
+      });
+      
       if (!exist) {
-        news.tag.push(u)
+        notice.tag.push(u);
       }
-    }) 
+    })
   }
 
   addNew() {
@@ -61,10 +66,11 @@ export class NewsComponent implements OnInit {
     })
   }
 
-  updateNews(news: any) {
-    news.tag = news.tag.filter(u => u.checked == true);
-    news.editable = false;
-    this.newsService.updateNew(news._id, news)
+  updateNews(notice: any) {
+    notice.editable = false; 
+    notice.tag = notice.tag.filter(u => u.checked && u.checked == true);
+
+    this.newsService.updateNew(notice._id, notice);
   }
 
 
