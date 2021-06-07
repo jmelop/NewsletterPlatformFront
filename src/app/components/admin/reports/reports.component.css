@@ -13,3 +13,17 @@ body{
 .bg-white {
     background-color: #ffffffb5!important;
   }
+
+  .bg-gray-50 {
+    --tw-bg-opacity: 1;
+    background-color: #ff81007a;
+}
+
+.text-white {
+    color: #000!important;
+  }
+  
+  .bg-indigo-600 {
+    --tw-bg-opacity: 1;
+    background-color: aliceblue;
+  }

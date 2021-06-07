@@ -47,6 +47,7 @@ export class UsersComponent implements OnInit {
   addUser() {
     this.newUser.tags = this.tags.filter(u => u.checked == true);
     let newMappedUser = []; 
+    let test = this.newUser.tags
     this.newUser.tags.map(u => {
       newMappedUser.push(u._id)
     });
@@ -56,9 +57,11 @@ export class UsersComponent implements OnInit {
       if (typeof res !== 'undefined') {
         this.users.push(this.newUser);
         this.newTags = [];
+        this.newUser.tags = test;
         this.newUser = { name: '', email: '', role: '', tags: this.newTags, password: '' };
       }
     })
+    console.log(this.newUser.tags)
   }
 
   deleteUser(id: string) {
@@ -72,6 +75,7 @@ export class UsersComponent implements OnInit {
   updateUser(user: any) {
     user.tags = user.tags.filter(u => u.checked == true);
     let tempTags = user.tags;
+    console.log(tempTags)
     let newMappedUser = []; 
     user.tags.map(u => {
       newMappedUser.push(u._id)

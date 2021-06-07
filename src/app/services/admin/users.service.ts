@@ -5,6 +5,7 @@ import { User } from '../../models/admin/user.model'
 
 
 const apiUrl = `${environment.apiUrl}users/`
+const apiUrlRegister = `${environment.apiUrl}`
 const token = environment.token;
 
 const options = {
@@ -32,7 +33,7 @@ export class UsersService {
   }
 
   post(user: User) {
-    return axios.post(apiUrl, user, options)
+    return axios.post(apiUrlRegister+'register', user, options)
       .then(res => {
         return res.data;
       }).catch((err) => console.log(err))

@@ -27,6 +27,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    const state = this.cookieService.check('token_access');
+
+/*     if(state){
+      this.setSessionData()
+    } */
   }
 
   login() {
