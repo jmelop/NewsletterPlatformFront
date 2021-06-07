@@ -12,8 +12,6 @@ body{
 	font-family: 'Open Sans', sans-serif;
 }
 
-
-
 .contenedor{
 	width: 90%;
 	max-width: 1200px;
@@ -24,7 +22,7 @@ body{
 
 header{
 	height: 100vh;
-	background-image: linear-gradient(to top, rgba(161, 140, 209, 0.4) 0%, rgba(251, 194, 235, 0.4) 100%), url('../../../../assets/img/email.jpg');
+	background-image: linear-gradient(to top, rgba(161, 140, 209, 0.6) 0%, rgba(251, 194, 235, 0.6) 100%), url('../../../../assets/img/email.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -87,6 +85,10 @@ header{
 	font-size: 25px;
 }
 
+.margin {
+	margin: 0;
+}
+
 /* Nuestro servicio */
 
 .subtitulo{
@@ -135,7 +137,7 @@ header{
 	margin-right: 5px;
 }
 
-.gallery{
+.gallery, .team-container{
 	background: #f2f2f2;
 }
 
@@ -217,6 +219,119 @@ header{
 	width: 100%;
 	font-weight: 400;
 }
+
+
+
+.our-team {
+	padding: 30px 0 40px;
+	background-color: #f3cf9d99;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+	margin: 0 5px 5px 30px;
+  }
+  
+  .our-team .picture {
+	display: inline-block;
+	height: 130px;
+	width: 130px;
+	z-index: 1;
+	position: relative;
+  }
+
+  
+  .team-content {
+	  padding: 20px 0;
+  }
+
+  .our-team .picture::before {
+	content: "";
+	width: 100%;
+	height: 0;
+	border-radius: 50%;
+	background-color: #ff5f6d38;
+	position: absolute;
+	bottom: 135%;
+	right: 0;
+	left: 0;
+	opacity: 0.9;
+	transform: scale(3);
+	transition: all 0.3s linear 0s;
+  }
+  
+  .our-team:hover .picture::before {
+	height: 100%;
+  }
+  
+  .our-team .picture::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #ff5f6d38;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+  }
+  
+  .our-team .picture img {
+	width: 100%;
+	height: auto;
+	border-radius: 50%;
+	transform: scale(1);
+	transition: all 0.9s ease 0s;
+  }
+  
+  .our-team:hover .picture img {
+	box-shadow: 0 0 0 14px #f7f5ec;
+	transform: scale(0.7);
+  }
+  
+  .our-team .title {
+	display: block;
+	font-size: 15px;
+	color: #4e5052;
+	text-transform: capitalize;
+  }
+  
+  .our-team .social {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background-color: #ff5f6d38;
+	position: absolute;
+	bottom: -100px;
+	left: 0;
+	transition: all 0.5s ease 0s;
+  }
+  
+  .our-team:hover .social {
+	bottom: 0;
+  }
+  
+  .our-team .social li {
+	display: inline-block;
+  }
+  
+  .our-team .social li a {
+	display: block;
+	padding: 10px;
+	font-size: 17px;
+	color: white;
+	transition: all 0.3s ease 0s;
+	text-decoration: none;
+  }
+  
+  .our-team .social li a:hover {
+	color: #ff5f6d38;
+	background-color: #f7f5ec;
+  }
+
+ 
+
+  
+
 
 /* Footer */
 
@@ -378,117 +493,3 @@ footer{
 }
 
 
-
-
-.our-team {
-	padding: 30px 0 40px;
-	margin-bottom: 30px;
-	background-color: #f7f5ec;
-	text-align: center;
-	overflow: hidden;
-	position: relative;
-  }
-  
-  .our-team .picture {
-	display: inline-block;
-	height: 130px;
-	width: 130px;
-	margin-bottom: 50px;
-	z-index: 1;
-	position: relative;
-  }
-  
-  .our-team .picture::before {
-	content: "";
-	width: 100%;
-	height: 0;
-	border-radius: 50%;
-	background-color: #1369ce;
-	position: absolute;
-	bottom: 135%;
-	right: 0;
-	left: 0;
-	opacity: 0.9;
-	transform: scale(3);
-	transition: all 0.3s linear 0s;
-  }
-  
-  .our-team:hover .picture::before {
-	height: 100%;
-  }
-  
-  .our-team .picture::after {
-	content: "";
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
-	background-color: #1369ce;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-  }
-  
-  .our-team .picture img {
-	width: 100%;
-	height: auto;
-	border-radius: 50%;
-	transform: scale(1);
-	transition: all 0.9s ease 0s;
-  }
-  
-  .our-team:hover .picture img {
-	box-shadow: 0 0 0 14px #f7f5ec;
-	transform: scale(0.7);
-  }
-  
-  .our-team .title {
-	display: block;
-	font-size: 15px;
-	color: #4e5052;
-	text-transform: capitalize;
-  }
-  
-  .our-team .social {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-	background-color: #1369ce;
-	position: absolute;
-	bottom: -100px;
-	left: 0;
-	transition: all 0.5s ease 0s;
-  }
-  
-  .our-team:hover .social {
-	bottom: 0;
-  }
-  
-  .our-team .social li {
-	display: inline-block;
-  }
-  
-  .our-team .social li a {
-	display: block;
-	padding: 10px;
-	font-size: 17px;
-	color: white;
-	transition: all 0.3s ease 0s;
-	text-decoration: none;
-  }
-  
-  .our-team .social li a:hover {
-	color: #1369ce;
-	background-color: #f7f5ec;
-  }
-  
-
-  .section1 {
-	font-family: tahoma;
-	height: 100vh;
-	background-image: url(https://picsum.photos/g/3000/2000);
-	background-size: cover;
-	background-position: center;
-	display: flex;
-	align-items: center;
-  }
