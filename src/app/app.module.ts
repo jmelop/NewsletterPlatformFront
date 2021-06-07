@@ -9,16 +9,15 @@ import { NewsComponent } from './components/admin/news/news.component';
 import { TagsComponent } from './components/admin/tags/tags.component';
 import { LoginComponent } from './components/landing/login/login.component';
 import { MainComponent } from './components/landing/main/main.component';
-import {RegisterComponent} from './components/landing/register/register.component';
+import { RegisterComponent } from './components/landing/register/register.component';
 import { ChartsModule } from 'ng2-charts';
 import { ReportsComponent } from './components/admin/reports/reports.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { LandingComponent } from './components/landing/landing/landing.component';
 import { HomeUserComponent } from '../app/components/user/home-user/home-user.component';
 import { UserProfileComponent } from '../app/components/user/user-profile/user-profile.component';
 import { UserTagsComponent } from '../app/components/user/user-tags/user-tags.component';
 import { UserNavbarComponent } from '../app/components/user/user-navbar/user-navbar.component';
-
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({

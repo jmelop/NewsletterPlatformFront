@@ -5,6 +5,7 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { UsersService } from '../../../services/admin/users.service';
 import { User } from '../../../models/admin/user.model';
 import { TagsService } from '../../../services/admin/tags.service';
+import { TagData } from 'src/app/models/admin/tag-data.model';
 
 
 @Component({
@@ -18,8 +19,8 @@ export class ReportsComponent implements OnInit {
 
   users: any = [];
   tags: any = [];
-  tagInformation = {type: 'Tec', amount: 2};
-  numberTags = [];
+  tag: TagData = {type: '', amount: 0};
+  tagsInfo: any = [];
 
 
   // First Char
@@ -27,23 +28,23 @@ export class ReportsComponent implements OnInit {
   chartData = [
     {
       data: [330, 600, 260, 700],
-      label: 'Tecnologia'
+      label: 'Usuarios'
     },
     {
       data: [120, 455, 100, 340],
-      label: 'Trabajos'
+      label: 'News'
     },
     {
       data: [45, 67, 800, 500],
-      label: 'Gobierno de Canarias'
+      label: 'Tags'
     }
   ];
 
   chartLabels = [
-    'Enero',
-    'Febrero',
     'Marzo',
-    'Abril'
+    'Abril',
+    'Mayo',
+    'Junio'
   ];
 
   chartOptions = {
@@ -68,14 +69,14 @@ export class ReportsComponent implements OnInit {
 
   // Second Chart
 
-  public pieChartLabels: Label[] = [['Tecnologia'], ['Trabajos'], 'Gobierno de Canarias'];
-  public pieChartData: number[] = [300, 500, 100];
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartPlugins = [pluginDataLabels];
-  public pieChartColors = [
+  pieChartLabels: Label[] = [];
+  pieChartData: number[] = [];
+  pieChartType: ChartType = 'pie';
+  pieChartLegend = true;
+  pieChartPlugins = [pluginDataLabels];
+  pieChartColors = [
     {
-      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(235, 225, 201, 1)', 'rgba(255, 215, 15, 0.5)', 'rgba(215, 214, 205, 1)'],
     },
   ];
 
@@ -121,17 +122,37 @@ export class ReportsComponent implements OnInit {
       labels.push(i.toString());
     };
 
-    this.userService.getAllUsers().then(u => this.users = u);
+    this.userService.getAllUsers().then(u => this.users = u).then(() => this.calculateNumberTypeTags());
     this.tagService.getAllTags().then(u => this.tags = u);
-
-    this.numberTags.push(this.tagInformation);
-    this.numberTags.push(this.tagInformation);
-    console.log(this.numberTags)
 
   }
 
   calculateNumberTypeTags(){
+    this.users.map(user => {
+      user.tags.map(tag => {
+        const exist = this.tagsInfo.find(t => t.type == tag.name);
+        if(!exist){
+          this.tag.type = tag.name;
+          this.tagsInfo.push(this.tag)
+          this.pieChartLabels.push(this.tag.type)
+          this.tag = {type: '', amount: 0};
+        }else{
+          this.tagsInfo.map(tagInf => {
+            if(tagInf.type == tag.name){
+              tagInf.amount += 1
+            }
+          })
+        }
+      })
+    })
 
+    this.tagsInfo.map(u => {
+      this.pieChartData.push(u.amount)
+    })
+    console.log(this.tagsInfo)
+    console.log(this.pieChartData)
+
+    
   }
 
   // events

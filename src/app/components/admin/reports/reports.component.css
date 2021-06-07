@@ -9,3 +9,7 @@ body{
     margin-left: auto;
     margin-right: auto;
 }
+
+.bg-white {
+    background-color: #ffffffb5!important;
+  }

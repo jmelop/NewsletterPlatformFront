@@ -5,7 +5,7 @@
 .background-container {
     position: relative;
     height: 100vh;
-    background-image: linear-gradient(to top, rgba(161, 140, 209, 0.4) 0%, rgba(251, 194, 235, 0.4) 100%), url("../../../assets/img/intricate-explorer-Z8JvqbNfgew-unsplash.jpg");
+    background-image: linear-gradient(to top, rgba(161, 140, 209, 0.4) 0%, rgba(251, 194, 235, 0.4) 100%); /* url("../../../assets/img/intricate-explorer-Z8JvqbNfgew-unsplash.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

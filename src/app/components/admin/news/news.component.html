@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 
+
 <div class="mt-10 sm:mt-0 ">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section1">
 
@@ -29,10 +30,14 @@
                         <div class="col-span-6 sm:col-span-4">
                             <label for="email_address" class="block text-sm font-medium text-gray-700">Body: </label>
 
-                            <ckeditor [editor]="Editor" placeholder="Enter your body" spellcheck="false" id="editor1" name="editor1"
+<!--                             <ckeditor [editor]="editor" placeholder="Enter your body" spellcheck="false" id="editor1" name="editor1"
                                 [(ngModel)]="newNew.body"
                                 class="w-full min-h-[100px] max-h-[300px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched">
+                            </ckeditor> -->
+                            <ckeditor [(ngModel)]="newNew.body">
                             </ckeditor>
+
+
 
                         </div>
 
@@ -106,12 +111,12 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="text-sm text-gray-900"  [innerHTML]="new.body">
-                                    <ckeditor [editor]="Editor" placeholder="Enter your body" spellcheck="false" *ngIf="new.editable"
-                                    [(ngModel)]="new.body"
-                                    class="w-full min-h-[100px] max-h-[300px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg py-4 px-4 ng-pristine ng-invalid ng-touched">
-                                </ckeditor>
+                                <div class="text-sm text-gray-900" [innerHTML]="new.body" *ngIf="!new.editable">
                                 </div>
+
+                            <ckeditor id="eck1" *ngIf="new.editable" [(ngModel)]="new.body" class="w-full min-h-[300px] max-h-[800px] appearance-none block bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg ng-pristine ng-invalid ng-touched">
+                                
+                            </ckeditor>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm text-gray-900">
@@ -132,7 +137,7 @@
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a style="cursor: pointer" *ngIf="!new.editable "
-                                    class="text-indigo-600 hover:text-indigo-900" (click)="editState(new)" > Edit</a>
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="editState(new) " (click)="ngAfterViewChecked()" > Edit</a>
                                 <a *ngIf="!new.editable">/</a>
 
                                 <a style="cursor: pointer" *ngIf="!new.editable"

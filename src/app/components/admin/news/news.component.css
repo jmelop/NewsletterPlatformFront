@@ -19,5 +19,12 @@ body{
   margin-right: auto;
   margin-top: 90px;
   margin-bottom: 90px;
+}
 
+.eck1{
+  width: 200px;
+}
+
+.bg-white {
+  background-color: #ffffffb5!important;
 }

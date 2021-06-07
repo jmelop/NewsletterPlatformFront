@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { New } from '../../../models/admin/new.model';
 import { NewsService } from '../../../services/admin/news.service';
 import { TagsService } from '../../../services/admin/tags.service';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CKEditorComponent } from 'ng2-ckeditor';
 
 
 @Component({
@@ -12,7 +12,9 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class NewsComponent implements OnInit {
 
-  public Editor = ClassicEditor;
+  @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
+
+
   newTags: any = [];
   tags: any = [];
   news: any = [];
@@ -21,8 +23,9 @@ export class NewsComponent implements OnInit {
   constructor(private newsService: NewsService, private tagsService: TagsService) { }
 
   ngOnInit(): void {
-    this.newsService.getAllNews().then(u => { this.news = u});
+    this.newsService.getAllNews().then(u => { this.news = u });
     this.tagsService.getAllTags().then(u => { this.tags = u });
+
   }
 
   editState(notice: any) {
@@ -36,11 +39,11 @@ export class NewsComponent implements OnInit {
       let exist = notice.tag.find(b => b.name == u.name);
 
       notice.tag.find(b => {
-        if(b.name == u.name){
+        if (b.name == u.name) {
           b.checked = true;
         }
       });
-      
+
       if (!exist) {
         notice.tag.push(u);
       }
@@ -67,11 +70,19 @@ export class NewsComponent implements OnInit {
   }
 
   updateNews(notice: any) {
-    notice.editable = false; 
+    notice.editable = false;
     notice.tag = notice.tag.filter(u => u.checked && u.checked == true);
 
     this.newsService.updateNew(notice._id, notice);
   }
 
+  ngAfterViewChecked() {
+    let editor = this.ckEditor.instance;
+    editor.config.height = '100';
+/*     editor.config.toolbarGroups = [{ name: 'document', groups: ['mode', 'document', 'doctools'] },
+    { name: 'clipboard', groups: ['clipboard', 'undo'] },
+    { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] }]
+  } */
 
+  }
 }
