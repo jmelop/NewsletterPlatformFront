@@ -1,26 +1,9 @@
-/* .background-container {
-    margin: 0;
-    position: relative;
-    height: 100vh;
-    background: #FFEFBA; 
-    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  
-    background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
-} */
-
-/* .background-container {
-    margin: 0;
-    position: relative;
-    height: 100vh;
-    font-family: sans-serif;
-    background: #ff5f6d26;
-    background: linear-gradient(to right, #ffc37199, #ff5f6d38);
-} */
 
 .container {
     width: 30%;
     margin-top: 100px;
     padding: 20px;
-    background-color: white;
+    background-color: #ffffffb5;
 }
 
 .img-container {

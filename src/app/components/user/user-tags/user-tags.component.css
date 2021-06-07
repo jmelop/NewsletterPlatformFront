@@ -1,24 +1,12 @@
-/* .background-container {
-    margin: 0;
-    position: relative;
-    height: 100vh;
-    background: #FFEFBA;  
-    background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA); 
-    background: linear-gradient(to right, #FFFFFF, #FFEFBA); 
-} */
-/* 
-.background-container {
-    margin: 0;
-    position: relative;
-    height: 100vh;
-    font-family: sans-serif;
-    background: #ff5f6d26;
-    background: linear-gradient(to right, #ffc37199, #ff5f6d38);
-} */
+
 
 .container {
     width: 50%;
     padding-top: 100px;
+}
+
+.tag-container {
+    background-color: #ffffffb5;
 }
 
 h5 {
