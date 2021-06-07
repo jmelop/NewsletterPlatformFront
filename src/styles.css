@@ -10,8 +10,6 @@ body{
     background: linear-gradient(to right, #ffc37199, #ff5f6d38);
 }  
 
-
-
 input{
     border-radius: 0.25rem;
     border: 1px solid var(--border-color);
