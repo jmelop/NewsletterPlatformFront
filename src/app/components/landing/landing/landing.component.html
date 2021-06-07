@@ -1,43 +1,63 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página web angy</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header class="header" id="inicio">
-        <img src="img/hamburger.svg" alt="" class="hamburger">
         <nav class="menu-navegacion">
-            <a href="#inicio">Inicio</a>
-            <a href="#servicio">Servicio</a>
-            <a href="#portafolio">Portafolio</a>
-            <a href="#expertos">Expertos</a>
-            <a href="#contacto">Contacto</a>
+            <div id="navbar" class="bg-gradient-to-tl to-blue-500 text-white font-mono min-h-screen">
+                <div class="flex flex-row-reverse m-auto">
+                    <a href="/#/login"
+                        class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
+                        Login
+                    </a>
+                    <a href="/#/register"
+                        class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
+                        Register
+                    </a>
+                    <a class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-700 border-blue-800"
+                        href="https://github.com/juanmlp/NewsletterPlatformFront/">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            class="w-5 h-5 text-white fill-current text-center">
+                            <title>GitHub</title>
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="contenedor head">
+                    <h1 class="titulo text-gray-900">HermesDuck tu servicio email de confianza 🦆</h1>
+                    <p class="copy text-gray-900">Registrate para estar a la ultima en todas las noticias.</p>
+                </div>
+            </div>
         </nav>
-        <div class="contenedor head">
-            <h1 class="titulo">Convertimos tus sueños en realidad</h1>
-            <p class="copy">Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-        </div>
+
+
     </header>
     <main>
         <section class="contenedor" id="servicio">
             <h2 class="subtitulo">Nuestro servicio</h2>
             <div class="contenedor-servicio">
-                <img src="img/checklist.svg" alt="">
+                <img src="../../../../assets/img/checklist.svg" alt="">
                 <div class="checklist-servicio">
                     <div class="service">
-                        <h3 class="n-service"><span class="number">1</span>Diseño web</h3>
-                        <p>esto es un texto de 20 palabraas, un poco aleatorio, el lorem se usa para crear textos aleatorios.</p>
+                        <h3 class="n-service"><span class="number">1</span>Envío de correos automatizado</h3>
+                        <p>Olvidate de estar enviando email de forma manual. Usa nuestro servicio para configurar el
+                            envío automatizado.</p>
                     </div>
                     <div class="service">
-                        <h3 class="n-service"><span class="number">2</span>Diseño web</h3>
-                        <p>esto es un texto de 20 palabraas, un poco aleatorio, el lorem se usa para crear textos aleatorios.</p>
+                        <h3 class="n-service"><span class="number">2</span>Noticias personalizadas para los usuarios
+                        </h3>
+                        <p>Selecciona tus noticias favoritas según los temas disponibles. </p>
                     </div>
                     <div class="service">
-                        <h3 class="n-service"><span class="number">3</span>Diseño web</h3>
-                        <p>esto es un texto de 20 palabraas, un poco aleatorio, el lorem se usa para crear textos aleatorios.</p>
+                        <h3 class="n-service"><span class="number">3</span>Panel admin integrado</h3>
+                        <p>Administra todo lo referente a los correos, categorias y noticias.</p>
                     </div>
                 </div>
             </div>
@@ -46,36 +66,131 @@
             <div class="contenedor">
                 <h2 class="subtitulo">Galeria</h2>
                 <div class="contenedor-galeria">
-                    <img src="img/uno.jpg" alt="" class="img-galeria">
-                    <img src="img/dos.jpg" alt="" class="img-galeria">
-                    <img src="img/tres.jpg" alt="" class="img-galeria">
-                    <img src="img/cuatro.jpg" alt="" class="img-galeria">
-                    <img src="img/cinco.jpg" alt="" class="img-galeria">
-                    <img src="img/seis.jpg" alt="" class="img-galeria">
+                    <!--                     <img src="../../../../assets/img/uno.jpg" alt="" class="img-galeria">
+                    <img src="../../../../assets/img/dos.jpg" alt="" class="img-galeria">
+                    <img src="../../../../assets/img/tres.jpg" alt="" class="img-galeria">
+                    <img src="../../../../assets/img/cuatro.jpg" alt="" class="img-galeria">
+                    <img src="../../../../assets/img/cinco.jpg" alt="" class="img-galeria">
+                    <img src="../../../../assets/img/seis.jpg" alt="" class="img-galeria"> -->
                 </div>
             </div>
         </section>
         <section class="imagen-light">
-            <img src="img/close.svg" alt="" class="close">
+            <img src="../../../../assets/img/close.svg" alt="" class="close">
             <img src="" class="agregar-imagen">
         </section>
         <section class="contenedor" id="expertos">
             <h2 class="subtitulo">Expertos en:</h2>
             <section class="expert">
                 <div class="cont-expert">
-                    <img src="img/grafic.svg" alt="">
+                    <img src="../../../../assets/img/grafic.svg" alt="">
                     <h3 class="n-expert">Analytics</h3>
                 </div>
                 <div class="cont-expert">
-                    <img src="img/seo.svg" alt="">
+                    <img src="../../../../assets/img/seo.svg" alt="">
                     <h3 class="n-expert">SEO</h3>
                 </div>
                 <div class="cont-expert">
-                    <img src="img/security.svg" alt="">
+                    <img src="../../../../assets/img/security.svg" alt="">
                     <h3 class="n-expert">Security</h3>
                 </div>
             </section>
         </section>
+
+        <section id="section1">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="our-team">
+                            <div class="picture">
+                                <img class="img-fluid" src="https://picsum.photos/130/130?image=1027">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="name">Michele Miller</h3>
+                                <h4 class="title">Web Developer</h4>
+                            </div>
+                            <ul class="social">
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin"
+                                        aria-hidden="true"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="our-team">
+                            <div class="picture">
+                                <img class="img-fluid" src="https://picsum.photos/130/130?image=839">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="name">Patricia Knott</h3>
+                                <h4 class="title">Web Developer</h4>
+                            </div>
+                            <ul class="social">
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin"
+                                        aria-hidden="true"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="our-team">
+                            <div class="picture">
+                                <img class="img-fluid" src="https://picsum.photos/130/130?image=856">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="name">Justin Ramos</h3>
+                                <h4 class="title">Web Developer</h4>
+                            </div>
+                            <ul class="social">
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin"
+                                        aria-hidden="true"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="our-team">
+                            <div class="picture">
+                                <img class="img-fluid" src="https://picsum.photos/130/130?image=836">
+                            </div>
+                            <div class="team-content">
+                                <h3 class="name">Mary Huntley</h3>
+                                <h4 class="title">Web Developer</h4>
+                            </div>
+                            <ul class="social">
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus"
+                                        aria-hidden="true"></a></li>
+                                <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin"
+                                        aria-hidden="true"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
     </main>
     <footer id="contacto">
         <div class="contenedor footer-content">
@@ -85,23 +200,23 @@
             </div>
             <div class="social-media">
                 <a href="./" class="social-media-icon">
-                    <i class='bx bxl-facebook' ></i>
+                    <i class='bx bxl-facebook'></i>
                 </a>
                 <a href="./" class="social-media-icon">
-                    <i class='bx bxl-twitter' ></i>
+                    <i class='bx bxl-twitter'></i>
                 </a>
                 <a href="./" class="social-media-icon">
-                    <i class='bx bxl-instagram' ></i>
+                    <i class='bx bxl-instagram'></i>
                 </a>
             </div>
         </div>
         <div class="line"></div>
     </footer>
-    
+
 
 
     <script src="js/menu.js"></script>
-    <script src="js/lightbox.js"></script>	
-    
-    
+    <script src="js/lightbox.js"></script>
+
+
 </body>

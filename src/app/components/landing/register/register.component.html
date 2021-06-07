@@ -1,0 +1,34 @@
+<div class="background-container">
+  <div class="container">
+    <div class="sub-container">
+      <form class="register" >
+        <p class="title">Registro:</p>
+        <input class="register-inputs" [(ngModel)]="newUser.name" type="text" placeholder="Username" name="username" autofocus/>
+      
+        <!-- <i class="fa fa-user"></i> -->
+        <input
+          class="register-inputs" [(ngModel)]="newUser.email" type="email" placeholder="email" name="email"/>
+
+        <input 
+          class="register-inputs register-password" [(ngModel)]="newUser.password" type="password" placeholder="Contraseña" name="password"/>
+
+        <!-- <i class="fa fa-key"></i> -->
+        <div class="list">
+          <h4>Elige las categorías que te interesen:</h4>
+            <ul class="list-group" *ngFor="let tag of checkTagList">
+                <li class="tag-list">
+                  <input #checkboxes class="check" type="checkbox" [value]="tag.name" [(ngModel)]="tag.checked" [name]="tag.name">
+                  <label>{{tag.name}}</label>
+                </li>
+            </ul>
+        </div>
+        <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div>          
+        <button (click)="register()" type="button" class="btn" >
+          <i class="spinner"></i>
+          <span class="state">Registrarse</span>
+        </button>
+      </form>
+    </div>    
+      <footer>Si ya tienes una cuenta<a class="login" routerLink="/login">Log in</a></footer>
+  </div>
+</div>

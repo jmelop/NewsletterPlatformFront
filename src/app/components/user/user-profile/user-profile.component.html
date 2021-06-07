@@ -1,0 +1,25 @@
+<app-user-navbar></app-user-navbar>
+<div class="background-container">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="container shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="img-container -space-x-2 overflow-hidden">
+                <img class="inline-block rounded-full ring-2 ring-white" src="../../../assets/img/avatar-masculino.png" alt="">
+            </div>
+            <div class="sub-container">
+                <h1>{{user.name}}</h1>
+                <input type="text" *ngIf='editable' [(ngModel)]='user.name'>
+                <ul>
+                    <li>
+                        <p>Email: {{user.email}}</p>
+                        <input type="text" *ngIf='editable' [(ngModel)]='user.email'>
+                    </li>
+                    <li>Rol: {{user.role}}</li> 
+                </ul>
+                <div class="btn-container">
+                    <button (click)='deleteUser()' class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Eliminar</button>
+                    <button (click)='editUser()' class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">{{editButtonLabel}}</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>

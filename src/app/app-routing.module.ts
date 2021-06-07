@@ -3,12 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewsComponent } from './components/admin/news/news.component';
 import { TagsComponent } from './components/admin/tags/tags.component';
 import { UsersComponent } from './components/admin/users/users.component';
-import { LoginComponent } from './components/login/login.component';
-import { MainComponent } from './components/main/main.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/landing/login/login.component';
+import { MainComponent } from './components/landing/main/main.component';
+import { RegisterComponent } from './components/landing/register/register.component';
 import { ReportsComponent } from './components/admin/reports/reports.component';
 import { KeeperGuard } from '../app/components/admin/keeper/keeper.guard';
 import { LandingComponent } from './components/landing/landing/landing.component';
+import { HomeUserComponent } from '../app/components/user/home-user/home-user.component';
+import { AuthGuard } from './guards/auth.guard';
+import { UserTagsComponent } from '../app/components/user/user-tags/user-tags.component';
+import { UserProfileComponent } from '../app/components/user/user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -34,23 +38,38 @@ const routes: Routes = [
     component: MainComponent
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'register',
     component: RegisterComponent
   },
   {
-    path : 'login',
-    component: LoginComponent
+    path: 'home-user',
+    component: HomeUserComponent,
+    canActivate: [KeeperGuard]
   },
   {
-    path : 'reports',
+    path: 'reports',
     component: ReportsComponent,
     canActivate: [KeeperGuard]
   },
   {
-    path : 'landing',
-    component: LandingComponent,
+    path: 'landing',
+    component: LandingComponent
+  },
+  {
+    path: 'user-tags',
+    component: UserTagsComponent,
     canActivate: [KeeperGuard]
   },
+  {
+    path: 'user-profile',
+    component: UserProfileComponent,
+    canActivate: [KeeperGuard]
+
+  }
 ];
 
 

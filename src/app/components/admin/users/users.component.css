@@ -1,4 +1,8 @@
-
+body{
+  font-family: sans-serif;
+  background: #ff5f6d26;
+  background: linear-gradient(to right, #ffc37199, #ff5f6d38);
+}  
 
 #section1{
   width: 50%;
@@ -15,9 +19,5 @@
   margin-right: auto;
   margin-top: 90px;
   margin-bottom: 90px;
-
-}
-
-#span-section1{
 
 }

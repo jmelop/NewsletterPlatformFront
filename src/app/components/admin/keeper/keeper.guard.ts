@@ -27,6 +27,7 @@ export class KeeperGuard implements CanActivate {
       const cookie = this.cookieService.check('token_access');
 
 
+
       this.redirect(cookie);
       
       return cookie;

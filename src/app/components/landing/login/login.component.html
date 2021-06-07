@@ -1,0 +1,21 @@
+<div class="background-container">
+    <div class="overlay-container"></div>
+    <div class="container">
+        <div class="sub-container">
+            <form class="login">
+                <p class="title">Log in</p>
+                <input [(ngModel)]="logUser.email" type="email" placeholder="Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
+                <!-- <i class="fa fa-user"></i> -->
+                <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
+                <!-- <i class="fa fa-key"></i> -->
+                <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div> 
+                <a href="#">¿Has olvidado tu contraseña?</a>
+                <button (click)="login()" type="button" class="btn" >
+                  <i class="spinner"></i>
+                  <span class="state">Log in</span>
+                </button>
+              </form>
+        </div>    
+        <footer>¿No tienes cuenta aún?<a class="register" routerLink="/register"> Regístrate</a></footer>
+    </div>
+</div>
