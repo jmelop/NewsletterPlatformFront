@@ -137,7 +137,7 @@ export class ReportsComponent implements OnInit {
           this.tag.type = tag.name;
           this.tagsInfo.push(this.tag)
           this.pieChartLabels.push(this.tag.type)
-          this.tag = {type: '', amount: 0};
+          this.tag = {type: '', amount: 1};
         }else{
           this.tagsInfo.map(tagInf => {
             if(tagInf.type == tag.name){

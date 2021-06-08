@@ -14,7 +14,7 @@ import { UsersService } from '../../../services/admin/users.service';
 export class UsersComponent implements OnInit {
 
   newTags: Tag[] = [];
-  newUser: User = { name: 'test', email: 'test@gmail.com', role: 'user', tags: this.newTags, password: '1212' }
+  newUser: User = { name: '', email: '', role: '', tags: this.newTags, password: '' }
   tags: Tag[] = [];
   tempTags: Tag[] = [];
   users: User[] = [];

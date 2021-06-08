@@ -3,46 +3,45 @@ import { New } from '../../models/admin/new.model';
 import axios from 'axios';
 import { config } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 const apiUrl = `${environment.apiUrl}news/`
-const token = environment.token;
-
-const options = {
-  headers: {
-    'Authorization': token
-  }
-}
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewsService {
 
+  constructor(private cookieService: CookieService) { }
 
+  token = this.cookieService.get('token_access');
 
-  constructor() { }
-
+  options = {
+    headers: {
+      'Authorization': this.token
+    }
+  }
   getAllNews(): Promise<New[]> {
-    return axios.get(apiUrl, options)
+    return axios.get(apiUrl, this.options)
       .then(rest => rest.data)
   }
 
   postNew(newNotice: New) {
-    return axios.post(apiUrl, newNotice, options)
+    return axios.post(apiUrl, newNotice, this.options)
       .then(res => {
         return res.data;
       }).catch((err) => console.log(err))
   }
 
   deleteNew(id: string) {
-    return axios.delete(apiUrl + id, options)
+    return axios.delete(apiUrl + id, this.options)
       .then(() => {
         return 'OK'
       })
   }
 
-  updateNew(id: string, news: New) {
-    return axios.patch(apiUrl + id + '/', news, options)
+  updateNew(id: string, news: New): Promise<New[]> {
+    return axios.patch(apiUrl + id + '/', news, this.options)
       .then(res => {
         return res.data;
       })

@@ -4,12 +4,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../../models/admin/user.model'
 import { CookieService } from 'ngx-cookie-service'
 
-
 const apiUrl = `${environment.apiUrl}users/`
-const apiUrlRegister = `${environment.apiUrl}`
-
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +27,6 @@ export class UsersService {
         console.log(rest.data)
         return rest.data
       })
-      
   }
 
   post(user: User) {
@@ -42,7 +36,7 @@ export class UsersService {
       }).catch((err) => console.log(err))
   }
 
-  getById(id: string){
+  getById(id: string): Promise<User[]> {
     return axios.get(apiUrl+id, this.options)
     .then( res =>{
       return res.data;
@@ -58,7 +52,7 @@ export class UsersService {
       }).catch((err) => console.log(err))
   }
 
-  updateUser(id: string, user: User) {
+  updateUser(id: string, user: User): Promise<User[]> {
     return axios.patch(apiUrl + id + '/', user, this.options)
       .then(res => {
         return res.data;
