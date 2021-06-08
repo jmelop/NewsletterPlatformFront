@@ -10,7 +10,6 @@ import { ReportsComponent } from './components/admin/reports/reports.component';
 import { KeeperGuard } from '../app/components/admin/keeper/keeper.guard';
 import { LandingComponent } from './components/landing/landing/landing.component';
 import { HomeUserComponent } from '../app/components/user/home-user/home-user.component';
-import { AuthGuard } from './guards/auth.guard';
 import { UserTagsComponent } from '../app/components/user/user-tags/user-tags.component';
 import { UserProfileComponent } from '../app/components/user/user-profile/user-profile.component';
 

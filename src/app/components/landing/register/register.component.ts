@@ -1,6 +1,4 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Session } from 'src/app/models/users/session.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
