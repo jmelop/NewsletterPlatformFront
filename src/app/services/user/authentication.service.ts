@@ -5,11 +5,10 @@ import { environment } from 'src/environments/environment';
 import { StorageService } from './storage.service';
 
 const apiUrl = environment.apiUrl
-const token = environment.token;
 
 const options = {
   headers: {
-    'Authorization': token
+    'Authorization': localStorage.token
   }
 }
 

@@ -55,8 +55,9 @@ export class RegisterComponent implements OnInit {
           this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
         });
 
-        const token = res.token;
-        this.cookieService.set('token_access', token, 4, '/');
+        // const token = res.token;
+        // console.log('tokeeen', res.token)
+        // this.cookieService.set('token', token, 4, '/');
       })
       .catch(err  => {
         this.errorMessage = err.response.data
@@ -65,6 +66,6 @@ export class RegisterComponent implements OnInit {
 
   setSessionData(data: Session) {
     this.storageService.setCurrentSession(data);
-    this.router.navigate(['home-user'])
+    this.router.navigate(['login'])
   }
 }

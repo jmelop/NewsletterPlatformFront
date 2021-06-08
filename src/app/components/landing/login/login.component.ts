@@ -5,7 +5,7 @@ import { error } from 'selenium-webdriver';
 import { Session } from 'src/app/models/users/session.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
 import { StorageService } from 'src/app/services/user/storage.service';
-import { LogUser } from '../../../models/users/user.model';
+import { LogUser, User } from '../../../models/users/user.model';
 import { CookieService } from 'ngx-cookie-service'
 
 @Component({
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   logUser: LogUser = {email: '', password: ''};
   
   errorMessage: string;
+
 
   constructor(
     private authenticationService: AuthenticationService , 
@@ -35,7 +36,10 @@ export class LoginComponent implements OnInit {
         this.logUser.email = '';
         this.logUser.password = '';
         const token = res.token;
+        const currentUser = res.user;
+        this.cookieService.set('currentUser', currentUser, 4, '/' )
         this.cookieService.set('token_access', token, 4, '/');
+        console.log(this.cookieService.get('currentUser'))
         this.setSessionData(res);
 
     })
@@ -45,16 +49,16 @@ export class LoginComponent implements OnInit {
   }
 
   setSessionData(data: Session) {
-    this.storageService.setCurrentSession(data);
+    // this.storageService.setCurrentSession(data);
+    console.log(data.user.role)
+
     if (data.user.role === 'user') {
-      this.router.navigate(['home-user'])
+      console.log('holaaaaa')
+      this.router.navigate(['home-user']);
     }
     if (data.user.role === 'admin') {
       this.router.navigate(['users']);
     }
-
   }
-
-
 }
 
