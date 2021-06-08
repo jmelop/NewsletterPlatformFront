@@ -7,7 +7,7 @@
                 <input [(ngModel)]="logUser.email" type="email" placeholder="Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
                 <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
                 <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div> 
-                <a href="#">¿Has olvidado tu contraseña?</a>
+                <!-- <a href="#">¿Has olvidado tu contraseña?</a> -->
                 <button (click)="login()" type="button" class="btn" >
                   <i class="spinner"></i>
                   <span class="state">Log in</span>
