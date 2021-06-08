@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/users/user.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
 import { StorageService } from 'src/app/services/user/storage.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,8 +17,9 @@ export class UserProfileComponent implements OnInit {
   editButtonLabel: string = "Editar";
   
   constructor(
-    private storageService: StorageService, 
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private userService: UserService,
+    private storageService: StorageService
   ) { 
     this.user = storageService.getCurrentUser();
     this._id = this.user._id;
@@ -27,12 +29,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   deleteUser() {
-    this.authenticationService.deleteUser(this._id);
+    this.userService.deleteUser(this._id);
   }
 
   editUser() {
     if(this.editable) {
-      this.authenticationService.updateUser(this._id, this.user)
+      this.userService.updateUser(this._id, this.user)
       this.editable = false;
       this.editButtonLabel = "Editar"
     } else {
@@ -40,7 +42,4 @@ export class UserProfileComponent implements OnInit {
       this.editButtonLabel = "Guardar"
     }
   }
-
- 
-
 }

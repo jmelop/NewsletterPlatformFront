@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/services/admin/news.service';
-import { TagsService } from 'src/app/services/user/tags.service';
 
 @Component({
   selector: 'app-home-user',
@@ -13,7 +12,6 @@ export class HomeUserComponent implements OnInit {
 
   constructor(
     private newsService: NewsService, 
-    private tagsService: TagsService 
   ) { }
 
   ngOnInit(): void {

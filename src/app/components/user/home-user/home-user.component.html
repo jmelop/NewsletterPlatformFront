@@ -1,22 +1,20 @@
 <app-user-navbar></app-user-navbar>
-<div class="background-container">
-    <div class="container">
-        <div class="sub-container shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <h1>Noticias</h1>
-            <p>Todas las últimas novedades</p>
-            <ul>
-                <div class="list-container" *ngFor="let new of news">
-                    <li class="drop__card">
-                        <h2 [innerHTML]="new.title"></h2>
-                        <p [innerHTML]="new.body"></p>
-                        <p>Tags:</p>
-                        <p *ngFor="let tag of new.tag">
-                            <label>- {{tag.name}}</label>
-                        </p>
-                        <p class="link">Link: {{new.link}}</p>
-                    </li>
-                </div>
-            </ul>
-        </div>  
-    </div>     
-</div>
+<div class="container">
+    <div class="sub-container shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <h1>Noticias</h1>
+        <p>Todas las últimas novedades</p>
+        <ul>
+            <div class="list-container" *ngFor="let new of news">
+                <li class="drop__card">
+                    <h2 [innerHTML]="new.title"></h2>
+                    <p [innerHTML]="new.body"></p>
+                    <p>Tags:</p>
+                    <p *ngFor="let tag of new.tag">
+                        <label>- {{tag.name}}</label>
+                    </p>
+                    <p class="link">Link: {{new.link}}</p>
+                </li>
+            </div>
+        </ul>
+    </div>  
+</div>     

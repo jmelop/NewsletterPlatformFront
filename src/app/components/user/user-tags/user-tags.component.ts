@@ -12,7 +12,6 @@ import { TagsService } from '../../../services/user/tags.service';
   styleUrls: ['./user-tags.component.css']
 })
 export class UserTagsComponent implements OnInit {
-  [x: string]: any;
 
   sessionToken: string = '';
   sessionUser: User = {name: '', email: '', password: '', tags: []}; 
@@ -46,13 +45,13 @@ export class UserTagsComponent implements OnInit {
       if (!exist) this.sessionUser.tags.push(tag);
     });
     this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
-    this.authenticationService.updateUser(this.sessionUser._id, this.sessionUser);
+    this.userService.updateUser(this.sessionUser._id, this.sessionUser);
     this.storageService.setCurrentSession({token: this.sessionToken, user: this.sessionUser});
   }
 
   delete(name: string) {
     this.sessionUser.tags = this.sessionUser.tags.filter(tag => tag.name != name);
-    this.authenticationService.updateUser(this.sessionUser._id, this.sessionUser);
+    this.userService.updateUser(this.sessionUser._id, this.sessionUser);
     this.storageService.setCurrentSession({token: this.sessionToken, user: this.sessionUser});
   }
 }
