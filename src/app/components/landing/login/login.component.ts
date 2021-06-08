@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         this.logUser.password = '';
         const token = res.token;
         this.cookieService.set('token_access', token, 4, '/');
+        console.log(this.cookieService.get('token_access'))
         this.setSessionData(res);
 
     })

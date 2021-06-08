@@ -1,8 +1,12 @@
+import { Tag } from "./tag.model";
+
 export class User {
     name: string;
     email: string;
     role: string;
-    tags: any;
-    password: any;
+    tags: Tag[];
+    password: string;
+    _id?: string
+    editable?: boolean;
 }
 

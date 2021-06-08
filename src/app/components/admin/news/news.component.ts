@@ -3,6 +3,7 @@ import { New } from '../../../models/admin/new.model';
 import { NewsService } from '../../../services/admin/news.service';
 import { TagsService } from '../../../services/admin/tags.service';
 import { CKEditorComponent } from 'ng2-ckeditor';
+import { Tag } from 'src/app/models/admin/tag.model';
 
 
 @Component({
@@ -15,9 +16,9 @@ export class NewsComponent implements OnInit {
   @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
 
 
-  newTags: any = [];
-  tags: any = [];
-  news: any = [];
+  newTags: Tag[] = [];
+  tags: Tag[] = [];
+  news: New[] = [];
   newNew: New = { title: '', body: '', link: '', tag: this.newTags }
 
   constructor(private newsService: NewsService, private tagsService: TagsService) { }
@@ -28,14 +29,15 @@ export class NewsComponent implements OnInit {
 
   }
 
-  editState(notice: any) {
+  editState(notice: New) {
 
-    this.tags.map((u: any) => {
+    this.tags.map((u: Tag) => {
       u.editable = false;
       notice.editable = true;
     })
 
     this.tags.map(u => {
+      u.checked = false;
       let exist = notice.tag.find(b => b.name == u.name);
 
       notice.tag.find(b => {
@@ -55,7 +57,7 @@ export class NewsComponent implements OnInit {
     this.newsService.postNew(this.newNew).then(u => {
       if (typeof u !== "undefined") {
         this.news.push(u);
-        this.newNew = { title: '', body: '', link: '', tag: '' }
+        this.newNew = { title: '', body: '', link: '', tag: [] }
       }
     })
   }
@@ -63,13 +65,13 @@ export class NewsComponent implements OnInit {
   deleteNew(id: string) {
     this.newsService.deleteNew(id).then(u => {
       if (u === 'OK') {
-        const newsFiltered = this.news.filter((news: any) => news._id != id);
+        const newsFiltered = this.news.filter((news: New) => news._id != id);
         this.news = newsFiltered;
       }
     })
   }
 
-  updateNews(notice: any) {
+  updateNews(notice: New) {
     notice.editable = false;
     notice.tag = notice.tag.filter(u => u.checked && u.checked == true);
 

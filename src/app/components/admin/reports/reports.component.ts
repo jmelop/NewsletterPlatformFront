@@ -6,6 +6,7 @@ import { UsersService } from '../../../services/admin/users.service';
 import { User } from '../../../models/admin/user.model';
 import { TagsService } from '../../../services/admin/tags.service';
 import { TagData } from 'src/app/models/admin/tag-data.model';
+import { Tag } from 'src/app/models/admin/tag.model';
 
 
 @Component({
@@ -17,10 +18,10 @@ export class ReportsComponent implements OnInit {
 
   // Data
 
-  users: any = [];
-  tags: any = [];
+  users: User[] = [];
+  tags: Tag[] = [];
   tag: TagData = {type: '', amount: 0};
-  tagsInfo: any = [];
+  tagsInfo: TagData[] = [];
 
 
   // First Char
@@ -97,6 +98,7 @@ export class ReportsComponent implements OnInit {
       }]
     }
   };
+  
   public bubbleChartType: ChartType = 'bubble';
   public bubbleChartLegend = true;
 

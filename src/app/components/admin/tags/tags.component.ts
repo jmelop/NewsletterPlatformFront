@@ -10,7 +10,7 @@ import { TagsService } from '../../../services/admin/tags.service';
 export class TagsComponent implements OnInit {
 
   newTag: Tag = { name: ''}
-  tags: any = [];
+  tags: Tag[] = [];
 
   constructor(private tagServices: TagsService) { }
 
@@ -18,9 +18,9 @@ export class TagsComponent implements OnInit {
     this.tagServices.getAllTags().then(u => { this.tags = u })
   }
 
-  editState(tag: any) {
+  editState(tag: Tag) {
 
-    this.tags.map((u: any) => {
+    this.tags.map((u: Tag) => {
       u.editable = false
       tag.editable = true;
     })
@@ -39,13 +39,13 @@ export class TagsComponent implements OnInit {
   deleteTag(id: string){
     this.tagServices.deleteTag(id).then( u => {
       if (u === 'OK') {
-        const tagFiltered = this.tags.filter((tag: any) => tag._id != id);
+        const tagFiltered = this.tags.filter((tag: Tag) => tag._id != id);
         this.tags = tagFiltered;
       }
     })
   }
 
-  updateTag(tag: any) {
+  updateTag(tag: Tag) {
     tag.editable = false;
     this.tagServices.updateTag(tag._id, tag)
   }
