@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { New } from 'src/app/models/admin/new.model';
 import { NewsService } from 'src/app/services/admin/news.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { NewsService } from 'src/app/services/admin/news.service';
 })
 export class HomeUserComponent implements OnInit {
 
-  news: any = []; //aqui tengo la noticia con todo su cuerpo
+  news: New[] = []; 
 
   constructor(
     private newsService: NewsService, 
@@ -17,5 +18,4 @@ export class HomeUserComponent implements OnInit {
   ngOnInit(): void {
     this.newsService.getAllNews().then(data => { this.news = data});
   }
-
 }

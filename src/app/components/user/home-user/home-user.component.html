@@ -12,7 +12,7 @@
                     <p *ngFor="let tag of new.tag">
                         <label>- {{tag.name}}</label>
                     </p>
-                    <p class="link">Link: {{new.link}}</p>
+                    <p class="link">Link:</p><a class="link" target='_blank' [href]="new.link">{{new.link}}</a>
                 </li>
             </div>
         </ul>
