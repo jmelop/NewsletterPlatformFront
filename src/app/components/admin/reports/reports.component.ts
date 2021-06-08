@@ -151,9 +151,6 @@ export class ReportsComponent implements OnInit {
     this.tagsInfo.map(u => {
       this.pieChartData.push(u.amount)
     })
-    console.log(this.tagsInfo)
-    console.log(this.pieChartData)
-
     
   }
 
