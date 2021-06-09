@@ -38,7 +38,7 @@ export class AuthenticationService {
     }
 
     registerUser(user: User) {
-      return axios.post(`${apiUrl}user/register`, user, options)
+      return axios.post(`${apiUrl}register`, user, options)
         .then(res => res.data)
         .catch((err) => {
           if (err.response.status === 403) {
@@ -56,9 +56,7 @@ export class AuthenticationService {
 
   loginAdmin(loginData: LogUser) {
     return axios.post(`${apiUrl}admin/login`, loginData)
-    .then(res => {
-      console.log('reeees', res)
-      return res.data})
+    .then(res => res.data)
     
     .catch((err) => {
       if (err.response.status === 403) {
@@ -72,7 +70,7 @@ export class AuthenticationService {
   }
 
   loginUser(loginData: LogUser) {
-    return axios.post(`${apiUrl}user/login`, loginData)
+    return axios.post(`${apiUrl}login`, loginData)
     .then(res => res.data)
     .catch((err) => {
       console.log('prueba serv', err.response);

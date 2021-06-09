@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.authenticationService.loginAdmin(this.logAdmin)
     .then(res => {
-      console.log('estaaa', res)
         this.logAdmin.email = '';
         this.logAdmin.password = '';
         const token = res.token;
