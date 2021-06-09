@@ -4,8 +4,8 @@
         <div class="sub-container">
             <form class="login">
                 <p class="title">Log in</p>
-                <input [(ngModel)]="logUser.email" type="email" placeholder="Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
-                <input [(ngModel)]="logUser.password" type="password" placeholder="Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
+                <input [(ngModel)]="logAdmin.email" type="email" placeholder="Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
+                <input [(ngModel)]="logAdmin.password" type="password" placeholder="Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
                 <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div> 
                 <!-- <a href="#">¿Has olvidado tu contraseña?</a> -->
                 <button (click)="login()" type="button" class="btn" >

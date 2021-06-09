@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Session } from 'src/app/models/users/session.model';
+import { SessionUser } from 'src/app/models/users/session.model';
 import { LogUser } from 'src/app/models/users/user.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
 import { StorageService } from 'src/app/services/user/storage.service';
@@ -34,7 +34,7 @@ export class LoginUserComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login(this.logUser)
+    this.authenticationService.loginUser(this.logUser)
     .then(res => {
         this.logUser.email = '';
         this.logUser.password = '';
@@ -49,7 +49,7 @@ export class LoginUserComponent implements OnInit {
     })
   }
 
-  setSessionData(data: Session) {
+  setSessionData(data: SessionUser) {
     // this.storageService.setCurrentSession(data);
     console.log(data.user.role)
 

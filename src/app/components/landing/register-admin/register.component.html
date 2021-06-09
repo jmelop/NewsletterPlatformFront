@@ -4,13 +4,13 @@
       <form class="register" >
         <p class="title">Registro:</p>
         
-        <input class="register-inputs" [(ngModel)]="newUser.name" type="text" placeholder="Username" name="username" autofocus/>
+        <input class="register-inputs" [(ngModel)]="newAdmin.username" type="text" placeholder="Username" name="username" autofocus/>
       
         <input
-          class="register-inputs" [(ngModel)]="newUser.email" type="email" placeholder="email" name="email"/>
+          class="register-inputs" [(ngModel)]="newAdmin.email" type="email" placeholder="email" name="email"/>
 
         <input 
-          class="register-inputs register-password" [(ngModel)]="newUser.password" type="password" placeholder="Contraseña" name="password"/>
+          class="register-inputs register-password" [(ngModel)]="newAdmin.password" type="password" placeholder="Contraseña" name="password"/>
 
         <!-- <div class="list">
           <h4>Elige las categorías que te interesen:</h4>

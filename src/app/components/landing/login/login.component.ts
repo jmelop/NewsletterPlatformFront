@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { errorMonitor } from 'events';
 import { error } from 'selenium-webdriver';
-import { Session } from 'src/app/models/users/session.model';
+import { SessionAdmin } from 'src/app/models/users/session.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
 import { StorageService } from 'src/app/services/user/storage.service';
 import { LogUser, User } from '../../../models/users/user.model';
 import { CookieService } from 'ngx-cookie-service'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,10 @@ import { CookieService } from 'ngx-cookie-service'
 })
 export class LoginComponent implements OnInit {
 
-  logUser: LogUser = {email: '', password: ''};
+  logAdmin: LogUser = {email: '', password: ''};
   
   errorMessage: string;
+  
 
 
   constructor(
@@ -36,13 +38,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.authenticationService.login(this.logUser)
+    this.authenticationService.loginAdmin(this.logAdmin)
     .then(res => {
-        this.logUser.email = '';
-        this.logUser.password = '';
+      console.log('estaaa', res)
+        this.logAdmin.email = '';
+        this.logAdmin.password = '';
         const token = res.token;
-        const currentUser = res.user;
-        this.cookieService.set('currentUser', currentUser, 4, '/' )
+        const currentAdmin = res.user;
+        this.cookieService.set('currentAdmin', currentAdmin, 4, '/' )
         this.cookieService.set('token_access', token, 4, '/');
         this.setSessionData(res);
     })
@@ -51,17 +54,16 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  setSessionData(data: Session) {
+  setSessionData(data: SessionAdmin) {
     // this.storageService.setCurrentSession(data);
     console.log(data.user.role)
 
     if (data.user.role === 'user') {
-      console.log('holaaaaa')
       this.router.navigate(['home-user']);
     }
     if (data.user.role === 'admin') {
       this.router.navigate(['users']);
     }
   }
-}
+} 
 
