@@ -9,7 +9,6 @@ import { NewsComponent } from './components/admin/news/news.component';
 import { TagsComponent } from './components/admin/tags/tags.component';
 import { LoginComponent } from './components/landing/login/login.component';
 import { MainComponent } from './components/landing/main/main.component';
-import { RegisterComponent } from './components/landing/register/register.component';
 import { ChartsModule } from 'ng2-charts';
 import { ReportsComponent } from './components/admin/reports/reports.component';
 import { LandingComponent } from './components/landing/landing/landing.component';
@@ -18,6 +17,9 @@ import { UserProfileComponent } from '../app/components/user/user-profile/user-p
 import { UserTagsComponent } from '../app/components/user/user-tags/user-tags.component';
 import { UserNavbarComponent } from '../app/components/user/user-navbar/user-navbar.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { RegisterUserComponent } from './components/landing/register-user/register-user.component';
+import { RegisterAdminComponent } from './components/landing/register-admin/register.component';
+import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 
 
 @NgModule({
@@ -29,13 +31,15 @@ import { CKEditorModule } from 'ng2-ckeditor';
     TagsComponent,
     LoginComponent,
     MainComponent,
-    RegisterComponent,
+    RegisterAdminComponent,
     ReportsComponent,
     LandingComponent,
     HomeUserComponent,
     UserProfileComponent,
     UserTagsComponent,
-    UserNavbarComponent
+    UserNavbarComponent,
+    RegisterUserComponent,
+    LoginUserComponent
   ],
   imports: [
     BrowserModule,

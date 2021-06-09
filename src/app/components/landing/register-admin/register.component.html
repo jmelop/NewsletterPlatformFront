@@ -12,7 +12,7 @@
         <input 
           class="register-inputs register-password" [(ngModel)]="newUser.password" type="password" placeholder="Contraseña" name="password"/>
 
-        <div class="list">
+        <!-- <div class="list">
           <h4>Elige las categorías que te interesen:</h4>
             <ul class="list-group" *ngFor="let tag of checkTagList">
                 <li class="tag-list">
@@ -20,7 +20,7 @@
                   <label>{{tag.name}}</label>
                 </li>
             </ul>
-        </div>
+        </div> -->
         <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div>          
         <button (click)="register()" type="button" class="btn" >
           <i class="spinner"></i>

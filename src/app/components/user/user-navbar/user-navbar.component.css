@@ -1,0 +1,17 @@
+@media screen and (max-width:800px){
+
+    .container {
+        width: 80%;
+    }
+
+    form {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width:639px){
+
+    .pato {
+        display: none;
+    }
+}

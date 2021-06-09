@@ -148,13 +148,12 @@ a, a:link  {
     margin-bottom: 10px;
 }
 
-
 /* Responsive */
 
 @media screen and (max-width:500px){
 
     .container {
-        padding: 50px 0;
+        padding: 0px;
         width: 89%;
     }
 
@@ -178,6 +177,8 @@ a, a:link  {
 
 
     
+
+
 
 
 

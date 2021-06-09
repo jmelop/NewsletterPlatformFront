@@ -9,11 +9,11 @@ import { TagsService } from '../../../services/user/tags.service';
 import { CookieService } from 'ngx-cookie-service'
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-register-admin',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterAdminComponent implements OnInit {
 
   newUser: User = {name: '', email: '', password: '', tags: []};
 

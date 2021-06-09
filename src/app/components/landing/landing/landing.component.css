@@ -134,6 +134,25 @@ header{
 	margin-right: 5px;
 }
 
+#servicio-admin {
+	border-bottom: solid 1px #a18cd1;
+}
+
+.btn-service {
+	background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+	border-bottom: solid 1px #a18cd1;
+	border-radius: 40%;
+	color: #fff;
+	float: right;
+    margin-right: 53px;
+    margin-top: 6px;
+}
+
+.btn-service:hover {
+	color:#a18cd1;
+	background-image: linear-gradient(to top, #fff 0%, #fff 100%);
+}
+
 /* Galeria */
 
 .gallery, .team-container{
@@ -397,12 +416,17 @@ footer{
 /* Responsive */
 
 @media screen and (max-width:800px){
-	.menu-navegacion{
-		width: 50vw;
+
+	.btn-principal {
+		font-size: 20px;
 	}
 
 	.titulo{
 		font-size: 40px;
+	}
+
+	.header {
+		width: 100%;
 	}
 
 	.contenedor-servicio img{
@@ -430,10 +454,10 @@ footer{
 		width: 80%;
 	}
 
-
 	.footer-content{
 		justify-content: center;
 	}
+
 	.social-media{
 		width:80%;
 		justify-content: space-evenly;
@@ -455,13 +479,9 @@ footer{
 }
 
 @media screen and (max-width:500px){
-	.menu-navegacion{
-		width: 65vw;
-	}
 
-	.hamburger{
-		top: 20px;
-		right: 20px;
+	.btn-principal {
+		font-size: 12px;
 	}
 
 	.titulo{

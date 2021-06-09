@@ -47,3 +47,19 @@ h1, h2 {
     cursor: pointer;
     color: rgb(255, 167, 5);
 }
+
+/* Responsive */
+
+@media screen and (max-width:500px){
+
+    .sub-container{
+        width: 89%;
+    }
+}
+
+@media screen and (max-width:800px){
+
+    .sub-container{
+        width: 67%;
+    }
+}
