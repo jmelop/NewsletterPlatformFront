@@ -35,11 +35,29 @@ body{
     }
 
     #first-charts{
-      flex-direction: column;
+      display: block; 
+      margin-left: 10px;
+      margin-right: 10px;
     }
 
-    #first-charts canvas{
-      margin: auto;
+
+    #chart1{
+      margin: 1px !important;
+      margin-bottom: 30px !important;
     }
+
+    #chart2{
+      margin: 1px !important;
+    }
+
+    #chart3{
+      margin: 10px;
+    }
+
+    #second-title{
+      margin: 10px;
+      margin-bottom: 60px;
+    }
+
   }
   

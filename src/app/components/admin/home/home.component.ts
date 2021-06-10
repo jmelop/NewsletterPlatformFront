@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -7,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
-
-  dates = [];
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
+    const t = this.cookieService.get('currentAdminId');
   }
 
 }
