@@ -19,8 +19,9 @@ export class TagsService {
 
   constructor() { }
 
-  getAlltags(): Promise<Tag[]> {
-    return axios.get(apiUrl, options)
+  getAlltags(id: string): Promise<Tag[]> {
+    console.log(id);
+    return axios.get(`${apiUrl}owner/${id}`, options)
       .then(res => res.data)
   }
 }

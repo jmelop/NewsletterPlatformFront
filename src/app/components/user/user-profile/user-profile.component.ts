@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/models/users/user.model';
+import { UserOwner } from 'src/app/models/users/userowner.model';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class UserProfileComponent implements OnInit {
 
   _id: string = '';
-  user: User = {name: '', email: '', password: '', tags: []};
+  user: UserOwner = {owner: {_id: ''}, name: '', email: '', password: '', tags: []}; 
   editable: boolean = false;
   editButtonLabel: string = "Editar";
   

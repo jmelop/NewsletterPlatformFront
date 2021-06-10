@@ -26,8 +26,8 @@ export class RegisterUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tagsService.getAlltags()
-    .then(taglist => this.checkTagList = taglist)
+    // this.tagsService.getAlltags()
+    // .then(taglist => this.checkTagList = taglist)
   }
 
 

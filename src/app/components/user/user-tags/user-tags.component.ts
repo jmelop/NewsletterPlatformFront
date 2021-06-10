@@ -12,7 +12,7 @@ import { TagsService } from '../../../services/user/tags.service';
 })
 export class UserTagsComponent implements OnInit {
 
-  sessionUser: User = {name: '', email: '', password: '', tags: []}; 
+  sessionUser: any = {owner: {}, name: '', email: '', password: '', tags: []}; 
   checkTagList: Tag[] = [];
   sessionUserId: string = ''; 
 
@@ -27,12 +27,15 @@ export class UserTagsComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.tagsService.getAlltags()
-    .then(taglist => this.checkTagList = taglist)
     this.sessionUserId = this.cookieService.get("currentUserId");
-      this.userService.getUserById(this.sessionUserId)
-      .then(res => this.sessionUser = res);
+    this.userService.getUserById(this.sessionUserId)
+      .then(res => {
+        this.sessionUser = res
+        this.tagsService.getAlltags(this.sessionUser.owner._id)
+        .then(taglist => this.checkTagList = taglist);
+      });
   }
+
   
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;
 
