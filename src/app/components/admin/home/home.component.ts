@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DateService } from 'src/app/services/admin/date.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +7,11 @@ import { DateService } from 'src/app/services/admin/date.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private datesService: DateService) { }
+  constructor() { }
 
   dates = [];
 
   ngOnInit(): void {
-    this.datesService.getAllDates().then(u => {this.dates = u, console.log(this.dates)});
   }
 
 }
