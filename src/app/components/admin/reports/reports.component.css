@@ -20,10 +20,26 @@ body{
 }
 
 .text-white {
-    color: #000!important;
+    color: #000;
   }
   
   .bg-indigo-600 {
     --tw-bg-opacity: 1;
     background-color: aliceblue;
   }
+
+  @media screen and (max-width: 800px) {
+    #title-1{
+      margin-top: 35px;
+      margin-bottom: 35px;
+    }
+
+    #first-charts{
+      flex-direction: column;
+    }
+
+    #first-charts canvas{
+      margin: auto;
+    }
+  }
+  

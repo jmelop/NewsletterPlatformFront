@@ -17,7 +17,7 @@ export class UsersService {
 
   options = {
     headers: {
-      'Authorization': this.token
+      'Authorization': `${environment.token}`
     }
   }
 
@@ -29,7 +29,7 @@ export class UsersService {
   }
 
   post(user: User) {
-    return axios.post(apiUrl, user, this.options)
+    return axios.post('http://hermesduck.com:5000/register', user, this.options)
       .then(res => {
         return res.data;
       }).catch((err) => console.log(err))

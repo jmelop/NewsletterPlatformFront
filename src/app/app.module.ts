@@ -18,6 +18,7 @@ import { UserProfileComponent } from '../app/components/user/user-profile/user-p
 import { UserTagsComponent } from '../app/components/user/user-tags/user-tags.component';
 import { UserNavbarComponent } from '../app/components/user/user-navbar/user-navbar.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { HomeComponent } from './components/admin/home/home.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     HomeUserComponent,
     UserProfileComponent,
     UserTagsComponent,
-    UserNavbarComponent
+    UserNavbarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
