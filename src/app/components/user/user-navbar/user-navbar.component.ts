@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from 'src/app/services/user/storage.service';
-import { CookieService } from 'ngx-cookie-service'
+import { AuthenticationService } from 'src/app/services/user/authentication.service';
 
 @Component({
   selector: 'app-user-navbar',
@@ -9,14 +8,14 @@ import { CookieService } from 'ngx-cookie-service'
 })
 export class UserNavbarComponent implements OnInit {
 
-  constructor(private storageService: StorageService, private cookieService: CookieService) { }
+  constructor(
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit(): void {
   }
 
   logOut() {
-    this.storageService.logOut();
-    this.cookieService.delete('token_access');
+    this.authenticationService.logOut();
   }
-
 }

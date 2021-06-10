@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
+import { CookieService } from 'ngx-cookie-service';
 import { Admin } from 'src/app/models/admin/admin.model';
 import { LogUser, User } from 'src/app/models/users/user.model';
 import { environment } from 'src/environments/environment';
-import { StorageService } from './storage.service';
 
 const apiUrl = environment.apiUrl
 
@@ -18,7 +19,7 @@ const options = {
 })
 export class AuthenticationService {
 
-  constructor() { }
+  constructor( private cookieService: CookieService, private router: Router) { }
 
   registerAdmin(admin: Admin) {
     return axios.post(`${apiUrl}admin/register`, admin, options)
@@ -57,7 +58,6 @@ export class AuthenticationService {
   loginAdmin(loginData: LogUser) {
     return axios.post(`${apiUrl}admin/login`, loginData)
     .then(res => res.data)
-    
     .catch((err) => {
       if (err.response.status === 403) {
         err.response.data = "Faltan campos por rellenar";
@@ -73,7 +73,6 @@ export class AuthenticationService {
     return axios.post(`${apiUrl}login`, loginData)
     .then(res => res.data)
     .catch((err) => {
-      console.log('prueba serv', err.response);
       if (err.response.status === 403) {
         err.response.data = "Faltan campos por rellenar";
       }
@@ -83,4 +82,11 @@ export class AuthenticationService {
       throw err
     });
   }
+
+  logOut(): void {
+    this.cookieService.delete('token_access');
+    this.cookieService.delete('currentUserId');
+    this.router.navigate(['login-user']);
+  }
+
 }

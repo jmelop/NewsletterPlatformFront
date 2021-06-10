@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from './models/users/user.model';
-import { StorageService } from './services/user/storage.service';
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +10,12 @@ import { StorageService } from './services/user/storage.service';
 export class AppComponent {
   title = 'NewsletterPlatform';
 
-  constructor(private storageService: StorageService) { }
+  constructor(
+    private cookieService: CookieService,
+    private userService: UserService
+  ) { }
 
-  isLoggedIn = this.storageService.isAuthenticated();
-  currentUser = this.storageService.getCurrentUser();
-
+  //isLoggedIn = this.cookieService.check('token_access');
+  //currentUserId = this.cookieService.get('currentUserId');
+  //currentUser = this.userService.getUserById(this.currentUserId);
 }

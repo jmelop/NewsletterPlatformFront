@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit {
 
   logOut(){
     this.cookieService.delete('token_access');
-    this.router.navigate(['/', 'login'])
+    this.router.navigate(['login'])
   }
-
 }

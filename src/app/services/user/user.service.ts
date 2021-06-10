@@ -1,14 +1,11 @@
-import { Identifiers } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/models/users/user.model';
 import { environment } from 'src/environments/environment';
-import { StorageService } from './storage.service';
+import { AuthenticationService } from './authentication.service';
 
 const apiUrl = environment.apiUrl
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +13,12 @@ const apiUrl = environment.apiUrl
 export class UserService {
 
   constructor(
-    private storageService: StorageService,
-    private cookieService: CookieService) { }
+    private cookieService: CookieService,
+    private authenticationService: AuthenticationService) { }
   
   options = {
     headers: {
       'Authorization': this.cookieService.get('token_access')
-      // 'Authorization': environment.token
     }
   }
 
@@ -36,7 +32,7 @@ export class UserService {
   deleteUser(id: string) {
     return axios.delete(`${apiUrl}users/${id}`, this.options)
     .then(() => {
-      this.storageService.logOut();
+      this.authenticationService.logOut();
     })
   }
 

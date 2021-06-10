@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { User } from 'src/app/models/users/user.model';
-import { AuthenticationService } from 'src/app/services/user/authentication.service';
-import { StorageService } from 'src/app/services/user/storage.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { Tag } from '../../../models/users/tag.model';
 import { TagsService } from '../../../services/user/tags.service';
@@ -13,19 +12,16 @@ import { TagsService } from '../../../services/user/tags.service';
 })
 export class UserTagsComponent implements OnInit {
 
-  sessionToken: string = '';
   sessionUser: User = {name: '', email: '', password: '', tags: []}; 
   checkTagList: Tag[] = [];
   sessionUserId: string = ''; 
 
   constructor(
     private tagsService: TagsService,
-    private storageService: StorageService,
-    private authenticationService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private cookieService: CookieService
     ) {
-      this.sessionToken = storageService.getCurrentToken();
-      this.sessionUserId = storageService.getCurrentUser()._id;
+      this.sessionUserId = this.cookieService.get("currentUserId");
       this.userService.getUserById(this.sessionUserId)
       .then(res => this.sessionUser = res);
      }
@@ -46,12 +42,10 @@ export class UserTagsComponent implements OnInit {
     });
     this.allCheckboxes.forEach(checkbox => checkbox.nativeElement.checked = false);
     this.userService.updateUser(this.sessionUser._id, this.sessionUser);
-    this.storageService.setCurrentSession({token: this.sessionToken, user: this.sessionUser});
   }
 
   delete(name: string) {
     this.sessionUser.tags = this.sessionUser.tags.filter(tag => tag.name != name);
     this.userService.updateUser(this.sessionUser._id, this.sessionUser);
-    this.storageService.setCurrentSession({token: this.sessionToken, user: this.sessionUser});
   }
 }
