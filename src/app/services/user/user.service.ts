@@ -37,9 +37,10 @@ export class UserService {
   }
 
   updateUser(id: string, user: User) {
-    return axios.patch(`${apiUrl}users/${id}/`, user, this.options)
+    return axios.patch(`${apiUrl}users/editself/${id}`, user, this.options)
       .then(res => {
         return res.data;
       })
   }
 }
+
