@@ -23,13 +23,17 @@ export class AuthenticationService {
 
   registerAdmin(admin: Admin) {
     return axios.post(`${apiUrl}admin/register`, admin, options)
-      .then(res => res.data)
+      .then(res => {
+        console.log("adioooo", res);
+        
+        return res.data
+      })
       .catch((err) => {
         if (err.response.status === 403) {
           err.response.data = "Faltan campos por rellenar";
         }
-        else if (err.response.status === 404) {
-          err.response.data = 'Email ya existente';
+        else if (err.response.status === 400) {
+          err.response.data = 'Email y/o username ya existentes, requeridos o inválidos';
         }
         else if (err.response.status === 500) {
           err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
@@ -45,11 +49,14 @@ export class AuthenticationService {
           if (err.response.status === 403) {
             err.response.data = "Faltan campos por rellenar";
           }
-          else if (err.response.status === 404) {
-            err.response.data = 'Email ya existente';
+          else if (err.response.status === 400) {
+            err.response.data = 'Faltan campos por rellenar y/o hay campos erróneos';
           }
           else if (err.response.status === 500) {
             err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
+          }
+          else if (err.response.status === 404) {
+            err.response.data = 'El owner no existe'
           }
           throw err
         });
@@ -63,6 +70,9 @@ export class AuthenticationService {
         err.response.data = "Faltan campos por rellenar";
       }
       else if (err.response.status === 404) {
+        err.response.data = 'Email y/o contraseña incorrecta';
+      }
+      else if (err.response.status === 400) {
         err.response.data = 'Email y/o contraseña incorrecta';
       }
       throw err

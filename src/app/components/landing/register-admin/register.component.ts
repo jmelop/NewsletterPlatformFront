@@ -10,7 +10,7 @@ import { Admin } from 'src/app/models/admin/admin.model';
 })
 export class RegisterAdminComponent implements OnInit {
 
-  newAdmin: Admin = {name: '', username: '', email: '', password: ''};
+  newAdmin: Admin = {username: '', email: '', password: ''};
 
   errorMessage: string;
 
@@ -26,6 +26,8 @@ export class RegisterAdminComponent implements OnInit {
   register() {
     this.authenticationService.registerAdmin(this.newAdmin)
         .then(res => {
+          console.log("holaaaa", res);
+          this.newAdmin.name = '';
           this.newAdmin.username = '';
           this.newAdmin.email = '';
           this.newAdmin.password = '';

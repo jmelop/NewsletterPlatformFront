@@ -4,15 +4,15 @@
         <form class="register" >
           <p class="title">Registro:</p>
 
-          <input class="register-inputs" [(ngModel)]="newUser.owner" type="text" placeholder="Owner" name="owner" autofocus/>
+          <input class="register-inputs" [(ngModel)]="newUser.owner" type="text" placeholder="* Owner" name="owner" autofocus/>
           
-          <input class="register-inputs" [(ngModel)]="newUser.name" type="text" placeholder="Username" name="username" autofocus/>
+          <input class="register-inputs" [(ngModel)]="newUser.name" type="text" placeholder="* Username" name="username" autofocus/>
         
           <input
-            class="register-inputs" [(ngModel)]="newUser.email" type="email" placeholder="email" name="email"/>
+            class="register-inputs" [(ngModel)]="newUser.email" type="email" placeholder="* Email" name="email"/>
   
           <input 
-            class="register-inputs register-password" [(ngModel)]="newUser.password" type="password" placeholder="Contraseña" name="password"/>
+            class="register-inputs register-password" [(ngModel)]="newUser.password" type="password" placeholder="* Contraseña" name="password"/>
   
           <!-- <div class="list">
             <h4>Elige las categorías que te interesen:</h4>
@@ -23,6 +23,7 @@
                   </li>
               </ul>
           </div> -->
+          <div><small>Todos los campos con un * son requeridos</small></div>  
           <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div>          
           <button (click)="register()" type="button" class="btn" >
             <i class="spinner"></i>

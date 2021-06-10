@@ -172,6 +172,11 @@ a, a:link  {
     cursor: pointer;
 }
 
+small {
+    font-size: 12px;
+    color:rgb(65, 64, 64)
+}
+
 .error {
     font-size: 12px;
     color: red;

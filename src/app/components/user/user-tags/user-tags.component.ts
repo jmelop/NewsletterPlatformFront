@@ -21,14 +21,17 @@ export class UserTagsComponent implements OnInit {
     private userService: UserService,
     private cookieService: CookieService
     ) {
-      this.sessionUserId = this.cookieService.get("currentUserId");
-      this.userService.getUserById(this.sessionUserId)
-      .then(res => this.sessionUser = res);
+      // this.sessionUserId = this.cookieService.get("currentUserId");
+      // this.userService.getUserById(this.sessionUserId)
+      // .then(res => this.sessionUser = res);
      }
 
   ngOnInit(): void {
     this.tagsService.getAlltags()
     .then(taglist => this.checkTagList = taglist)
+    this.sessionUserId = this.cookieService.get("currentUserId");
+      this.userService.getUserById(this.sessionUserId)
+      .then(res => this.sessionUser = res);
   }
   
   @ViewChildren("checkboxes") allCheckboxes: QueryList<ElementRef>;

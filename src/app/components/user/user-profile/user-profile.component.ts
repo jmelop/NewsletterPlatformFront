@@ -19,12 +19,15 @@ export class UserProfileComponent implements OnInit {
     private userService: UserService,
     private cookieService: CookieService
   ) { 
-    this._id = this.cookieService.get("currentUserId");
-    this.userService.getUserById(this._id)
-    .then(res => this.user = res);
+    // this._id = this.cookieService.get("currentUserId");
+    // this.userService.getUserById(this._id)
+    // .then(res => this.user = res);
   }
 
   ngOnInit(): void {
+    this._id = this.cookieService.get("currentUserId");
+    this.userService.getUserById(this._id)
+    .then(res => this.user = res);
   }
 
   deleteUser() {
