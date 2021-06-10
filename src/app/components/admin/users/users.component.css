@@ -10,7 +10,6 @@ body{
   margin-right: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-
 }
 
 #section2{
@@ -22,14 +21,25 @@ body{
 
 }
 
-
-
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: #ff81007a;
 }
 
-.text-white {
-  color: #000;
+
+.bg-white {
+  background-color: #ffffffb5;
 }
+
+
+@media screen and (max-width: 800px) {
+  #section1{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
 

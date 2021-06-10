@@ -1,0 +1,27 @@
+#section1{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+  }
+  
+  #section2{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    margin-bottom: 90px;
+  
+  }
+
+  @media screen and (max-width: 800px) {
+    #section1{
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }

@@ -14,8 +14,15 @@ import { UserTagsComponent } from '../app/components/user/user-tags/user-tags.co
 import { UserProfileComponent } from '../app/components/user/user-profile/user-profile.component';
 import { RegisterUserComponent } from './components/landing/register-user/register-user.component';
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
+import { HomeComponent } from './components/admin/home/home.component';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [KeeperGuard]
+
+  },
   {
     path: 'users',
     component: UsersComponent,

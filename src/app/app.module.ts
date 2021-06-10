@@ -20,6 +20,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { RegisterUserComponent } from './components/landing/register-user/register-user.component';
 import { RegisterAdminComponent } from './components/landing/register-admin/register.component';
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
+import { HomeComponent } from './components/admin/home/home.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LoginUserComponent } from './components/landing/login-user/login-user.c
     UserTagsComponent,
     UserNavbarComponent,
     RegisterUserComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
