@@ -30,7 +30,7 @@ export class UserService {
   }
 
   deleteUser(id: string) {
-    return axios.delete(`${apiUrl}users/${id}`, this.options)
+    return axios.delete(`${apiUrl}users/deleteSelf/${id}`, this.options)
     .then(() => {
       this.authenticationService.logOut();
     })
