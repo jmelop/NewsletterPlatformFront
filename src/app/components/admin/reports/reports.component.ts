@@ -7,6 +7,7 @@ import { User } from '../../../models/admin/user.model';
 import { TagsService } from '../../../services/admin/tags.service';
 import { TagData } from 'src/app/models/admin/tag-data.model';
 import { Tag } from 'src/app/models/admin/tag.model';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ReportsComponent implements OnInit {
   tags: Tag[] = [];
   tag: TagData = {type: '', amount: 0};
   tagsInfo: TagData[] = [];
+  adminInfo: any = '' /* {username: '', email: '', password: ''}; */
 
 
   // First Char
@@ -115,7 +117,7 @@ export class ReportsComponent implements OnInit {
   ];
 
 
-  constructor(private userService: UsersService, private tagService: TagsService) { }
+  constructor(private userService: UsersService, private tagService: TagsService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
     const DATA_COUNT = 12;
@@ -124,8 +126,9 @@ export class ReportsComponent implements OnInit {
       labels.push(i.toString());
     };
 
-    this.userService.getAllUsers().then(u => this.users = u).then(() => this.calculateNumberTypeTags());
-    this.tagService.getAllTags().then(u => this.tags = u);
+    this.adminInfo = this.cookieService.get("currentAdminId");
+    this.userService.getAllUsers(this.adminInfo).then(u => this.users = u).then(() => this.calculateNumberTypeTags());
+    this.tagService.getAllTags(this.adminInfo).then(u => this.tags = u);
 
   }
 

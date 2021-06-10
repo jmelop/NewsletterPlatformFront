@@ -21,8 +21,8 @@ export class NewsService {
       'Authorization': this.token
     }
   }
-  getAllNews(): Promise<New[]> {
-    return axios.get(apiUrl, this.options)
+  getAllNews(id: string): Promise<New[]> {
+    return axios.get(apiUrl+'owner/'+id, this.options)
       .then(rest => rest.data)
   }
 

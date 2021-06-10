@@ -21,8 +21,8 @@ export class UsersService {
     }
   }
 
-  getAllUsers(): Promise<User[]> {
-    return axios.get(apiUrl, this.options)
+  getAllUsers(id: string): Promise<User[]> {
+    return axios.get(apiUrl+'owner/'+id, this.options)
       .then(rest => { 
         return rest.data
       })

@@ -13,7 +13,7 @@ import { UsersService } from '../../../services/admin/users.service';
 })
 export class UsersComponent implements OnInit {
 
-  idAdmin = '';
+  adminInfo: any = '';
   newTags: Tag[] = [];
   newUser: User = { name: '', email: '', owner: '', tags: this.newTags, password: '' }
   tags: Tag[] = [];
@@ -22,9 +22,10 @@ export class UsersComponent implements OnInit {
   constructor(private userServices: UsersService, private tagsServices: TagsService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.userServices.getAllUsers().then(u => { this.users = u, console.log(u) });
-    this.tagsServices.getAllTags().then(u => { this.tags = u });
-    this.idAdmin = this.cookieService.get("currentAdminId");
+    this.adminInfo = this.cookieService.get("currentAdminId");
+    this.userServices.getAllUsers(this.adminInfo).then(u => { this.users = u, console.log(u) });
+    this.tagsServices.getAllTags(this.adminInfo).then(u => { this.tags = u, console.log(u) });
+
   }
 
   /*   onFileChange(event) {
@@ -72,9 +73,10 @@ export class UsersComponent implements OnInit {
   }
 
   addUser() {
-    this.newUser.owner = this.idAdmin;
+    this.newUser.owner = this.adminInfo;
     this.newUser.tags = this.tags.filter(u => u.checked == true);
     let temporalTags = this.newUser.tags;
+    console.log(temporalTags[0].name+' dkqdmlkemdlmdl')
     let newMappedUser = [];
     this.newUser.tags.map(u => {
       newMappedUser.push(u._id)
@@ -84,8 +86,10 @@ export class UsersComponent implements OnInit {
     this.userServices.post(this.newUser).then(res => {
       if (typeof res !== 'undefined') {
         res.tags = temporalTags;
+        console.log('------------------------------')
+        console.log(res)
         this.users.push(res);
-        this.newUser = { name: '', email: '', owner: this.idAdmin, tags: this.newTags, password: '' };
+        this.newUser = { name: '', email: '', owner: this.adminInfo, tags: this.newTags, password: '' };
       }
     }).catch((err) => console.log(err))
   }

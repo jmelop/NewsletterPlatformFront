@@ -4,7 +4,7 @@ export class New {
     title: string;
     body: string;
     link: string;
-    tag: Tag[];
+    tags: Tag[];
     owner: string;
     _id?: string;
     editable?: boolean;

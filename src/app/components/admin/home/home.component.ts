@@ -19,10 +19,11 @@ export class HomeComponent implements OnInit {
      this.adminsService.getById(this.idUser).then( u => {
       this.adminInfo = u;
     })
+    //this.cronForm = new FormControl('0 0 1/1 * *');
+
    }
 
    getId(){
-     console.log(this.adminInfo)
    }
 
 

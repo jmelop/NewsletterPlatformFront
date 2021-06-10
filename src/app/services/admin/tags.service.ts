@@ -22,8 +22,8 @@ export class TagsService {
     }
   }
 
-  getAllTags(): Promise<Tag[]> {
-    return axios.get(apiUrl, this.options)
+  getAllTags(id: string): Promise<Tag[]> {
+    return axios.get(apiUrl+'owner/'+id, this.options)
       .then(rest => rest.data)
   }
 

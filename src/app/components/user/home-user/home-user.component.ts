@@ -16,6 +16,6 @@ export class HomeUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.newsService.getAllNews().then(data => { this.news = data});
+    //this.newsService.getAllNews().then(data => { this.news = data});
   }
 }

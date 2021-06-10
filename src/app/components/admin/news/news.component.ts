@@ -17,18 +17,18 @@ export class NewsComponent implements OnInit {
   @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
 
 
-  idAdmin = '';
+  adminInfo = '';
   newTags: Tag[] = [];
   tags: Tag[] = [];
   news: New[] = [];
-  newNew: New = { title: '', body: '', link: '', owner: '',  tag: this.newTags }
+  newNew: New = { title: '', body: '', link: '', owner: '',  tags: this.newTags }
 
   constructor(private newsService: NewsService, private tagsService: TagsService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.newsService.getAllNews().then(u => { this.news = u });
-    this.tagsService.getAllTags().then(u => { this.tags = u });
-    this.idAdmin = this.cookieService.get("currentAdminId");
+    this.adminInfo = this.cookieService.get("currentAdminId");
+    this.newsService.getAllNews(this.adminInfo).then(u => { this.news = u });
+    this.tagsService.getAllTags(this.adminInfo).then(u => { this.tags = u });
   }
 
   editState(notice: New) {
@@ -40,27 +40,27 @@ export class NewsComponent implements OnInit {
 
     this.tags.map(u => {
       u.checked = false;
-      let exist = notice.tag.find(b => b.name == u.name);
+      let exist = notice.tags.find(b => b.name == u.name);
 
-      notice.tag.find(b => {
+      notice.tags.find(b => {
         if (b.name == u.name) {
           b.checked = true;
         }
       });
 
       if (!exist) {
-        notice.tag.push(u);
+        notice.tags.push(u);
       }
     })
   }
 
   addNew() {
-    this.newNew.owner = this.idAdmin;
-    this.newNew.tag = this.tags.filter(u => u.checked == true);
+    this.newNew.owner = this.adminInfo;
+    this.newNew.tags = this.tags.filter(u => u.checked == true);
     this.newsService.postNew(this.newNew).then(u => {
       if (typeof u !== "undefined") {
         this.news.push(u);
-        this.newNew = { title: '', body: '', link: '', owner: this.idAdmin, tag: [] }
+        this.newNew = { title: '', body: '', link: '', owner: this.adminInfo, tags: [] }
       }
     })
   }
@@ -76,7 +76,7 @@ export class NewsComponent implements OnInit {
 
   updateNews(notice: New) {
     notice.editable = false;
-    notice.tag = notice.tag.filter(u => u.checked && u.checked == true);
+    notice.tags = notice.tags.filter(u => u.checked && u.checked == true);
 
     this.newsService.updateNew(notice._id, notice);
   }

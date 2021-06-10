@@ -10,15 +10,15 @@ import { TagsService } from '../../../services/admin/tags.service';
 })
 export class TagsComponent implements OnInit {
 
-  idAdmin = '';
+  adminInfo = '';
   newTag: Tag = { name: '', owner: ''}
   tags: Tag[] = [];
 
   constructor(private tagServices: TagsService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.tagServices.getAllTags().then(u => { this.tags = u,     console.log(this.tags)})
-    this.idAdmin = this.cookieService.get("currentAdminId");
+    this.adminInfo = this.cookieService.get("currentAdminId");
+    this.tagServices.getAllTags(this.adminInfo).then(u => { this.tags = u,     console.log(this.tags)})
   }
 
   editState(tag: Tag) {
@@ -31,11 +31,11 @@ export class TagsComponent implements OnInit {
   }
 
   addTag() {
-    this.newTag.owner = this.idAdmin;
+    this.newTag.owner = this.adminInfo;
     this.tagServices.postTag(this.newTag).then(u => {
       if (typeof u !== 'undefined') {
         this.tags.push(u);
-        this.newTag = { name: '' , owner: this.idAdmin}
+        this.newTag = { name: '' , owner: this.adminInfo}
       }
     })
   }
