@@ -10,7 +10,7 @@ import { Admin } from 'src/app/models/admin/admin.model';
 })
 export class RegisterAdminComponent implements OnInit {
 
-  newAdmin: Admin = {username: '', email: '', password: ''};
+  newAdmin: Admin = {name: '', username: '', email: '', password: ''};
 
   errorMessage: string;
 
