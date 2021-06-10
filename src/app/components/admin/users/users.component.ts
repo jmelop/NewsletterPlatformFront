@@ -81,7 +81,7 @@ export class UsersComponent implements OnInit {
       if (typeof res !== 'undefined') {
         res.tags = temporalTags;
         this.users.push(res);
-        this.newUser = { name: '', email: '', owner: '', tags: this.newTags, password: '' };
+        this.newUser = { name: '', email: '', owner: '60bd54a1708ebe0828eca3dd', tags: this.newTags, password: '' };
       }
     }).catch((err) => console.log(err))
   }

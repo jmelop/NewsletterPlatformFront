@@ -19,7 +19,7 @@ export class NewsComponent implements OnInit {
   newTags: Tag[] = [];
   tags: Tag[] = [];
   news: New[] = [];
-  newNew: New = { title: '', body: '', link: '', tag: this.newTags }
+  newNew: New = { title: '', body: '', link: '', owner:'60c235787afdd7402cee1dbf',  tag: this.newTags }
 
   constructor(private newsService: NewsService, private tagsService: TagsService) { }
 
@@ -57,7 +57,7 @@ export class NewsComponent implements OnInit {
     this.newsService.postNew(this.newNew).then(u => {
       if (typeof u !== "undefined") {
         this.news.push(u);
-        this.newNew = { title: '', body: '', link: '', tag: [] }
+        this.newNew = { title: '', body: '', link: '', owner:'60c235787afdd7402cee1dbf', tag: [] }
       }
     })
   }

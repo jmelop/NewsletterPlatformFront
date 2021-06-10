@@ -5,6 +5,7 @@ export class New {
     body: string;
     link: string;
     tag: Tag[];
+    owner: string;
     _id?: string;
     editable?: boolean;
 }
