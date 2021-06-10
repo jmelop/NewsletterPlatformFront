@@ -42,8 +42,6 @@ export class UsersService {
     })
   }
 
-
-
   deleteUser(id: string) {
     return axios.delete(apiUrl + id, this.options)
       .then(() => {
