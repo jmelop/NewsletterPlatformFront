@@ -4,6 +4,7 @@ import { NewsService } from '../../../services/admin/news.service';
 import { TagsService } from '../../../services/admin/tags.service';
 import { CKEditorComponent } from 'ng2-ckeditor';
 import { Tag } from 'src/app/models/admin/tag.model';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -16,17 +17,18 @@ export class NewsComponent implements OnInit {
   @ViewChild(CKEditorComponent) ckEditor: CKEditorComponent;
 
 
+  idAdmin = '';
   newTags: Tag[] = [];
   tags: Tag[] = [];
   news: New[] = [];
-  newNew: New = { title: '', body: '', link: '', owner:'60c235787afdd7402cee1dbf',  tag: this.newTags }
+  newNew: New = { title: '', body: '', link: '', owner: '',  tag: this.newTags }
 
-  constructor(private newsService: NewsService, private tagsService: TagsService) { }
+  constructor(private newsService: NewsService, private tagsService: TagsService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
     this.newsService.getAllNews().then(u => { this.news = u });
     this.tagsService.getAllTags().then(u => { this.tags = u });
-
+    this.idAdmin = this.cookieService.get("currentAdminId");
   }
 
   editState(notice: New) {
@@ -53,11 +55,12 @@ export class NewsComponent implements OnInit {
   }
 
   addNew() {
+    this.newNew.owner = this.idAdmin;
     this.newNew.tag = this.tags.filter(u => u.checked == true);
     this.newsService.postNew(this.newNew).then(u => {
       if (typeof u !== "undefined") {
         this.news.push(u);
-        this.newNew = { title: '', body: '', link: '', owner:'60c235787afdd7402cee1dbf', tag: [] }
+        this.newNew = { title: '', body: '', link: '', owner: this.idAdmin, tag: [] }
       }
     })
   }

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         this.logAdmin.email = '';
         this.logAdmin.password = '';
         const token = res.token;
-        const currentAdminId = res.user;
+        const currentAdminId = res.user._id;
         this.cookieService.set('currentAdminId', currentAdminId, 4, '/' )
         this.cookieService.set('token_access', token, 4, '/');
         this.router.navigate(['users']);

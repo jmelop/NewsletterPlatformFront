@@ -9,9 +9,10 @@ import { CookieService } from 'ngx-cookie-service';
 export class HomeComponent implements OnInit {
 
   constructor(private cookieService: CookieService) { }
+  idUser: string = '';
 
   ngOnInit(): void {
-    const t = this.cookieService.get('currentAdminId');
-  }
+     this.idUser = this.cookieService.get("currentAdminId");
+   }
 
 }

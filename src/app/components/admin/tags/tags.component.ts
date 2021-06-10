@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Tag } from '../../../models/admin/tag.model';
 import { TagsService } from '../../../services/admin/tags.service';
 
@@ -9,13 +10,15 @@ import { TagsService } from '../../../services/admin/tags.service';
 })
 export class TagsComponent implements OnInit {
 
-  newTag: Tag = { name: ''}
+  idAdmin = '';
+  newTag: Tag = { name: '', owner: ''}
   tags: Tag[] = [];
 
-  constructor(private tagServices: TagsService) { }
+  constructor(private tagServices: TagsService, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.tagServices.getAllTags().then(u => { this.tags = u })
+    this.tagServices.getAllTags().then(u => { this.tags = u,     console.log(this.tags)})
+    this.idAdmin = this.cookieService.get("currentAdminId");
   }
 
   editState(tag: Tag) {
@@ -28,10 +31,11 @@ export class TagsComponent implements OnInit {
   }
 
   addTag() {
+    this.newTag.owner = this.idAdmin;
     this.tagServices.postTag(this.newTag).then(u => {
       if (typeof u !== 'undefined') {
         this.tags.push(u);
-        this.newTag = { name: '' }
+        this.newTag = { name: '' , owner: this.idAdmin}
       }
     })
   }
