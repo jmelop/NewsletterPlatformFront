@@ -1,47 +1,78 @@
 <app-navbar></app-navbar>
 
-<div class="mt-10 sm:mt-0 ">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section1">
+<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8 mb-8">
+    <div class="container shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <div class="img-container -space-x-2 overflow-hidden">
+            <img class="inline-block rounded-full ring-2 ring-white" src="../../../assets/img/avatar-masculino.png"
+                alt="">
+        </div>
+        <div class="sub-container">
 
-        <div class="mt-5 md:mt-0 md:col-span-2">
-            <div class="shadow overflow-hidden sm:rounded-md">
-                <div class="px-4 py-5 bg-white sm:p-6">
-
-                    <p class="mb-8" id="span-section1">Modificar la fecha de envío</p>
-
-                    <div class="grid grid-cols-6 gap-6">
-
-                        <div class="col-span-6 sm:col-span-3">
-
-                            <label for="first_name" class="block text-sm font-medium text-gray-700">Fecha:</label>
-                            <input 
-                                autocomplete="given-name"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-3">
-
-                            <label for="first_name" class="block text-sm font-medium text-gray-700">Datos fechas</label>
-                                {{adminInfo.senddate}}
-
-                        </div>
-
-
-
-            
-
-                    </div>
-                </div>
-                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <button type="submit" (click)="getId()"
-                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Modify Dates
-                    </button>
-                </div>
+            <ul>
+                <li>
+                    <h1>{{adminInfo.name}}</h1>
+                    <input type="text" placeholder="Name" [(ngModel)]="adminInfo.name">
+                </li>
+                <li>
+                    <p>Email: {{adminInfo.email}}</p>
+                    <input type="text" placeholder="Email" [(ngModel)]="adminInfo.email">
+                </li>
+                <li>Rol: {{adminInfo.role}}</li>
+            </ul>
+            <div class="btn-container">
+                <button (click)="updateAdmin()"
+                    class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Update</button>
+                <p *ngIf='success'>Cambios realizados con exito!</p>
             </div>
         </div>
     </div>
 </div>
 
+<div class="mt-10 sm:mt-0 pb-20">
+    <div class="mt-5 md:mt-0 md:col-span-2" id="section1">
+        <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 bg-white sm:p-6">
 
+                <p class="mb-8" id="span-section1">📆 Modificar la fecha de envío</p>
 
+                <div class="grid grid-cols-6 gap-6">
+
+                    <div class="col-span-6 sm:col-span-3">
+
+                        <label for="first_name" class="block text-sm font-medium text-gray-700">Fecha
+                            modificada:</label>
+                        - Hora: {{emptyHour}}{{emptyMinutes}} - Día: {{emptyDay}} -
+                        <hr>
+
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3 pb-5">
+
+                        <label for="first_name" class="block text-sm font-medium text-gray-700">Fecha actual</label>
+                        {{formatedDate}}
+                        <hr>
+                    </div>
+
+                    <label>Hour:</label>
+                    <select [(ngModel)]="emptyHour" class="rounded-lg border-2 border-gray-500 p-1.5 outline-none"
+                        (click)="updateDate()">
+                        <option *ngFor="let hora of horas" value="{{hora}}">{{hora}}</option>
+                    </select>
+
+                    <label id="text-day">Day:</label>
+                    <select [(ngModel)]="emptyDay" class="rounded-lg border-2 border-gray-500 p-1.5 outline-none"
+                        id="select-day">
+                        <option *ngFor="let dia of dias" value="{{dia}}">{{dia}}</option>
+                    </select>
+
+                </div>
+            </div>
+            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                <button type="submit" (click)="getCron()"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Modify Dates
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

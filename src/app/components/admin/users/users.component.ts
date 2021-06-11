@@ -5,7 +5,6 @@ import { User } from '../../../models/admin/user.model';
 import { TagsService } from '../../../services/admin/tags.service';
 import { UsersService } from '../../../services/admin/users.service';
 
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -18,6 +17,7 @@ export class UsersComponent implements OnInit {
   newUser: User = { name: '', email: '', owner: '', tags: this.newTags, password: '' }
   tags: Tag[] = [];
   users: User[] = [];
+  testList = [];
 
   constructor(private userServices: UsersService, private tagsServices: TagsService, private cookieService: CookieService) { }
 
@@ -28,28 +28,29 @@ export class UsersComponent implements OnInit {
 
   }
 
-  /*   onFileChange(event) {
-      const fileToLoad = event.target.files[0];
-      const fileReader = new FileReader();
-  
-      fileReader.addEventListener('load', (event) => {
-        this.testList = JSON.parse(<string>event.target.result);
-        console.log(this.testList)
-      });
-  
-      fileReader.readAsText(fileToLoad, 'UTF-8');
-  
-    }
-  
-    addAllUsers(){
-      this.testList.map(u => {
-        this.userServices.post(u).then(res => {
-          if (typeof res !== 'undefined') {
-            this.users.push(u);
-          }
-        }).catch((err) => console.log(err))
-      })
-    } */
+  onFileChange(event) {
+    const fileToLoad = event.target.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.addEventListener('load', (event) => {
+      this.testList = JSON.parse(<string>event.target.result);
+      console.log(this.testList)
+    });
+
+    fileReader.readAsText(fileToLoad, 'UTF-8');
+
+  }
+
+  addAllUsers() {
+    this.testList.map(u => {
+      u.tags = this.tags;
+      this.userServices.post(u).then(res => {
+        if (typeof res !== 'undefined') {
+          this.users.push(u);
+        }
+      }).catch((err) => console.log(err))
+    })
+  }
 
   editState(user: User) {
     this.users.map((u: User) => {
@@ -76,7 +77,6 @@ export class UsersComponent implements OnInit {
     this.newUser.owner = this.adminInfo;
     this.newUser.tags = this.tags.filter(u => u.checked == true);
     let temporalTags = this.newUser.tags;
-    console.log(temporalTags[0].name+' dkqdmlkemdlmdl')
     let newMappedUser = [];
     this.newUser.tags.map(u => {
       newMappedUser.push(u._id)
@@ -86,8 +86,6 @@ export class UsersComponent implements OnInit {
     this.userServices.post(this.newUser).then(res => {
       if (typeof res !== 'undefined') {
         res.tags = temporalTags;
-        console.log('------------------------------')
-        console.log(res)
         this.users.push(res);
         this.newUser = { name: '', email: '', owner: this.adminInfo, tags: this.newTags, password: '' };
       }
@@ -116,5 +114,7 @@ export class UsersComponent implements OnInit {
       user.tags = tempTags;
     })
   }
+
+  
 
 }

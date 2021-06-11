@@ -28,7 +28,7 @@ body{
 
 
 .bg-white {
-  background-color: #ffffffb5;
+  background-color: #ffffffb5 !important;
 }
 
 

@@ -34,8 +34,6 @@ export class LoginUserComponent implements OnInit {
         this.cookieService.set('currentUserId', currentUserId, 4, '/' )
         this.cookieService.set('token_access', token, 4, '/');
         this.router.navigate(['home-user']);
-        alert(token)
-        alert(currentUserId)
     })
     .catch( err => {
       this.errorMessage = err.response.data

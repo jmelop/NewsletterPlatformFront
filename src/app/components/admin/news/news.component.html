@@ -27,7 +27,7 @@
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
-                        <div class="col-span-6 sm:col-span-4">
+                        <div class="col-span-6 sm:col-span-6">
                             <label for="email_address" class="block text-sm font-medium text-gray-700">Body: </label>
 
 <!--                             <ckeditor [editor]="editor" placeholder="Enter your body" spellcheck="false" id="editor1" name="editor1"
@@ -77,19 +77,19 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                class="px-2 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
                                 Titulo:
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                class="px-8 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
                                 Cuerpo:
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                class="px-2 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
                                 Link
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                class="px-2 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
                                 Tags
                             </th>
                             <th scope="col" class="relative px-6 py-3">
@@ -127,7 +127,7 @@
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <span *ngFor="let tag of new.tag">
+                                <span *ngFor="let tag of new.tags">
                                     <span class="px-2 inline-flex text-xs leading-5 ">
                                         <label>{{tag.name}}</label>
                                         <input type="checkbox" *ngIf="new.editable" [(ngModel)]="tag.checked" /><br>

@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
         this.cookieService.set('currentAdminId', currentAdminId, 4, '/' )
         this.cookieService.set('token_access', token, 4, '/');
         this.router.navigate(['users']);
-        console.log(token)
     })
     .catch( err => {
       this.errorMessage = err.response.data

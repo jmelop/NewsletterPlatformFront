@@ -4,7 +4,8 @@
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-  
+    background-color: #ffffffb5 !important;
+
   }
   
   #section2{
@@ -26,4 +27,111 @@
     }
   }
 
-  
+  @media only screen and (max-width: 760px), (min-width: 768px) and (max-width: 1024px) {
+    /* ... */
+    select {
+        width: 90px;
+    }
+
+    #text-day{
+      margin-left: 50px;
+    }
+
+    #select-day{
+      margin-left: 35px;
+    }
+}
+
+
+.container {
+  width: 30%;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #ffffffb5;
+}
+
+.img-container {
+  text-align: center;
+}
+
+.sub-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+li {
+  padding: 5px;
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 25px;
+  padding: 5px;
+}
+
+img {
+  width: 25%;
+}
+
+.btn {
+  border: 1px solid orange;
+  padding: 8px;
+  margin: 20px 5px 5px 5px;
+}
+
+/* Responsive */
+
+@media screen and (max-width:500px){
+
+  .container {
+      padding: 50px 0;
+  }
+
+  .container {
+      border-radius: 0.5rem;
+  }
+
+  form {
+      margin-top: 100px;
+  }
+}
+
+@media screen and (max-width:800px){
+
+  .container {
+      width: 80%;
+  }
+
+  form {
+      margin-top: 100px;
+  }
+
+  img {
+      width: 35%;
+  }
+
+  h1 {
+      font-size: 20px;
+  }
+}
+
+@media screen and (max-width:1600px){
+
+  .container {
+      width: 76%;
+  }
+
+  form {
+      margin-top: 100px;
+  }
+
+  h1 {
+      font-size: 27px;
+  }
+
+  li, button {
+      font-size: 19px;
+  }
+}
+

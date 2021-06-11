@@ -17,7 +17,7 @@ export class AdminsService {
 
   options = {
     headers: {
-      'Authorization': `${environment.token}`
+      'Authorization': this.token
     }
   }
 
@@ -26,6 +26,13 @@ export class AdminsService {
     .then( res =>{
       return res.data;
     })
+  }
+
+  updateAdmin(id: string, admin: Admin): Promise<Admin[]> {
+    return axios.patch(apiUrl + '/editself/' + id , admin, this.options)
+      .then(res => {
+        return res.data;
+      })
   }
 
 

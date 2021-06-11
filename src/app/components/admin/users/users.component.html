@@ -8,7 +8,7 @@
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
 
-                    <p class="mb-8" id="span-section1">Create new user</p>
+                    <p class="mb-8" id="span-section1">Create new user:</p>
 
                     <div class="grid grid-cols-6 gap-6">
 
@@ -32,13 +32,6 @@
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
-<!--                         <div class="col-span-6 sm:col-span-3">
-                            <label class="block text-sm font-medium text-gray-700">Role</label>
-                            <select 
-                                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                <option value="user">User</option>
-                            </select>
-                        </div> -->
 
                         <div class="col-span-6">
                             <label for="street_address" class="block text-sm font-medium text-gray-700">Tags</label>
@@ -48,19 +41,27 @@
                                     class="mt-1 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md" />
                                 <label> {{tag.name}}</label><br>
                             </p>
-                        </div>                              
-<br>
+                        </div>
+
+
                     </div>
-                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <button type="submit" (click)="addUser()"
-                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Add User
-                        </button>
-                    </div>
+                </div>
+                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <button type="submit" (click)="addUser()"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Add User
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+<!--   Send multiple emails  -->
+
+
 
 <div class="mt-10 sm:mt-0 ">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section1">
@@ -69,127 +70,134 @@
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
 
-                    <p class="mb-4" id="span-section1">Create multiples emails (desactivado)</p>
+                    <p class="mb-8" id="span-section1">Create multiples emails:</p>
 
-                    <div class="grid grid-cols-6">          
-                        <br>
-                        <div class="col-span-6">
+                    <div class="grid grid-cols-6 gap-6">
 
-                                <label id="upload-button" class="mb-8 w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue">
-                                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        <div class="grid grid-cols-6">
+                            <br>
+                            <div class="col-span-6">
+
+                                <label id="upload-button"
+                                    class="mb-8 w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue">
+                                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                     </svg>
                                     <span class="mt-2 text-base leading-normal">Select a file</span>
-                                    <input
-                                    type="file" id="Json2" class="hidden" />
+                                    <input (change)="onFileChange($event)" type="file" id="Json2" class="hidden" />
                                 </label>
 
+                            </div>
                         </div>
+
                     </div>
-                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <button type="submit" 
-                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Añadir correos
-                        </button>
-                    </div>
+                </div>
+                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <button type="submit" (click)="addAllUsers()"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Add emails
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 
 
 
 
-    <!-- List of users with edit and delete methods -->
 
-    <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section2">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                    User
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                    Email
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                    Rol
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                    Tags
-                                </th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            <tr *ngFor="let user of users" routerLink="/users">
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="ml-4">
-                                            <span class="text-sm font-medium text-gray-900">
-                                                {{user.name}}
-                                                <input type="text" *ngIf="false" [(ngModel)]="user.name" />
-                                            </span>
-                                            <input type="text" [(ngModel)]="user.name" *ngIf="user.editable"
-                                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span class="text-sm text-gray-900">
-                                        {{user.email}}
-                                        <input type="text" *ngIf="false" [(ngModel)]="user.email" />
-                                    </span>
-                                    <input type="text" [(ngModel)]="user.email" *ngIf="user.editable"
-                                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        user
+<!-- List of users with edit and delete methods -->
 
-                                    </span>
-
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <span *ngFor="let tag of user.tags">
-                                        <span class="px-2 inline-flex text-xs leading-5 ">
-                                            <label>{{tag.name}}</label>
-                                            <input type="checkbox" *ngIf="user.editable"
-                                                [(ngModel)]="tag.checked" /><br>
-
+<div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 " id="section2">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                User
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                Email
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                Rol
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                Tags
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr *ngFor="let user of users" routerLink="/users">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="ml-4">
+                                        <span class="text-sm font-medium text-gray-900">
+                                            {{user.name}}
+                                            <input type="text" *ngIf="false" [(ngModel)]="user.name" />
                                         </span>
+                                        <input type="text" [(ngModel)]="user.name" *ngIf="user.editable"
+                                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="text-sm text-gray-900">
+                                    {{user.email}}
+                                    <input type="text" *ngIf="false" [(ngModel)]="user.email" />
+                                </span>
+                                <input type="text" [(ngModel)]="user.email" *ngIf="user.editable"
+                                    class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span
+                                    class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    user
+
+                                </span>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span *ngFor="let tag of user.tags">
+                                    <span class="px-2 inline-flex text-xs leading-5 ">
+                                        <label>{{tag.name}}</label>
+                                        <input type="checkbox" *ngIf="user.editable" [(ngModel)]="tag.checked" /><br>
+
                                     </span>
-                                </td>
+                                </span>
+                            </td>
 
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a *ngIf="!user.editable" class="text-indigo-600 hover:text-indigo-900"
-                                        style="cursor: pointer" (click)="editState(user)"> Edit </a>
-                                    <a *ngIf="!user.editable">/</a>
-                                    <a style="cursor: pointer;" *ngIf="!user.editable"
-                                        class="text-indigo-600 hover:text-indigo-900" (click)="deleteUser(user._id)">
-                                        Delete
-                                    </a>
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                <a *ngIf="!user.editable" class="text-indigo-600 hover:text-indigo-900"
+                                    style="cursor: pointer" (click)="editState(user)"> Edit </a>
+                                <a *ngIf="!user.editable">/</a>
+                                <a style="cursor: pointer;" *ngIf="!user.editable"
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteUser(user._id)">
+                                    Delete
+                                </a>
 
-                                    <a *ngIf="user.editable " style="cursor: pointer"
-                                        class="text-indigo-600 hover:text-indigo-900" (click)="updateUser(user)"> OK</a>
+                                <a *ngIf="user.editable " style="cursor: pointer"
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="updateUser(user)"> OK</a>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>

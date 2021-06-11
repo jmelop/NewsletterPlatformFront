@@ -27,7 +27,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminInfo = this.cookieService.get("currentAdminId");
-    this.newsService.getAllNews(this.adminInfo).then(u => { this.news = u });
+    this.newsService.getAllNews(this.adminInfo).then(u => { this.news = u});
     this.tagsService.getAllTags(this.adminInfo).then(u => { this.tags = u });
   }
 
@@ -56,9 +56,11 @@ export class NewsComponent implements OnInit {
 
   addNew() {
     this.newNew.owner = this.adminInfo;
-    this.newNew.tags = this.tags.filter(u => u.checked == true);
+    let tags = this.tags.filter(u => u.checked == true);
+    this.newNew.tags = tags;
     this.newsService.postNew(this.newNew).then(u => {
       if (typeof u !== "undefined") {
+        u.tags = tags;
         this.news.push(u);
         this.newNew = { title: '', body: '', link: '', owner: this.adminInfo, tags: [] }
       }
@@ -77,7 +79,7 @@ export class NewsComponent implements OnInit {
   updateNews(notice: New) {
     notice.editable = false;
     notice.tags = notice.tags.filter(u => u.checked && u.checked == true);
-
+    
     this.newsService.updateNew(notice._id, notice);
   }
 

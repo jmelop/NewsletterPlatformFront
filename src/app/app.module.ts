@@ -42,6 +42,7 @@ import { HomeComponent } from './components/admin/home/home.component';
     RegisterUserComponent,
     LoginUserComponent,
     HomeComponent
+
   ],
   imports: [
     BrowserModule,

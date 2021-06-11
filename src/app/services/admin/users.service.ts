@@ -17,7 +17,7 @@ export class UsersService {
 
   options = {
     headers: {
-      'Authorization': `${environment.token}`
+      'Authorization': this.token
     }
   }
 
