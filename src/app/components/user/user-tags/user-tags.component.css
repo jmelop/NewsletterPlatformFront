@@ -65,5 +65,14 @@ li {
     form {
         margin-top: 100px;
     }
+
+    h5 {
+        font-size: 18px;
+
+    }
+
+    li {
+        font-size: 19px;
+    }
 }
 

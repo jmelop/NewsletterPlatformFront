@@ -7,6 +7,10 @@
     form {
         margin-top: 100px;
     }
+
+    a, button {
+        font-size: 19px;
+    }
 }
 
 @media screen and (max-width:639px){

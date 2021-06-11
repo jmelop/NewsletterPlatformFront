@@ -75,7 +75,7 @@ img {
 @media screen and (max-width:1600px){
 
     .container {
-        width: 60%;
+        width: 76%;
     }
 
     form {
@@ -87,7 +87,7 @@ img {
     }
 
     li, button {
-        font-size: 17px;
+        font-size: 19px;
     }
 }
 

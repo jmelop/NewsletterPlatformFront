@@ -60,6 +60,7 @@ h1, h2 {
 @media screen and (max-width:800px){
 
     .sub-container{
-        width: 67%;
+        width: 86%;
+        font-size: 19px;
     }
 }
