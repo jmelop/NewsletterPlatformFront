@@ -29,9 +29,7 @@ export class HomeComponent implements OnInit {
     this.adminsService.getById(this.idUser).then(u => {
       this.adminInfo = u;
       this.formatedDate = this.adminInfo.senddate;
-      this.formatedDate = this.formatedDate.split('?').join('')
-      this.formatedDate = this.formatedDate.split('0').join('Hour:')
-      this.formatedDate = this.formatedDate.split('*').join('Day:')
+
 
       console.log(this.adminInfo)
     })
@@ -47,6 +45,7 @@ export class HomeComponent implements OnInit {
     }
     this.cronData = '0 ' + this.emptyHour + ' ?' + ' * ' + this.emptyDay;
     this.adminInfo.senddate = this.cronData;
+    this.formatedDate = this.cronData;
     this.adminsService.updateAdmin(this.adminInfo._id, this.adminInfo).then(u => {
     })
   }

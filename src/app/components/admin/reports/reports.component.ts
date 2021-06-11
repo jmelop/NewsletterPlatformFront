@@ -128,7 +128,10 @@ export class ReportsComponent implements OnInit {
 
     this.adminInfo = this.cookieService.get("currentAdminId");
     this.userService.getAllUsers(this.adminInfo).then(u => this.users = u).then(() => this.calculateNumberTypeTags());
-    this.tagService.getAllTags(this.adminInfo).then(u => this.tags = u);
+    this.tagService.getAllTags(this.adminInfo).then(u => {
+      this.tags = u
+      this.checkEmpty();
+    });
 
   }
 
@@ -155,6 +158,14 @@ export class ReportsComponent implements OnInit {
       this.pieChartData.push(u.amount)
     })
     
+  }
+
+  checkEmpty(){
+    if(this.users.length == 0){
+      this.pieChartData.push(3)
+      this.pieChartLabels.push('NO DATA')
+
+    }
   }
 
   // events

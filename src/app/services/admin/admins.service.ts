@@ -29,7 +29,7 @@ export class AdminsService {
   }
 
   updateAdmin(id: string, admin: Admin): Promise<Admin[]> {
-    return axios.patch(apiUrl + '/editself/' + id , admin, this.options)
+    return axios.patch(apiUrl + 'editself/' + id , admin, this.options)
       .then(res => {
         return res.data;
       })
