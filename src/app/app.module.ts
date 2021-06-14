@@ -21,6 +21,8 @@ import { RegisterUserComponent } from './components/landing/register-user/regist
 import { RegisterAdminComponent } from './components/landing/register-admin/register.component';
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 import { HomeComponent } from './components/admin/home/home.component';
+import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
+
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { HomeComponent } from './components/admin/home/home.component';
     FormsModule,
     ChartsModule,
     CKEditorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCSVtoJSONModule
   ],
   providers: [],
   bootstrap: [AppComponent]

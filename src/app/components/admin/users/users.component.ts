@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Tag } from 'src/app/models/admin/tag.model';
+import { AdminsService } from 'src/app/services/admin/admins.service';
 import { User } from '../../../models/admin/user.model';
 import { TagsService } from '../../../services/admin/tags.service';
 import { UsersService } from '../../../services/admin/users.service';
@@ -18,14 +19,24 @@ export class UsersComponent implements OnInit {
   tags: Tag[] = [];
   users: User[] = [];
   testList = [];
+  testListCSV = [];
 
-  constructor(private userServices: UsersService, private tagsServices: TagsService, private cookieService: CookieService) { }
+  convertedObj:any = "";
+  convert(objArray) {
+    console.log(objArray.result);
+    this.testListCSV = objArray.result;
+  }
+  onError(err) {
+    this.convertedObj = err
+    console.log(err);
+  }
+
+  constructor(private userServices: UsersService, private tagsServices: TagsService, private cookieService: CookieService, private adminsService: AdminsService) { }
 
   ngOnInit(): void {
     this.adminInfo = this.cookieService.get("currentAdminId");
     this.userServices.getAllUsers(this.adminInfo).then(u => { this.users = u, console.log(u) });
     this.tagsServices.getAllTags(this.adminInfo).then(u => { this.tags = u, console.log(u) });
-
   }
 
   onFileChange(event) {
@@ -41,9 +52,22 @@ export class UsersComponent implements OnInit {
 
   }
 
-  addAllUsers() {
+  addAllUsersJSON() {
     this.testList.map(u => {
       u.tags = this.tags;
+      u.owner = this.adminInfo;
+      this.userServices.post(u).then(res => {
+        if (typeof res !== 'undefined') {
+          this.users.push(u);
+        }
+      }).catch((err) => console.log(err))
+    })
+  }
+
+  addAllUsersCSV() {
+    this.testListCSV.map(u => {
+      u.tags = this.tags;
+      u.owner = this.adminInfo;
       this.userServices.post(u).then(res => {
         if (typeof res !== 'undefined') {
           this.users.push(u);
@@ -72,6 +96,10 @@ export class UsersComponent implements OnInit {
       }
     })
   }
+
+
+
+
 
   addUser() {
     this.newUser.owner = this.adminInfo;
@@ -115,6 +143,6 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  
+
 
 }
