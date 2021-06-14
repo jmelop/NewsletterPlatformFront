@@ -94,7 +94,7 @@ export class AuthenticationService {
   }
 
   forgotPassword(email: string) {
-    return axios.post(`${apiUrl}forgot`, email)
+    return axios.post(`${apiUrl}forgot`, {email: email})
     .then(res => {
       console.log(res)
       return res
