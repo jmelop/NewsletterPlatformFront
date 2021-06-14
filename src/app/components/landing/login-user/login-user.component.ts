@@ -12,8 +12,9 @@ import { AuthenticationService } from 'src/app/services/user/authentication.serv
 export class LoginUserComponent implements OnInit {
 
   logUser: LogUser = {email: '', password: ''};
-  
   errorMessage: string;
+  email: string;
+  forgotErrorMessage: string;
 
 
   constructor(
@@ -37,6 +38,16 @@ export class LoginUserComponent implements OnInit {
     })
     .catch( err => {
       this.errorMessage = err.response.data
+    })
+  }
+
+  forgotPassword() {
+    this.authenticationService.forgotPassword(this.email)
+    .then(res => {
+      this.email = '';
+    })
+    .catch(err => {
+      this.forgotErrorMessage = err.response.data
     })
   }
 }

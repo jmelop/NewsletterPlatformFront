@@ -10,8 +10,33 @@
                 <input [(ngModel)]="logUser.email" type="email" placeholder="* Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
                 <input [(ngModel)]="logUser.password" type="password" placeholder="* Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
                 <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div> 
-                <!-- <a href="#">¿Has olvidado tu contraseña?</a> -->
-                <button (click)="login()" type="button" class="btn" >
+                <button type="button" class="password-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  ¿Has olvidado tu contraseña?
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Recupera tu contraseña</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p class="body-popup">Introduce tu correo electrónico</p>
+                        <form>
+                          <input [(ngModel)]="email" type="email" placeholder="Email" name="email">
+                        </form>
+                        <div class="error" *ngIf="forgotErrorMessage"><p>{{forgotErrorMessage}}</p></div> 
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-send btn-warning" (click)="forgotPassword()">Enviar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <button (click)="login()" type="button" class="btn login-btn" >
                   <i class="spinner"></i>
                   <span class="state">Log in</span>
                 </button>

@@ -93,6 +93,23 @@ export class AuthenticationService {
     });
   }
 
+  forgotPassword(email: string) {
+    return axios.post(`${apiUrl}forgot`, email)
+    .then(res => {
+      console.log(res)
+      return res
+    })
+    .catch((err) => {
+      console.log("el emaiiiil", email)
+      console.log('el errorrrrr', err.message)
+
+      if (err.response.status === 404) {
+        err.response.data = "El email introducido no existe";
+     }
+      throw err
+    });
+  }
+
   logOut(): void {
     this.cookieService.delete('token_access');
     this.cookieService.delete('currentUserId');
