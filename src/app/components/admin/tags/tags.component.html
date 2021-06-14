@@ -8,7 +8,7 @@
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
 
-                    <p class="mb-8" id="span-section1">Add new Tag:</p>
+                    <p class="mb-8" id="span-section1">Añadir nuevo tag:</p>
 
                     <div class="grid grid-cols-6 gap-6">
 
@@ -25,7 +25,7 @@
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                     <button type="submit" (click)="addTag()"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Add New
+                        Añadir tag
                     </button>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                                 Tag:
                             </th>
                             <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
+                                <span class="sr-only">Editar</span>
                             </th>
                         </tr>
                     </thead>
@@ -65,10 +65,10 @@
                             </td>
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a style="cursor: pointer" *ngIf="!tag.editable " class="text-indigo-600 hover:text-indigo-900" (click)="editState(tag)"> Edit</a>
+                                <a style="cursor: pointer" *ngIf="!tag.editable " class="text-indigo-600 hover:text-indigo-900" (click)="editState(tag)"> Editar</a>
                                 <a *ngIf="!tag.editable">/</a>
                                 <a style="cursor: pointer" *ngIf="!tag.editable"
-                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteTag(tag._id)">Delete
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteTag(tag._id)">Eliminar
                                 </a>
 
                                 <a *ngIf="tag.editable " style="cursor: pointer"

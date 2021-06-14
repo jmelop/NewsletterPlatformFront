@@ -8,7 +8,7 @@
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
 
-                    <p class="mb-8" id="span-section1">Add new news:</p>
+                    <p class="mb-8" id="span-section1">Añadir nueva noticia:</p>
 
                     <div class="grid grid-cols-6 gap-6">
 
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-6">
-                            <label for="email_address" class="block text-sm font-medium text-gray-700">Body: </label>
+                            <label for="email_address" class="block text-sm font-medium text-gray-700">Cuerpo: </label>
 
 <!--                             <ckeditor [editor]="editor" placeholder="Enter your body" spellcheck="false" id="editor1" name="editor1"
                                 [(ngModel)]="newNew.body"
@@ -58,7 +58,7 @@
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                     <button type="submit" (click)="addNew()"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Add New
+                        Añadir noticia
                     </button>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                                 Tags
                             </th>
                             <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
+                                <span class="sr-only">Editar</span>
                             </th>
                         </tr>
                     </thead>
@@ -137,11 +137,11 @@
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a style="cursor: pointer" *ngIf="!new.editable "
-                                    class="text-indigo-600 hover:text-indigo-900" (click)="editState(new) " (click)="ngAfterViewChecked()" > Edit</a>
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="editState(new) " (click)="ngAfterViewChecked()" > Editar</a>
                                 <a *ngIf="!new.editable">/</a>
 
                                 <a style="cursor: pointer" *ngIf="!new.editable"
-                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteNew(new._id)">Delete
+                                    class="text-indigo-600 hover:text-indigo-900" (click)="deleteNew(new._id)">Eliminar
                                 </a>
 
                                 <a *ngIf="new.editable " style="cursor: pointer"

@@ -21,7 +21,7 @@
             </ul>
             <div class="btn-container">
                 <button (click)="updateAdmin()"
-                    class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Update</button>
+                    class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Actualizar</button>
                 <p *ngIf='success'>Cambios realizados con exito!</p>
             </div>
         </div>
@@ -53,13 +53,13 @@
                         <hr>
                     </div>
 
-                    <label>Hour:</label>
+                    <label>Hora:</label>
                     <select [(ngModel)]="emptyHour" class="rounded-lg border-2 border-gray-500 p-1.5 outline-none"
                         (click)="updateDate()">
                         <option *ngFor="let hora of horas" value="{{hora}}">{{hora}}</option>
                     </select>
 
-                    <label id="text-day">Day:</label>
+                    <label id="text-day">Día:</label>
                     <select [(ngModel)]="emptyDay" class="rounded-lg border-2 border-gray-500 p-1.5 outline-none"
                         id="select-day">
                         <option *ngFor="let dia of dias" value="{{dia}}">{{dia}}</option>
@@ -70,7 +70,7 @@
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button type="submit" (click)="getCron()"
                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Modify Dates
+                    Modificar fecha
                 </button>
             </div>
         </div>

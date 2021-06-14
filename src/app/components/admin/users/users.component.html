@@ -8,13 +8,13 @@
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
 
-                    <p class="mb-8" id="span-section1">Create new user:</p>
+                    <p class="mb-8" id="span-section1">Crear nuevo usuario:</p>
 
                     <div class="grid grid-cols-6 gap-6">
 
                         <div class="col-span-6 sm:col-span-3">
 
-                            <label for="first_name" class="block text-sm font-medium text-gray-700">Name:</label>
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">Nombre:</label>
                             <input [(ngModel)]="newUser.name" autocomplete="given-name"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="col-span-6 sm:col-span-4">
-                            <label for="email_address" class="block text-sm font-medium text-gray-700">Password</label>
+                            <label for="email_address" class="block text-sm font-medium text-gray-700">Contraseña</label>
                             <input type="password" name="password" id="password" [(ngModel)]="newUser.password"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
@@ -49,7 +49,7 @@
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                     <button type="submit" (click)="addUser()"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Add User
+                        Añadir usuario
                     </button>
                 </div>
 
@@ -71,7 +71,7 @@
             <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
 
-                    <p class="mb-8" id="span-section1">Create multiples emails:</p>
+                    <p class="mb-8" id="span-section1">Crear multiples emails:</p>
 
                     <div class="grid grid-cols-6 gap-6">
 
@@ -86,7 +86,7 @@
                                         <path
                                             d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                     </svg>
-                                    <span class="mt-2 text-base leading-normal">Select a file</span>
+                                    <span class="mt-2 text-base leading-normal">Elija un fichero</span>
                                     <input (change)="onFileChange($event)" type="file" id="Json2" class="hidden" />
                                 </label>
 
@@ -111,7 +111,7 @@
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                     <button type="submit" (click)="addAllUsersCSV()"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Add emails
+                        Añadir emails
                     </button>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                         <tr>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                User
+                                Usuario
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
@@ -151,7 +151,7 @@
                                 Tags
                             </th>
                             <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Edit</span>
+                                <span class="sr-only">Editar</span>
                             </th>
                         </tr>
                     </thead>
@@ -180,7 +180,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <span
                                     class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                    user
+                                    usuario
 
                                 </span>
 
@@ -197,11 +197,11 @@
 
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a *ngIf="!user.editable" class="text-indigo-600 hover:text-indigo-900"
-                                    style="cursor: pointer" (click)="editState(user)"> Edit </a>
+                                    style="cursor: pointer" (click)="editState(user)"> Editar </a>
                                 <a *ngIf="!user.editable">/</a>
                                 <a style="cursor: pointer;" *ngIf="!user.editable"
                                     class="text-indigo-600 hover:text-indigo-900" (click)="deleteUser(user._id)">
-                                    Delete
+                                    Eliminar
                                 </a>
 
                                 <a *ngIf="user.editable " style="cursor: pointer"
