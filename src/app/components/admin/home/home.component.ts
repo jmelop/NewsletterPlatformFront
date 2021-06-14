@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     if (this.emptyDay == 'NONE') {
       this.emptyDay = '?'
     }
-    this.cronData = '0 ' + this.emptyHour + ' ?' + ' * ' + this.emptyDay;
+    this.cronData = '0 ' + this.emptyHour + ' * ' + this.emptyDay;
     this.adminInfo.senddate = this.cronData;
     this.formatedDate = this.cronData;
     this.adminsService.updateAdmin(this.adminInfo._id, this.adminInfo).then(u => {

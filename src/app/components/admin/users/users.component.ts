@@ -5,6 +5,7 @@ import { AdminsService } from 'src/app/services/admin/admins.service';
 import { User } from '../../../models/admin/user.model';
 import { TagsService } from '../../../services/admin/tags.service';
 import { UsersService } from '../../../services/admin/users.service';
+import { Papa } from 'ngx-papaparse';
 
 @Component({
   selector: 'app-users',
@@ -21,22 +22,51 @@ export class UsersComponent implements OnInit {
   testList = [];
   testListCSV = [];
 
-  convertedObj:any = "";
+  convertedObj: any = "";
   convert(objArray) {
     console.log(objArray.result);
     this.testListCSV = objArray.result;
   }
+
   onError(err) {
     this.convertedObj = err
     console.log(err);
   }
 
-  constructor(private userServices: UsersService, private tagsServices: TagsService, private cookieService: CookieService, private adminsService: AdminsService) { }
+  constructor(
+    private userServices: UsersService,
+    private tagsServices: TagsService,
+    private cookieService: CookieService,
+    private papaParse: Papa) { }
 
   ngOnInit(): void {
     this.adminInfo = this.cookieService.get("currentAdminId");
     this.userServices.getAllUsers(this.adminInfo).then(u => { this.users = u, console.log(u) });
     this.tagsServices.getAllTags(this.adminInfo).then(u => { this.tags = u, console.log(u) });
+  }
+
+
+  generateRandomPassword() {
+    return Math.random().toString(36).slice(2)
+  }
+
+  parsFile(files: FileList): void {
+    const file: File = files.item(0);
+    const reader: FileReader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = e => {
+      const csv = reader.result;
+      this.papaParse.parse(csv as string, {
+        header: true, // gives us an array of objects
+        dynamicTyping: true,
+        complete: (results) => {
+          results.data.map(u => {
+            this.testListCSV.push(u)
+          })
+          console.log(this.testListCSV);
+        }
+      });
+    }
   }
 
   onFileChange(event) {
@@ -68,6 +98,7 @@ export class UsersComponent implements OnInit {
     this.testListCSV.map(u => {
       u.tags = this.tags;
       u.owner = this.adminInfo;
+      u.password = this.generateRandomPassword();
       this.userServices.post(u).then(res => {
         if (typeof res !== 'undefined') {
           this.users.push(u);
@@ -97,10 +128,6 @@ export class UsersComponent implements OnInit {
     })
   }
 
-
-
-
-
   addUser() {
     this.newUser.owner = this.adminInfo;
     this.newUser.tags = this.tags.filter(u => u.checked == true);
@@ -120,6 +147,7 @@ export class UsersComponent implements OnInit {
     }).catch((err) => console.log(err))
   }
 
+
   deleteUser(id: string) {
     this.userServices.deleteUser(id)
       .then(() => {
@@ -127,6 +155,7 @@ export class UsersComponent implements OnInit {
         this.users = userFiltered;
       }).catch((err) => console.log(err))
   }
+
 
   updateUser(user: User) {
     let tempTags = user.tags.filter(u => u.checked == true);
