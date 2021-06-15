@@ -18,7 +18,7 @@ export class LoginUserComponent implements OnInit {
 
 
   constructor(
-    private authenticationService: AuthenticationService , 
+    private authenticationService: AuthenticationService, 
     private router: Router, 
     private cookieService: CookieService
   ) { }
@@ -42,7 +42,7 @@ export class LoginUserComponent implements OnInit {
   }
 
   forgotPassword() {
-    this.authenticationService.forgotPassword(this.email)
+    this.authenticationService.forgotPasswordUser(this.email)
     .then(res => {
       this.email = '';
     })

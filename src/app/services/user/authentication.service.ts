@@ -93,21 +93,48 @@ export class AuthenticationService {
     });
   }
 
-  forgotPassword(email: string) {
+  forgotPasswordUser(email: string) {
     return axios.post(`${apiUrl}forgot`, {email: email})
     .then(res => {
-      console.log(res)
       return res
     })
     .catch((err) => {
-      console.log("el emaiiiil", email)
-      console.log('el errorrrrr', err.message)
-
       if (err.response.status === 404) {
         err.response.data = "El email introducido no existe";
      }
       throw err
     });
+  }
+
+  forgotPasswordAdmin(email: string) {
+    return axios.post(`${apiUrl}admin/forgot`, {email: email})
+    .then(res => {
+      return res
+    })
+    .catch((err) => {
+      if (err.response.status === 404) {
+        err.response.data = "El email introducido no existe";
+     }
+      throw err
+    });
+  }
+
+  recoverPasswordUser(token, password) {
+    return axios.post(`${apiUrl}recover`, {token: token, password: password})
+    .then(res =>{
+      return res
+    })
+    .catch((err) => {
+      throw err})
+  }
+
+  recoverPasswordAdmin(token, password) {
+    return axios.post(`${apiUrl}admin/recover`, {token: token, password: password})
+    .then(res =>{
+      return res
+    })
+    .catch((err) => {
+      throw err})
   }
 
   logOut(): void {
