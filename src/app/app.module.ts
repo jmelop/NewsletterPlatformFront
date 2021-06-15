@@ -22,8 +22,7 @@ import { RegisterAdminComponent } from './components/landing/register-admin/regi
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
-
-
+import { RecoverPasswordComponent } from './components/landing/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +42,8 @@ import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
     UserNavbarComponent,
     RegisterUserComponent,
     LoginUserComponent,
-    HomeComponent
-
+    HomeComponent,
+    RecoverPasswordComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ import { UserProfileComponent } from '../app/components/user/user-profile/user-p
 import { RegisterUserComponent } from './components/landing/register-user/register-user.component';
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 import { HomeComponent } from './components/admin/home/home.component';
+import { RecoverPasswordComponent } from './components/landing/recover-password/recover-password.component';
 
 const routes: Routes = [
   {
@@ -84,8 +85,11 @@ const routes: Routes = [
     path: 'user-profile',
     component: UserProfileComponent,
     canActivate: [KeeperGuard]
-
-  }
+  },
+  {
+    path: 'recover/:token',
+    component: RecoverPasswordComponent
+  },
 ];
 
 
