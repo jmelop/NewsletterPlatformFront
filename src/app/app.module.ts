@@ -47,7 +47,6 @@ import { RecoverPasswordComponent } from './components/landing/recover-password/
     HomeComponent,
     NewsletterComponent,
     RecoverPasswordComponent
-    
   ],
   imports: [
     BrowserModule,
