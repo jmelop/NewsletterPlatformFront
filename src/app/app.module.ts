@@ -22,8 +22,6 @@ import { RegisterAdminComponent } from './components/landing/register-admin/regi
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import { RecoverPasswordComponent } from './components/landing/recover-password/recover-password.component';
-import { RecoverAdminComponent } from './components/landing/recover-admin/recover-admin.component';
-
 
 @NgModule({
   declarations: [
@@ -45,8 +43,6 @@ import { RecoverAdminComponent } from './components/landing/recover-admin/recove
     LoginUserComponent,
     HomeComponent,
     RecoverPasswordComponent,
-    RecoverAdminComponent
-
   ],
   imports: [
     BrowserModule,

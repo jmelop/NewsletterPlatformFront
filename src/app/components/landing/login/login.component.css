@@ -85,6 +85,15 @@ a, .password-btn {
     color: white;
 }
 
+.success {
+    background-color: rgb(206, 230, 170);
+    color: rgb(109, 108, 108);
+}
+
+.success .modal-header {
+    border-bottom: none;
+}
+
 .title {
     color: #444;
     font-size: 1.2em;

@@ -15,6 +15,7 @@ export class LoginUserComponent implements OnInit {
   errorMessage: string;
   email: string;
   forgotErrorMessage: string;
+  successSendMessage: string;
 
 
   constructor(
@@ -45,10 +46,15 @@ export class LoginUserComponent implements OnInit {
     this.authenticationService.forgotPasswordUser(this.email)
     .then(res => {
       this.email = '';
+      this.successSendMessage = '¡Mensaje enviado con éxito!'
     })
     .catch(err => {
       this.forgotErrorMessage = err.response.data
     })
+  }
+
+  setSuccessMessage() {
+    this.successSendMessage = null;
   }
 }
 

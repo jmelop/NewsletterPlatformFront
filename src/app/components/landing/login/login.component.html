@@ -10,13 +10,13 @@
                 <input [(ngModel)]="logAdmin.email" type="email" placeholder="* Email" name="email" autofocus [ngModelOptions]="{ standalone: true }"/>
                 <input [(ngModel)]="logAdmin.password" type="password" placeholder="* Contraseña" name="password" [ngModelOptions]="{ standalone: true }" />
                 <div class="error" *ngIf="errorMessage"><p>{{errorMessage}}</p></div> 
-                <button type="button" class="password-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="password-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="setSuccessMessage()">
                   ¿Has olvidado tu contraseña?
                 </button>
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div *ngIf='!successSendMessage' class="modal-content">
                       <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Recupera tu contraseña</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -31,11 +31,20 @@
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <div>
-                          <button type="button" class="btn btn-send btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="forgotPassword()">
+                          <button type="button" class="btn btn-send btn-warning" data-bs-toggle="modal"  (click)="forgotPassword()">
                             Enviar
                           </button>
                         </div>
                       </div>
+                    </div>
+                    <div *ngIf='successSendMessage' class="modal-content success">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{successSendMessage}}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Comprueba tu bandeja de entrada</p>
+                      </div>    
                     </div>
                   </div>
                 </div>
