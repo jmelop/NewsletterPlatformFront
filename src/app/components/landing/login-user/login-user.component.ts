@@ -12,12 +12,14 @@ import { AuthenticationService } from 'src/app/services/user/authentication.serv
 export class LoginUserComponent implements OnInit {
 
   logUser: LogUser = {email: '', password: ''};
-  
   errorMessage: string;
+  email: string;
+  forgotErrorMessage: string;
+  successSendMessage: string;
 
 
   constructor(
-    private authenticationService: AuthenticationService , 
+    private authenticationService: AuthenticationService, 
     private router: Router, 
     private cookieService: CookieService
   ) { }
@@ -38,6 +40,21 @@ export class LoginUserComponent implements OnInit {
     .catch( err => {
       this.errorMessage = err.response.data
     })
+  }
+
+  forgotPassword() {
+    this.authenticationService.forgotPasswordUser(this.email)
+    .then(res => {
+      this.email = '';
+      this.successSendMessage = '¡Mensaje enviado con éxito!'
+    })
+    .catch(err => {
+      this.forgotErrorMessage = err.response.data
+    })
+  }
+
+  setSuccessMessage() {
+    this.successSendMessage = null;
   }
 }
 

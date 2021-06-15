@@ -93,6 +93,50 @@ export class AuthenticationService {
     });
   }
 
+  forgotPasswordUser(email: string) {
+    return axios.post(`${apiUrl}forgot`, {email: email})
+    .then(res => {
+      return res
+    })
+    .catch((err) => {
+      if (err.response.status === 404) {
+        err.response.data = "El email introducido no existe";
+     }
+      throw err
+    });
+  }
+
+  forgotPasswordAdmin(email: string) {
+    return axios.post(`${apiUrl}admin/forgot`, {email: email})
+    .then(res => {
+      return res
+    })
+    .catch((err) => {
+      if (err.response.status === 404) {
+        err.response.data = "El email introducido no existe";
+     }
+      throw err
+    });
+  }
+
+  recoverPasswordUser(token, password) {
+    return axios.post(`${apiUrl}recover`, {token: token, password: password})
+    .then(res =>{
+      return res
+    })
+    .catch((err) => {
+      throw err})
+  }
+
+  recoverPasswordAdmin(token, password) {
+    return axios.post(`${apiUrl}admin/recover`, {token: token, password: password})
+    .then(res =>{
+      return res
+    })
+    .catch((err) => {
+      throw err})
+  }
+
   logOut(): void {
     this.cookieService.delete('token_access');
     this.cookieService.delete('currentUserId');

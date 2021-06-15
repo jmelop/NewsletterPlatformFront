@@ -24,8 +24,7 @@ import { HomeComponent } from './components/admin/home/home.component';
 import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
 import { NewsletterComponent } from './components/admin/newsletter/newsletter.component';
 import { ColorPickerModule } from 'ngx-color-picker';
-
-
+import { RecoverPasswordComponent } from './components/landing/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +45,9 @@ import { ColorPickerModule } from 'ngx-color-picker';
     RegisterUserComponent,
     LoginUserComponent,
     HomeComponent,
-    NewsletterComponent
-
+    NewsletterComponent,
+    RecoverPasswordComponent
+    
   ],
   imports: [
     BrowserModule,

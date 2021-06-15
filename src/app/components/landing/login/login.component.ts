@@ -12,8 +12,11 @@ import { CookieService } from 'ngx-cookie-service'
 export class LoginComponent implements OnInit {
 
   logAdmin: LogUser = {email: '', password: ''};
-  
   errorMessage: string;
+  email: string;
+  forgotErrorMessage: string;
+  successSendMessage: string;
+
 
   constructor(
     private authenticationService: AuthenticationService , 
@@ -38,6 +41,21 @@ export class LoginComponent implements OnInit {
     .catch( err => {
       this.errorMessage = err.response.data
     })
+  }
+
+  forgotPassword() {
+    this.authenticationService.forgotPasswordAdmin(this.email)
+    .then(res => {
+      this.email = '';
+      this.successSendMessage = '¡Mensaje enviado con éxito!'
+    })
+    .catch(err => {
+      this.forgotErrorMessage = err.response.data
+    })
+  }
+
+  setSuccessMessage() {
+    this.successSendMessage = null;
   }
 } 
 
