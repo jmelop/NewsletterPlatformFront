@@ -1,0 +1,453 @@
+<app-navbar></app-navbar>
+
+
+<section class="flex items-center justify-center" style="height: 250px;">
+    <div class="text-center">
+        <p class="text-xl font-medium tracking-wider text-gray-500">Personalize su newsletter</p>
+        <h2 class="mt-6 text-3xl font-bold text-gray-800 ">Edite como llegará el formato, ponga las<br> imagenes o
+            colores de su organización</h2>
+    </div>
+</section>
+
+<div class="w-full py-6">
+    <div class="flex">
+        <div class="w-1/4">
+            <div class="relative mb-2">
+                <div
+                    class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
+                    <span class="text-center text-gray-600 w-full">
+                        <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm14 8V5H5v6h14zm0 2H5v6h14v-6zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-xs text-center md:text-base">Modifique los colores</div>
+        </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2">
+                <div class="absolute flex align-center items-center align-middle content-center"
+                    style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                    <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
+                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div
+                    class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
+                    <span class="text-center text-gray-600 w-full">
+                        <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-xs text-center md:text-base">Añada la imagen de su marca (link)</div>
+        </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2">
+                <div class="absolute flex align-center items-center align-middle content-center"
+                    style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                    <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
+                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 33%;"></div>
+                    </div>
+                </div>
+
+                <div
+                    class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
+                    <span class="text-center text-gray-600 w-full">
+                        <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M9 4.58V4c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v.58a8 8 0 0 1 1.92 1.11l.5-.29a2 2 0 0 1 2.74.73l1 1.74a2 2 0 0 1-.73 2.73l-.5.29a8.06 8.06 0 0 1 0 2.22l.5.3a2 2 0 0 1 .73 2.72l-1 1.74a2 2 0 0 1-2.73.73l-.5-.3A8 8 0 0 1 15 19.43V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.58a8 8 0 0 1-1.92-1.11l-.5.29a2 2 0 0 1-2.74-.73l-1-1.74a2 2 0 0 1 .73-2.73l.5-.29a8.06 8.06 0 0 1 0-2.22l-.5-.3a2 2 0 0 1-.73-2.72l1-1.74a2 2 0 0 1 2.73-.73l.5.3A8 8 0 0 1 9 4.57zM7.88 7.64l-.54.51-1.77-1.02-1 1.74 1.76 1.01-.17.73a6.02 6.02 0 0 0 0 2.78l.17.73-1.76 1.01 1 1.74 1.77-1.02.54.51a6 6 0 0 0 2.4 1.4l.72.2V20h2v-2.04l.71-.2a6 6 0 0 0 2.41-1.4l.54-.51 1.77 1.02 1-1.74-1.76-1.01.17-.73a6.02 6.02 0 0 0 0-2.78l-.17-.73 1.76-1.01-1-1.74-1.77 1.02-.54-.51a6 6 0 0 0-2.4-1.4l-.72-.2V4h-2v2.04l-.71.2a6 6 0 0 0-2.41 1.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-xs text-center md:text-base">Modifique los textos a su gusto</div>
+        </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2">
+                <div class="absolute flex align-center items-center align-middle content-center"
+                    style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                    <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
+                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div
+                    class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
+                    <span class="text-center text-gray-600 w-full">
+                        <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            width="24" height="24">
+                            <path class="heroicon-ui"
+                                d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-xs text-center md:text-base">Finalizar</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- --------------------- -->
+
+
+
+
+
+
+
+<div class="w-full py-6">
+    <div class="flex">
+        <div class="w-1/4">
+            <div class="relative mb-2 ml-36">
+                <label for="cars">Color cabecera:</label>
+
+                <input class="text-xs w-16" [(colorPicker)]="color" [style.background]="color"
+                    (colorPickerChange)="changeColor()" [(ngModel)]="selector" />
+
+            </div>
+
+        </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2 ml-24">
+
+                <input [(ngModel)]="image"
+                    class="rounded-l-lg  border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
+                    placeholder="google.com/image" />
+                <button (click)="changeImage()"
+                    class="rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-2 uppercase border-yellow-500 border-t border-b border-r">LINK</button>
+            </div>
+
+        </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2">
+
+            </div>
+
+        </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2 ml-52">
+                <button class="bg-white p-2 rounded-lg">Guardar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Template  -->
+
+<div class="mx-96 mt-20 mb-20">
+    <div class="mx-40">
+        <div class=" bg-white px-8 py-6 rounded-xl space-y-5 m-8 ">
+
+            <!DOCTYPE html
+                PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office"
+                style="width: 100%; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; padding: 0; margin: 0;">
+
+
+
+            <body
+                style="width: 100%; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; padding: 0; margin: 0;">
+                <div class="es-wrapper-color" style="background-color: #f4f4f4;">
+
+                    <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0"
+                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; padding: 0; margin: 0; width: 100%; height: 100%; background-repeat: repeat; background-position: center top;">
+                        <tr style="border-collapse: collapse;">
+                            <td valign="top" style="padding: 0; margin: 0;">
+                                <table class="es-header" cellspacing="0" cellpadding="0" align="center" id="color-table"
+                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; table-layout: fixed !important; width: 100%; background-color: #ffa73b; background-repeat: repeat; background-position: center top;">
+                                    <tr style="border-collapse: collapse;">
+                                        <td align="center" style="padding: 0; margin: 0;">
+                                            <table class="es-header-body" cellspacing="0" cellpadding="0" align="center"
+                                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; background-color: transparent; width: 600px;">
+                                                <tr style="border-collapse: collapse;">
+                                                    <td align="left"
+                                                        style="margin: 0; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; padding-top: 20px;">
+                                                        <table width="100%" cellspacing="0" cellpadding="0"
+                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                            <tr style="border-collapse: collapse;">
+                                                                <td valign="top" align="center"
+                                                                    style="padding: 0; margin: 0; width: 580px;">
+                                                                    <table width="100%" cellspacing="0" cellpadding="0"
+                                                                        role="presentation"
+                                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td style="margin: 0; padding-left: 10px; padding-right: 10px; padding-top: 25px; padding-bottom: 25px; font-size: 0px;"
+                                                                                align="center">
+                                                                                <img id="header-image" src="https://i.imgur.com/OFEnBd2.png"
+                                                                                    alt
+                                                                                    style="display: block; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius: 4px;"
+                                                                                    class="adapt-img" width="560" />
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="es-content" cellspacing="0" cellpadding="0" align="center"
+                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; table-layout: fixed !important; width: 100%;">
+                                    <tr style="border-collapse: collapse;">
+                                        <td id="colot-td" style="padding: 0; margin: 0; background-color: #ffa73b;"
+                                            bgcolor="#ffa73b" align="center">
+                                            <table class="es-content-body"
+                                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; background-color: transparent; width: 600px;"
+                                                cellspacing="0" cellpadding="0" align="center">
+                                                <tr style="border-collapse: collapse;">
+                                                    <td align="left" style="padding: 0; margin: 0;">
+                                                        <table width="100%" cellspacing="0" cellpadding="0"
+                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                            <tr style="border-collapse: collapse;">
+                                                                <td valign="top" align="center"
+                                                                    style="padding: 0; margin: 0; width: 600px;">
+                                                                    <table
+                                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; border-spacing: 0px; background-color: #ffffff; border-radius: 4px;"
+                                                                        width="100%" cellspacing="0" cellpadding="0"
+                                                                        bgcolor="#ffffff" role="presentation">
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="center"
+                                                                                style="margin: 0; padding-bottom: 5px; padding-left: 30px; padding-right: 30px; padding-top: 35px;">
+                                                                                <h1
+                                                                                    style="margin: 0; line-height: 37px; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; font-size: 31px; font-style: normal;font-weight: normal;color: #111111;text-align: left;">
+                                                                                    Estimada comunidad:<br />
+                                                                                </h1>
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px; text-align: left;">
+
+                                                                                    Les enviamos noticias que esperamos
+                                                                                    sean de su interés.<br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td style="padding: 20px; margin: 0; font-size: 0;"
+                                                                                align="center">
+                                                                                <table width="100%" height="100%"
+                                                                                    cellspacing="0" cellpadding="0"
+                                                                                    border="0" role="presentation"
+                                                                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                                                    <tr
+                                                                                        style="border-collapse: collapse;">
+                                                                                        <td
+                                                                                            style="padding: 0; margin: 0; border-bottom: 1px solid #cccccc; background: none; height: 1px; width: 100%; margin: 0px;">
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td style="margin: 0; padding-top: 5px; padding-bottom: 5px; padding-left: 20px; padding-right: 20px; font-size: 0;"
+                                                                                bgcolor="#ffffff" align="center">
+                                                                                <table width="100%" height="100%"
+                                                                                    cellspacing="0" cellpadding="0"
+                                                                                    border="0" role="presentation"
+                                                                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                                                    <tr
+                                                                                        style="border-collapse: collapse;">
+                                                                                        <td
+                                                                                            style="padding: 0; margin: 0; border-bottom: 1px solid #ffffff; background: #ffffff none repeat scroll 0% 0%; height: 1px; width: 100%; margin: 0px;">
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p class="hidden">##$#newsBody#$##</p>
+                                <p class="text-center">- Cuerpo -</p>
+                                <table class="es-content" cellspacing="0" cellpadding="0" align="center"
+                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; table-layout: fixed !important; width: 100%;">
+                                    <tr style="border-collapse: collapse;">
+                                        <td align="center" style="padding: 0; margin: 0;">
+                                            <table class="es-content-body"
+                                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; background-color: transparent; width: 600px;"
+                                                cellspacing="0" cellpadding="0" align="center">
+                                                <tr style="border-collapse: collapse;">
+                                                    <td align="left" style="padding: 0; margin: 0;">
+                                                        <table width="100%" cellspacing="0" cellpadding="0"
+                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                            <tr style="border-collapse: collapse;">
+                                                                <td valign="top" align="center"
+                                                                    style="padding: 0; margin: 0; width: 600px;">
+                                                                    <table
+                                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; border-spacing: 0px; background-color: #ffecd1; border-radius: 4px;"
+                                                                        width="100%" cellspacing="0" cellpadding="0"
+                                                                        bgcolor="#ffecd1" role="presentation">
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="left"
+                                                                                style="padding: 30px; margin: 0;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
+                                                                                    Saludos,<br />
+                                                                                </p>
+                                                                                <p id="footer1"
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
+                                                                                    Artemis Rivero González&nbsp;,<br />
+                                                                                    Técnico de Transferencia y
+                                                                                    Comunicación de la FPCT.<br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table class="es-footer" cellspacing="0" cellpadding="0" align="center"
+                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; table-layout: fixed !important; width: 100%; background-color: transparent; background-repeat: repeat; background-position: center top;">
+                                    <tr style="border-collapse: collapse;">
+                                        <td align="center" style="padding: 0; margin: 0;">
+                                            <table class="es-footer-body" cellspacing="0" cellpadding="0" align="center"
+                                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; background-color: transparent; width: 600px;">
+                                                <tr style="border-collapse: collapse;">
+                                                    <td align="left"
+                                                        style="margin: 0; padding-top: 30px; padding-bottom: 30px; padding-left: 30px; padding-right: 30px;">
+                                                        <table width="100%" cellspacing="0" cellpadding="0"
+                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                            <tr style="border-collapse: collapse;">
+                                                                <td valign="top" align="center"
+                                                                    style="padding: 0; margin: 0; width: 540px;">
+                                                                    <table width="100%" cellspacing="0" cellpadding="0"
+                                                                        role="presentation"
+                                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="left"
+                                                                                style="padding: 0; margin: 0;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
+
+                                                                                    <strong>
+                                                                                        <a href="##$#CONTACTO#$##"
+                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
+                                                                                            Contacto
+                                                                                        </a>
+                                                                                        -
+                                                                                        <a href="##$#MI CUENTA#$##"
+                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
+                                                                                            Mi cuenta
+                                                                                        </a>
+                                                                                    </strong>
+                                                                                    <br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="left"
+                                                                                style="padding: 0; margin: 0; padding-top: 25px;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
+
+                                                                                    Has recibido este correo porque
+                                                                                    estás suscrito a la newsletter de la
+                                                                                    FPCT. Si no lo visualizas
+                                                                                    correctamente pulsa a
+                                                                                    continuación,&nbsp;
+                                                                                    <strong>
+                                                                                        <a class="view"
+                                                                                            href="##$#VER EN EL EXPLORADOR#$##"
+                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
+                                                                                            ver en el explorador
+                                                                                        </a>
+                                                                                    </strong>
+                                                                                    .<br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="left"
+                                                                                style="padding: 0; margin: 0; padding-top: 25px;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
+
+                                                                                    Si deseas parar de recibir estos
+                                                                                    emails,
+                                                                                    <strong>
+                                                                                        <a class="unsubscribe"
+                                                                                            href="##$#DESUSCRIBETE##$#"
+                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
+                                                                                            desuscríbete
+                                                                                        </a>
+                                                                                    </strong>
+                                                                                    .<br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="left"
+                                                                                style="padding: 0; margin: 0; padding-top: 25px;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
+
+                                                                                    ULPGC, Polivalente III, Calle
+                                                                                    Practicante Ignacio Rodríguez, s/n ·
+                                                                                    928 45 99 43<br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </body>
+
+            </html>
+
+
+        </div>
+    </div>
+</div>

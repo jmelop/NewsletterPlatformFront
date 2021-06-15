@@ -10,18 +10,20 @@
 
             <ul>
                 <li>
-                    <h1>{{adminInfo.name}}</h1>
-                    <input type="text" placeholder="Name" [(ngModel)]="adminInfo.name">
+                    <h1 *ngIf="!editable">Nombre: {{adminInfo.name}}</h1>
+                    <input type="text" placeholder="Name" [(ngModel)]="adminInfo.name" *ngIf="editable">
                 </li>
                 <li>
-                    <p>Email: {{adminInfo.email}}</p>
-                    <input type="text" placeholder="Email" [(ngModel)]="adminInfo.email">
+                    <p *ngIf="!editable">Email: {{adminInfo.email}}</p>
+                    <input type="text" placeholder="Email" [(ngModel)]="adminInfo.email" *ngIf="editable">
                 </li>
                 <li>Rol: {{adminInfo.role}}</li>
             </ul>
             <div class="btn-container">
                 <button (click)="updateAdmin()"
-                    class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium">Actualizar</button>
+                    class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium" *ngIf="editable">Actualizar</button>
+                <button (click)="updateState()"
+                    class="btn text-gray-50 bg-yellow-500 hover:bg-white hover:text-yellow-500 px-3 py-2 rounded-md text-sm font-medium" *ngIf="!editable">Editar</button>
                 <p *ngIf='success'>Cambios realizados con exito!</p>
             </div>
         </div>
@@ -34,6 +36,12 @@
             <div class="px-4 py-5 bg-white sm:p-6">
 
                 <p class="mb-8" id="span-section1">📆 Modificar la fecha de envío</p>
+
+
+                <label class="flex items-center mb-8">
+                    <input class="relative w-10 h-5 transition-all duration-200 ease-in-out bg-gray-400 rounded-full shadow-inner outline-none appearance-none " type="checkbox" checked [(ngModel)]="dateState"/>
+                    <span class="ml-2 ">Activar o desactivar envío.</span>
+                  </label>
 
                 <div class="grid grid-cols-6 gap-6">
 
@@ -67,6 +75,9 @@
 
                 </div>
             </div>
+
+
+
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button type="submit" (click)="getCron()"
                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">

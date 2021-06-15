@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private adminsService: AdminsService) { }
 
+  dateState: boolean;
+  editable: boolean = false;
   formatedDate = '';
   cronData = 'Select the date';
   success: boolean;
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
   idUser: string = '';
   adminInfo: any =  {username: '', email: '', password: ''}; 
   horas: number[] = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-  dias: string[] = ['NONE', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+  dias: string[] = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
 
 
   ngOnInit(): void {
@@ -29,23 +31,18 @@ export class HomeComponent implements OnInit {
     this.adminsService.getById(this.idUser).then(u => {
       this.adminInfo = u;
       this.formatedDate = this.adminInfo.senddate;
-
+      this.dateState = this.adminInfo.sendstate;
+ 
 
       console.log(this.adminInfo)
     })
-    //this.cronForm = new FormControl('0 0 1/1 * *');
-
-
-
   }
 
   getCron() {
-    if (this.emptyDay == 'NONE') {
-      this.emptyDay = '?'
-    }
-    this.cronData = '0 ' + this.emptyHour + ' * ' + this.emptyDay;
+    this.cronData = '0 ' + this.emptyHour + ' *' + ' * ' + this.emptyDay;
     this.adminInfo.senddate = this.cronData;
     this.formatedDate = this.cronData;
+    this.adminInfo.sendstate = this.dateState;
     this.adminsService.updateAdmin(this.adminInfo._id, this.adminInfo).then(u => {
     })
   }
@@ -54,10 +51,16 @@ export class HomeComponent implements OnInit {
     this.emptyMinutes = ':00:00'
   }
 
+  updateState(){
+    this.editable = true;
+  }
+
   updateAdmin(){
     this.adminsService.updateAdmin(this.adminInfo._id, this.adminInfo).then(u => {
       if(typeof u !== 'undefined'){
         this.success = true;
+        this.editable = false;
+
       }else{
         this.success = false;
       }

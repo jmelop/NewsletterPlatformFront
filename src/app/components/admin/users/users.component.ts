@@ -14,6 +14,7 @@ import { Papa } from 'ngx-papaparse';
 })
 export class UsersComponent implements OnInit {
 
+  editable: boolean = false;
   adminInfo: any = '';
   newTags: Tag[] = [];
   newUser: User = { name: '', email: '', owner: '', tags: this.newTags, password: '' }
@@ -96,18 +97,22 @@ export class UsersComponent implements OnInit {
 
   addAllUsersCSV() {
     this.testListCSV.map(u => {
-      u.tags = this.tags;
-      u.owner = this.adminInfo;
-      u.password = this.generateRandomPassword();
-      this.userServices.post(u).then(res => {
-        if (typeof res !== 'undefined') {
-          this.users.push(u);
-        }
-      }).catch((err) => console.log(err))
+      if (typeof u.tags === 'undefined') {
+        u.tags = this.tags;
+      } else {
+        u.owner = this.adminInfo;
+        u.password = this.generateRandomPassword();
+        this.userServices.post(u).then(res => {
+          if (typeof res !== 'undefined') {
+            this.users.push(u);
+          }
+        }).catch((err) => console.log(err))
+      }
     })
   }
 
   editState(user: User) {
+    this.editable = true;
     this.users.map((u: User) => {
       u.editable = false;
       user.editable = true;

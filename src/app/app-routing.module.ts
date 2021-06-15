@@ -15,6 +15,7 @@ import { UserProfileComponent } from '../app/components/user/user-profile/user-p
 import { RegisterUserComponent } from './components/landing/register-user/register-user.component';
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 import { HomeComponent } from './components/admin/home/home.component';
+import { NewsletterComponent } from './components/admin/newsletter/newsletter.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,11 @@ const routes: Routes = [
     path: 'tags',
     component: TagsComponent,
     canActivate: [KeeperGuard]
+
+  },
+  {
+    path: 'newsletter',
+    component: NewsletterComponent,
 
   },
   {

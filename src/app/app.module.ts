@@ -22,6 +22,8 @@ import { RegisterAdminComponent } from './components/landing/register-admin/regi
 import { LoginUserComponent } from './components/landing/login-user/login-user.component';
 import { HomeComponent } from './components/admin/home/home.component';
 import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
+import { NewsletterComponent } from './components/admin/newsletter/newsletter.component';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 
@@ -43,7 +45,8 @@ import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
     UserNavbarComponent,
     RegisterUserComponent,
     LoginUserComponent,
-    HomeComponent
+    HomeComponent,
+    NewsletterComponent
 
   ],
   imports: [
@@ -53,7 +56,8 @@ import {NgxCSVtoJSONModule} from 'ngx-csvto-json';
     ChartsModule,
     CKEditorModule,
     ReactiveFormsModule,
-    NgxCSVtoJSONModule
+    NgxCSVtoJSONModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
