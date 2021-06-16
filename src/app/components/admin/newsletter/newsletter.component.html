@@ -119,11 +119,14 @@
 <div class="w-full py-6">
     <div class="flex">
         <div class="w-1/4">
-            <div class="relative mb-2 ml-36">
-                <label for="cars">Color cabecera:</label>
-
-                <input class="text-xs w-16" [(colorPicker)]="color" [style.background]="color"
-                    (colorPickerChange)="changeColor()" [(ngModel)]="selector" />
+            <div class="relative mb-2">
+                <div id="" class="w-10 h-10 mx-auto text-lg flex items-center">
+                    <span class="text-center text-gray-600 w-full">
+                        <label class="mx-auto" for="cars">Color cabecera:</label>
+                        <input class="text-xs w-16" [(colorPicker)]="color" [style.background]="color"
+                            (colorPickerChange)="changeColor()" [(ngModel)]="selector" />
+                    </span>
+                </div>
 
             </div>
 
@@ -131,29 +134,49 @@
 
         <div class="w-1/4">
             <div class="relative mb-2 ml-24">
+                <div class="absolute flex align-center items-center align-middle content-center">
+                    <span class="text-center text-gray-600 w-full">
 
-                <input [(ngModel)]="image"
-                    class="rounded-l-lg  border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
-                    placeholder="google.com/image" />
-                <button (click)="changeImage()"
-                    class="rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-2 uppercase border-yellow-500 border-t border-b border-r">LINK</button>
-            </div>
+                        <input [(ngModel)]="image" id="input-link"
+                            class="rounded-l-lg  border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
+                            placeholder="google.com/image" />
+                        <button (click)="changeImage()" id="input-button"
+                            class="rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-2 uppercase border-yellow-500 border-t border-b border-r">LINK</button>
+                    </span>
 
-        </div>
-
-        <div class="w-1/4">
-            <div class="relative mb-2">
-
+                </div>
             </div>
 
         </div>
 
         <div class="w-1/4">
             <div class="relative mb-2 ml-52">
-                <button class="bg-white p-2 rounded-lg">Guardar</button>
+                <div class="w-10 h-10 mx-auto flex items-center">
+                    <span class="text-center text-gray-600 w-full">
+
+                    </span>
+
+                </div>
+                <a type="button" class="bg-white p-2 rounded-lg" (click)='editText()' *ngIf="!editable">Editar</a>
+                <a type="button" class="bg-white p-2 rounded-lg" (click)='saveText()' *ngIf="editable">OK</a>
             </div>
 
         </div>
+
+        <div class="w-1/4">
+            <div class="relative mb-2 ml-52">
+                <div class="absolute flex align-center items-center align-middle content-center"
+                    style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                    <span class="text-center text-gray-600 w-full">
+                    </span>
+
+                </div>
+                <button class="bg-white p-2 rounded-lg" (click)="saveTemplate()">Guardar</button>
+                <p class="mt-8" *ngIf='successful'>Datos subidos correctamente!</p>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
@@ -162,9 +185,9 @@
 
 <!-- Template  -->
 
-<div class="mx-96 mt-20 mb-20">
-    <div class="mx-40">
-        <div class=" bg-white px-8 py-6 rounded-xl space-y-5 m-8 ">
+<div class="mt-14 mb-40" id="section">
+    <div class="">
+        <div class=" bg-white px-8 py-6 rounded-xl space-y-5 ">
 
             <!DOCTYPE html
                 PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -201,7 +224,8 @@
                                                                         <tr style="border-collapse: collapse;">
                                                                             <td style="margin: 0; padding-left: 10px; padding-right: 10px; padding-top: 25px; padding-bottom: 25px; font-size: 0px;"
                                                                                 align="center">
-                                                                                <img id="header-image" src="https://i.imgur.com/OFEnBd2.png"
+                                                                                <img id="header-image"
+                                                                                    src="https://i.imgur.com/OFEnBd2.png"
                                                                                     alt
                                                                                     style="display: block; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius: 4px;"
                                                                                     class="adapt-img" width="560" />
@@ -239,16 +263,37 @@
                                                                         <tr style="border-collapse: collapse;">
                                                                             <td align="center"
                                                                                 style="margin: 0; padding-bottom: 5px; padding-left: 30px; padding-right: 30px; padding-top: 35px;">
-                                                                                <h1
+
+
+                                                                                <h1 name="headerTitle" ngDefaultControl
+                                                                                    [(ngModel)]="customTemplate.headerTitle"
+                                                                                    *ngIf='!editable'
                                                                                     style="margin: 0; line-height: 37px; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; font-size: 31px; font-style: normal;font-weight: normal;color: #111111;text-align: left;">
-                                                                                    Estimada comunidad:<br />
+                                                                                    {{customTemplate.headerTitle}}<br />
                                                                                 </h1>
-                                                                                <p
+                                                                                <input name="headerTitle"
+                                                                                    ngDefaultControl
+                                                                                    [(ngModel)]="customTemplate.headerTitle"
+                                                                                    *ngIf='editable'
+                                                                                    class="m-1 border-solid border-1 border-light-blue-400"
                                                                                     style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px; text-align: left;">
 
-                                                                                    Les enviamos noticias que esperamos
-                                                                                    sean de su interés.<br />
-                                                                                </p>
+
+
+                                                                                <h2 id="headerText" name="headerText"
+                                                                                    ngDefaultControl
+                                                                                    [(ngModel)]="customTemplate.headerText"
+                                                                                    *ngIf='!editable'
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px; text-align: left;">
+                                                                                    {{customTemplate.headerText}}<br />
+                                                                                </h2>
+
+                                                                                <input name="headerText"
+                                                                                    ngDefaultControl
+                                                                                    [(ngModel)]="customTemplate.headerText"
+                                                                                    *ngIf='editable'
+                                                                                    class="m-1 border-solid border-1 border-light-blue-400"
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px; text-align: left;">
                                                                             </td>
                                                                         </tr>
                                                                         <tr style="border-collapse: collapse;">
@@ -293,8 +338,94 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <p class="hidden">##$#newsBody#$##</p>
-                                <p class="text-center">- Cuerpo -</p>
+
+                                <!-- BODY -->
+
+                                <table id="body" class="es-content" cellspacing="0" cellpadding="0" align="center"
+                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; table-layout: fixed !important; width: 100%;">
+                                    <tr style="border-collapse: collapse;">
+                                        <td align="center" style="padding: 0; margin: 0;">
+                                            <table class="es-content-body"
+                                                style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; background-color: transparent; width: 600px;"
+                                                cellspacing="0" cellpadding="0" align="center">
+                                                <tr style="border-collapse: collapse;">
+                                                    <td align="left" style="padding: 0; margin: 0;">
+                                                        <table width="100%" cellspacing="0" cellpadding="0"
+                                                            style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                            <tr style="border-collapse: collapse;">
+                                                                <td valign="top" align="center"
+                                                                    style="padding: 0; margin: 0; width: 600px;">
+                                                                    <table
+                                                                        style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: separate; border-spacing: 0px; border-radius: 4px; background-color: #ffffff;"
+                                                                        width="100%" cellspacing="0" cellpadding="0"
+                                                                        bgcolor="#ffffff" role="presentation">
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td class="es-m-txt-l" bgcolor="#ffffff"
+                                                                                align="left"
+                                                                                style="margin: 0; padding-top: 20px; padding-bottom: 10px; padding-left: 30px; padding-right: 30px;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666;font-size: 18px;">
+                                                                                    <strong>{{newExampleTitle}}</strong><br />
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td class="es-m-txt-l" align="left"
+                                                                                style="margin: 0; padding-bottom: 15px; padding-top: 20px; padding-left: 30px; padding-right: 30px;">
+                                                                                <p
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
+                                                                                    {{newExample}}
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td align="left"
+                                                                                style="margin: 0; padding-top: 10px; padding-bottom: 20px; padding-left: 30px; padding-right: 30px;">
+                                                                                <p style="
+                                                 margin: 0;
+                                                 -webkit-text-size-adjust: none;
+                                                 -ms-text-size-adjust: none;
+                                                 mso-line-height-rule: exactly;
+                                                 font-family: lato, 'helvetica neue', helvetica, arial, sans-serif;
+                                                 line-height: 27px;
+                                                 color: #666666;
+                                                 font-size: 18px;
+                                                ">
+                                                                                    <strong><a href="##$#newsUrl#$##"
+                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #ffa73b; font-size: 18px;">Link
+                                                                                            a la noticia</a></strong>
+                                                                                </p>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr style="border-collapse: collapse;">
+                                                                            <td style="margin: 0; padding-top: 20px; padding-left: 20px; padding-right: 20px; padding-bottom: 40px; font-size: 0;"
+                                                                                align="center">
+                                                                                <table width="100%" height="100%"
+                                                                                    cellspacing="0" cellpadding="0"
+                                                                                    border="0" role="presentation"
+                                                                                    style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px;">
+                                                                                    <tr
+                                                                                        style="border-collapse: collapse;">
+                                                                                        <td
+                                                                                            style="padding: 0; margin: 0; border-bottom: 1px solid #cccccc; background: none; height: 1px; width: 100%; margin: 0px;">
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <!-- ----- -->
+
                                 <table class="es-content" cellspacing="0" cellpadding="0" align="center"
                                     style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0px; table-layout: fixed !important; width: 100%;">
                                     <tr style="border-collapse: collapse;">
@@ -316,16 +447,38 @@
                                                                         <tr style="border-collapse: collapse;">
                                                                             <td align="left"
                                                                                 style="padding: 30px; margin: 0;">
-                                                                                <p
+
+
+                                                                                <p name="footer1" ngDefaultControl
+                                                                                    id="footer1"
+                                                                                    [(ngModel)]="customTemplate.footer1"
+                                                                                    *ngIf='!editable'
                                                                                     style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
-                                                                                    Saludos,<br />
+                                                                                    {{customTemplate.footer1}}<br />
                                                                                 </p>
-                                                                                <p id="footer1"
+                                                                                <input name="footer1" ngDefaultControl
+                                                                                    id="footer1"
+                                                                                    [(ngModel)]="customTemplate.footer1"
+                                                                                    *ngIf='editable'
+                                                                                    class="m-1 border-solid border-1 border-light-blue-400"
                                                                                     style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
-                                                                                    Artemis Rivero González&nbsp;,<br />
-                                                                                    Técnico de Transferencia y
-                                                                                    Comunicación de la FPCT.<br />
+
+
+
+                                                                                <p name="footer2" ngDefaultControl
+                                                                                    id="footer2"
+                                                                                    [(ngModel)]="customTemplate.footer2"
+                                                                                    *ngIf='!editable'
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
+                                                                                    {{customTemplate.footer2}}
                                                                                 </p>
+                                                                                <input name="footer2" ngDefaultControl
+                                                                                    id="footer2"
+                                                                                    [(ngModel)]="customTemplate.footer2"
+                                                                                    *ngIf='editable'
+                                                                                    class="m-1 border-solid border-1 border-light-blue-400"
+                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 27px; color: #666666; font-size: 18px;">
+
                                                                             </td>
                                                                         </tr>
                                                                     </table>
@@ -362,15 +515,30 @@
                                                                                     style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
 
                                                                                     <strong>
-                                                                                        <a href="##$#CONTACTO#$##"
+
+                                                                                        <a name="webText"
+                                                                                            ngDefaultControl
+                                                                                            id="webText"
+                                                                                            [(ngModel)]="customTemplate.webText"
+                                                                                            *ngIf='!editable'
                                                                                             style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
-                                                                                            Contacto
+                                                                                            {{customTemplate.webText}}
                                                                                         </a>
-                                                                                        -
-                                                                                        <a href="##$#MI CUENTA#$##"
+                                                                                        <input name="webText"
+                                                                                            ngDefaultControl
+                                                                                            id="webText"
+                                                                                            [(ngModel)]="customTemplate.webText"
+                                                                                            *ngIf='editable'
+                                                                                            class="m-1 border-solid border-1 border-light-blue-400"
                                                                                             style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
-                                                                                            Mi cuenta
-                                                                                        </a>
+
+                                                                                        <input name="webUrl"
+                                                                                            ngDefaultControl id="webUrl"
+                                                                                            [(ngModel)]="customTemplate.webUrl"
+                                                                                            *ngIf='editable'
+                                                                                            class="m-1 border-solid border-1 border-light-blue-400"
+                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
+
                                                                                     </strong>
                                                                                     <br />
                                                                                 </p>
@@ -379,54 +547,21 @@
                                                                         <tr style="border-collapse: collapse;">
                                                                             <td align="left"
                                                                                 style="padding: 0; margin: 0; padding-top: 25px;">
-                                                                                <p
+                                                                                <p name="footerDirection"
+                                                                                    ngDefaultControl
+                                                                                    id="footerDirection"
+                                                                                    [(ngModel)]="customTemplate.footerDirection"
+                                                                                    *ngIf='!editable'
                                                                                     style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
-
-                                                                                    Has recibido este correo porque
-                                                                                    estás suscrito a la newsletter de la
-                                                                                    FPCT. Si no lo visualizas
-                                                                                    correctamente pulsa a
-                                                                                    continuación,&nbsp;
-                                                                                    <strong>
-                                                                                        <a class="view"
-                                                                                            href="##$#VER EN EL EXPLORADOR#$##"
-                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
-                                                                                            ver en el explorador
-                                                                                        </a>
-                                                                                    </strong>
-                                                                                    .<br />
+                                                                                    {{customTemplate.footerDirection}}
                                                                                 </p>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr style="border-collapse: collapse;">
-                                                                            <td align="left"
-                                                                                style="padding: 0; margin: 0; padding-top: 25px;">
-                                                                                <p
+                                                                                <input name="footerDirection"
+                                                                                    ngDefaultControl
+                                                                                    id="footerDirection"
+                                                                                    [(ngModel)]="customTemplate.footerDirection"
+                                                                                    *ngIf='editable'
+                                                                                    class="m-1 border-solid border-1 border-light-blue-400"
                                                                                     style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
-
-                                                                                    Si deseas parar de recibir estos
-                                                                                    emails,
-                                                                                    <strong>
-                                                                                        <a class="unsubscribe"
-                                                                                            href="##$#DESUSCRIBETE##$#"
-                                                                                            style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; text-decoration: underline; color: #111111; font-size: 14px;">
-                                                                                            desuscríbete
-                                                                                        </a>
-                                                                                    </strong>
-                                                                                    .<br />
-                                                                                </p>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr style="border-collapse: collapse;">
-                                                                            <td align="left"
-                                                                                style="padding: 0; margin: 0; padding-top: 25px;">
-                                                                                <p
-                                                                                    style="margin: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none; mso-line-height-rule: exactly; font-family: lato, 'helvetica neue', helvetica, arial, sans-serif; line-height: 21px; color: #666666; font-size: 14px;">
-
-                                                                                    ULPGC, Polivalente III, Calle
-                                                                                    Practicante Ignacio Rodríguez, s/n ·
-                                                                                    928 45 99 43<br />
-                                                                                </p>
                                                                             </td>
                                                                         </tr>
                                                                     </table>

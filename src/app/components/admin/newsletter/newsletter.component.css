@@ -263,4 +263,21 @@ a[x-apple-data-detectors] {
     table.es-social td {
         display: inline-block !important;
     }
+
+    #input-link{
+       height: 10%; 
+    }
+
+    #input-button{
+        width: 10%; 
+
+    }
+
+
 }
+
+
+/* #section{
+    margin-left: 100px;
+    margin-right: 100px;
+} */
