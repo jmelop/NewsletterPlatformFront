@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Admin } from 'src/app/models/admin/admin.model';
 import { Newsletter } from 'src/app/models/admin/newsletter.model';
 import { AdminsService } from 'src/app/services/admin/admins.service';
 
