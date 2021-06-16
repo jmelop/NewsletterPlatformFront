@@ -83,8 +83,13 @@ export class UsersComponent implements OnInit {
 
   }
 
+  selectFile(){
+
+  }
+
   addAllUsersJSON() {
     this.testList.map(u => {
+      u.password = this.generateRandomPassword();
       u.tags = this.tags;
       u.owner = this.adminInfo;
       this.userServices.post(u).then(res => {
@@ -97,17 +102,29 @@ export class UsersComponent implements OnInit {
 
   addAllUsersCSV() {
     this.testListCSV.map(u => {
-      if (typeof u.tags === 'undefined') {
+      var tagsArr = [];
+      if (typeof u.tags === 'undefined' || u.tags === null || u.tags === '') {
         u.tags = this.tags;
       } else {
-        u.owner = this.adminInfo;
-        u.password = this.generateRandomPassword();
-        this.userServices.post(u).then(res => {
-          if (typeof res !== 'undefined') {
-            this.users.push(u);
-          }
-        }).catch((err) => console.log(err))
+        u.tags = u.tags.replace(/\s/g, '');
+        tagsArr = u.tags.split(',');
+        let tempArr = [];
+        tagsArr.map(u => {
+          this.tags.map(tags => {
+            if (u === tags.name) {
+              tempArr.push(tags);
+            }
+          })
+        })
+        u.tags = tempArr;
       }
+      u.owner = this.adminInfo;
+      u.password = this.generateRandomPassword();
+      this.userServices.post(u).then(res => {
+        if (typeof res !== 'undefined') {
+          this.users.push(u);
+        }
+      }).catch((err) => console.log(err))
     })
   }
 
