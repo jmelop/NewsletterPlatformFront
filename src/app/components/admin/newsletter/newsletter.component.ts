@@ -24,8 +24,11 @@ export class NewsletterComponent implements OnInit {
   webText: string = 'www.hermesduck.com';
   webUrl: string = 'www.google.com';
   footerDirection: string = 'ULPGC, Polivalente III, Calle Practicante Ignacio Rodríguez, s/n · 928 11 11 11';
+  alias: string = 'Ponga un alias';
+  email: string = 'Ponga un email';
+  subject: string = 'Ponga un asunto';
   editable: boolean = false;
-  customTemplate: Newsletter = { templateColor: this.color, templateImage: '', headerTitle: this.headerTitle, headerText: this.headerText, footer1: this.footer1, footer2: this.footer2, webText: this.webText, webUrl: this.webUrl, footerDirection: this.footerDirection };
+  customTemplate: Newsletter = { templateColor: this.color, templateImage: '', headerTitle: this.headerTitle, headerText: this.headerText, footer1: this.footer1, footer2: this.footer2, webText: this.webText, webUrl: this.webUrl, footerDirection: this.footerDirection, alias: this.alias, email: this.email, subject: this.subject};
   idAdmin: string = ''
   adminInfo: any = [];
   successful: boolean = false;
@@ -34,6 +37,10 @@ export class NewsletterComponent implements OnInit {
     this.idAdmin = this.cookieService.get("currentAdminId");
     this.adminsService.getById(this.idAdmin).then(u => {
       this.adminInfo = u;
+      this.customTemplate = this.adminInfo.newsletterCustom;
+      document.getElementById('color-table').style.backgroundColor = this.adminInfo.newsletterCustom.templateColor;
+      document.getElementById('colot-td').style.backgroundColor = this.adminInfo.newsletterCustom.templateColor;
+      document.getElementById('header-image').setAttribute('src', this.adminInfo.newsletterCustom.templateImage);
     })
   }
 
@@ -45,15 +52,12 @@ export class NewsletterComponent implements OnInit {
 
   changeImage() {
     document.getElementById('header-image').setAttribute('src', this.image);
-    console.log(this.image)
     this.customTemplate.templateImage = this.image;
-    console.log('---------------')
-    console.log(this.customTemplate.templateImage)
 
   }
 
   editText() {
-    window.scrollBy(0, 500)
+    window.scrollBy(0, 800)
     this.editable = true;
   }
 

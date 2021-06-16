@@ -32,7 +32,7 @@ export class UsersService {
     return axios.post(apiUrl, user, this.options)
       .then(res => {
         return res.data;
-      }).catch((err) => console.log(err))
+      }).catch((err) => {throw err})
   }
 
   getById(id: string): Promise<User[]> {

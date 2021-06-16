@@ -22,10 +22,16 @@ export class UsersComponent implements OnInit {
   users: User[] = [];
   testList = [];
   testListCSV = [];
+  fileCSV: boolean = false;
+  fileJSON: boolean = false;
+  userAdded: boolean = false;
+  usersAdded: boolean = false;
+  userAddedError: boolean = false;
+  usersAddedError: boolean = false;
+  errorType: string = '';
 
   convertedObj: any = "";
   convert(objArray) {
-    console.log(objArray.result);
     this.testListCSV = objArray.result;
   }
 
@@ -42,8 +48,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminInfo = this.cookieService.get("currentAdminId");
-    this.userServices.getAllUsers(this.adminInfo).then(u => { this.users = u, console.log(u) });
-    this.tagsServices.getAllTags(this.adminInfo).then(u => { this.tags = u, console.log(u) });
+    this.userServices.getAllUsers(this.adminInfo).then(u => { this.users = u });
+    this.tagsServices.getAllTags(this.adminInfo).then(u => { this.tags = u});
   }
 
 
@@ -51,7 +57,9 @@ export class UsersComponent implements OnInit {
     return Math.random().toString(36).slice(2)
   }
 
-  parsFile(files: FileList): void {
+  parsCSVFile(files: FileList): void {
+    this.fileJSON = false;
+    this.fileCSV = true;
     const file: File = files.item(0);
     const reader: FileReader = new FileReader();
     reader.readAsText(file);
@@ -64,43 +72,77 @@ export class UsersComponent implements OnInit {
           results.data.map(u => {
             this.testListCSV.push(u)
           })
-          console.log(this.testListCSV);
         }
       });
     }
   }
 
-  onFileChange(event) {
+  parsJSONFile(event) {
+    this.fileJSON = true;
+    this.fileCSV = false;
     const fileToLoad = event.target.files[0];
     const fileReader = new FileReader();
 
     fileReader.addEventListener('load', (event) => {
       this.testList = JSON.parse(<string>event.target.result);
-      console.log(this.testList)
     });
 
     fileReader.readAsText(fileToLoad, 'UTF-8');
-
   }
 
-  selectFile(){
+  detectFile(event) {
+    if (event.target.files[0].type == 'application/vnd.ms-excel') {
+      this.parsCSVFile(event.target.files);
+    } else {
+      this.parsJSONFile(event);
+    }
+  }
+
+
+  selectFile() {
+    if (this.fileJSON == true) {
+      this.addAllUsersJSON();
+    } else if (this.fileCSV == true) {
+      this.addAllUsersCSV();
+    }
 
   }
 
   addAllUsersJSON() {
     this.testList.map(u => {
+      var tagsArr = [];
+      if (typeof u.tags === 'undefined' || u.tags === null || u.tags === '') {
+        u.tags = this.tags;
+      } else {
+        let tempArr = [];
+        tagsArr = u.tags;
+        tagsArr.map(u => {
+          this.tags.map(tags => {
+            if (u === tags.name) {
+              tempArr.push(tags);
+            }
+          })
+        })
+        u.tags = tempArr;
+      }
       u.password = this.generateRandomPassword();
-      u.tags = this.tags;
       u.owner = this.adminInfo;
       this.userServices.post(u).then(res => {
         if (typeof res !== 'undefined') {
           this.users.push(u);
+          this.usersAdded = true;
         }
-      }).catch((err) => console.log(err))
+      }).catch((err) => {
+        console.log(err)
+        this.usersAddedError = true;
+        this.errorType = err.response.data;
+      })
     })
   }
 
   addAllUsersCSV() {
+    const list = this.testListCSV.filter((element, index) => index < this.testListCSV.length - 1);
+    this.testListCSV = list;
     this.testListCSV.map(u => {
       var tagsArr = [];
       if (typeof u.tags === 'undefined' || u.tags === null || u.tags === '') {
@@ -123,8 +165,13 @@ export class UsersComponent implements OnInit {
       this.userServices.post(u).then(res => {
         if (typeof res !== 'undefined') {
           this.users.push(u);
+          this.usersAdded = true;
         }
-      }).catch((err) => console.log(err))
+      }).catch((err) => {
+        console.log(err)
+        this.usersAddedError = true;
+        this.errorType = err.response.data;
+      })
     })
   }
 
@@ -165,8 +212,12 @@ export class UsersComponent implements OnInit {
         res.tags = temporalTags;
         this.users.push(res);
         this.newUser = { name: '', email: '', owner: this.adminInfo, tags: this.newTags, password: '' };
-      }
-    }).catch((err) => console.log(err))
+        this.userAdded = true;
+      } 
+    }).catch(err => {
+      this.userAddedError = true;
+      this.errorType = err.response.data;
+    })
   }
 
 

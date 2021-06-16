@@ -42,8 +42,12 @@
                                 <label> {{tag.name}}</label><br>
                             </p>
                         </div>
-
-
+                    </div>
+                    <div class="mt-8" *ngIf="userAdded">
+                        <p>Usuario añadido correctamente!</p>
+                    </div>
+                    <div class="mt-8" *ngIf="userAddedError">
+                        <p>Error: {{errorType}}!</p>
                     </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -80,28 +84,24 @@
                             <div class="col-span-6">
 
                                 <label id="upload-button"
-                                    class="mb-8 w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue">
+                                    class="mb-8 w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide border border-blue cursor-pointer hover:bg-blue hover:text-blue">
                                     <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 20 20">
                                         <path
                                             d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                                     </svg>
-                                    <span class="mt-2 text-base leading-normal">JSON</span>
-                                    <input (change)="onFileChange($event)" type="file" id="Json2" class="hidden" />
-                                </label>
-
-                                <label id="upload-button"
-                                    class="mb-8 w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-blue">
-                                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                                    </svg>
-                                    <span class="mt-2 text-base leading-normal">CSV</span>
-                                    <input class="hidden" type="file" (change)="parsFile($event.target.files)"/>
+                                    <span class="mt-2 text-base leading-normal">Subir CSV o JSON</span>
+                                    <input class="hidden" type="file" (change)="detectFile($event)"/>
 
 
                                 </label>
+
+                                <div class="mt-8" *ngIf="usersAdded">
+                                    <p>Usuarios añadidos correctamente!</p>
+                                </div>
+                                <div class="mt-8" *ngIf="usersAddedError">
+                                    <p>Error: {{errorType}}!</p>
+                                </div>
 
                             </div>
                         </div>
@@ -109,13 +109,9 @@
                     </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <button type="submit" (click)="addAllUsersJSON()"
+                    <button type="submit" (click)="selectFile()"
                         class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Añadir JSON
-                    </button>
-                    <button type="submit" (click)="addAllUsersCSV()"
-                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-gray-100 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        Añadir CSV
+                        Añadir fichero
                     </button>
                 </div>
             </div>

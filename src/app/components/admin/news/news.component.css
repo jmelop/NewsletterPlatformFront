@@ -34,8 +34,6 @@ body{
   background-color: #ff81007a;
 }
 
-
-
 .bg-indigo-600 {
   --tw-bg-opacity: 1;
   background-color: aliceblue;
@@ -50,3 +48,5 @@ body{
     margin-bottom: 20px;
   }
 }
+
+
