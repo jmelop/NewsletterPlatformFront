@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Tag } from 'src/app/models/users/tag.model';
 import { User } from 'src/app/models/users/user.model';
 import { AuthenticationService } from 'src/app/services/user/authentication.service';
-import { TagsService } from 'src/app/services/user/tags.service';
 
 @Component({
   selector: 'app-register-user',
@@ -13,21 +12,23 @@ import { TagsService } from 'src/app/services/user/tags.service';
 export class RegisterUserComponent implements OnInit {
 
   newUser: User = {owner: '', name: '', email: '', password: '', tags: []};
-
   checkTagList: Tag[] = [];
- 
   errorMessage: string;
+  username: string;
+  isUsernameLink: boolean;
+
 
   constructor(
     private authenticationService: AuthenticationService, 
-    private tagsService: TagsService, 
     private router: Router, 
   ) { 
   }
 
   ngOnInit(): void {
-    // this.tagsService.getAlltags()
-    // .then(taglist => this.checkTagList = taglist)
+    let url= this.router.parseUrl(this.router.url);
+    this.isUsernameLink = url.toString().indexOf('register/') >= 0 ? true : false;
+    this.username = url.toString().substr(url.toString().lastIndexOf('register/') + 9);
+    this.newUser.owner = this.isUsernameLink ? this.username : '';
   }
 
 

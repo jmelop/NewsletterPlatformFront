@@ -54,6 +54,10 @@ form {
     color: rgb(65, 64, 64);
 }
 
+.username-link {
+    color: rgb(175, 173, 173);
+}
+
 input::placeholder {
     color: rgb(175, 173, 173);
 }

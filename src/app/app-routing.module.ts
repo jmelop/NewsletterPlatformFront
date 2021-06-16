@@ -96,6 +96,10 @@ const routes: Routes = [
     path: 'recover/:token',
     component: RecoverPasswordComponent
   },
+  {
+    path: 'register/:username',
+    component: RegisterUserComponent
+  }
 ];
 
 

@@ -3,8 +3,10 @@
       <div class="sub-container">
         <form class="register" >
           <p class="title">Registro:</p>
+          
+          <input *ngIf="!isUsernameLink" class="register-inputs" [(ngModel)]="newUser.owner" type="text" placeholder="* Canal" name="owner" autofocus/>
 
-          <input class="register-inputs" [(ngModel)]="newUser.owner" type="text" placeholder="* Canal" name="owner" autofocus/>
+          <input *ngIf="isUsernameLink" class="register-inputs username-link" [(ngModel)]="username" type="text" [placeholder]="username" [value]="username" name="owner" disabled autofocus/>
           
           <input class="register-inputs" [(ngModel)]="newUser.name" type="text" placeholder="* Username" name="username" autofocus/>
         
