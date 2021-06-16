@@ -28,7 +28,7 @@ export class AdminsService {
     })
   }
 
-  updateAdmin(id: string, admin: Admin): Promise<Admin[]> {
+  updateAdmin(id: string, admin: any): Promise<Admin[]> {
     return axios.patch(apiUrl + 'editself/' + id , admin, this.options)
       .then(res => {
         return res.data;

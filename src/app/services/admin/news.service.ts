@@ -30,8 +30,8 @@ export class NewsService {
     return axios.post(apiUrl, newNotice, this.options)
       .then(res => {
         return res.data;
-      }).catch((err) => console.log(err))
-  }
+      }).catch((err) => {throw err})
+    }
 
   deleteNew(id: string) {
     return axios.delete(apiUrl + id, this.options)

@@ -21,7 +21,11 @@ export class NewsComponent implements OnInit {
   newTags: Tag[] = [];
   tags: Tag[] = [];
   news: New[] = [];
-  newNew: New = { title: '', body: '', link: '', owner: '',  tags: this.newTags }
+  newNew: New = { title: '', body: '', link: '', owner: '',  tags: this.newTags };
+  newAdded: boolean = false;
+  newAddedError: boolean = false;
+  errorType: string = '';
+
 
   constructor(private newsService: NewsService, private tagsService: TagsService, private cookieService: CookieService) { }
 
@@ -32,7 +36,7 @@ export class NewsComponent implements OnInit {
   }
 
   editState(notice: New) {
-
+    notice.editable = true;
     this.tags.map((u: Tag) => {
       u.editable = false;
       notice.editable = true;
@@ -63,9 +67,15 @@ export class NewsComponent implements OnInit {
         u.tags = tags;
         this.news.push(u);
         this.newNew = { title: '', body: '', link: '', owner: this.adminInfo, tags: [] }
+        this.newAdded = true;
+        this.newAddedError = false;
+
       }
-    })
-  }
+    }).catch(err => {
+      this.newAdded = false;
+      this.newAddedError = true;
+      this.errorType = err.response.data;
+    })  }
 
   deleteNew(id: string) {
     this.newsService.deleteNew(id).then(u => {

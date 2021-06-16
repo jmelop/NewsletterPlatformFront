@@ -14,10 +14,12 @@
                     <input type="text" placeholder="Name" [(ngModel)]="adminInfo.name" *ngIf="editable">
                 </li>
                 <li>
-                    <p *ngIf="!editable">Email: {{adminInfo.email}}</p>
-                    <input type="text" placeholder="Email" [(ngModel)]="adminInfo.email" *ngIf="editable">
+                    <p >Email: {{adminInfo.email}}</p>
                 </li>
                 <li>Rol: {{adminInfo.role}}</li>
+                <li>Comparte este link para que la gente se suscriba a tu newsletter:
+                    <br>
+                    <strong>hermesduck.com/#/register/{{adminInfo.username}}</strong></li>
             </ul>
             <div class="btn-container">
                 <button (click)="updateAdmin()"

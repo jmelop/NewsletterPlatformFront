@@ -54,6 +54,13 @@
 
 
                     </div>
+
+                    <div class="mt-8" *ngIf="newAdded">
+                        <p>Noticia añadida correctamente!</p>
+                    </div>
+                    <div class="mt-8" *ngIf="newAddedError">
+                        <p>Error: {{errorType}}!</p>
+                    </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                     <button type="submit" (click)="addNew()"

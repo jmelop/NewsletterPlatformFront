@@ -265,17 +265,53 @@ a[x-apple-data-detectors] {
     }
 
     #input-link{
-       height: 10%; 
+       width: 100%; 
     }
 
     #input-button{
-        width: 10%; 
+        width: 50%; 
 
     }
 
 
 }
 
+@media screen and (max-width: 800px) {
+    #section1{
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+#section1{
+    width: 60%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+  }
+
+  .eck1{
+    width: 200px;
+  }
+  
+  .bg-white {
+    background-color: #ffffffb5!important;
+  }
+  
+  .bg-gray-50 {
+    --tw-bg-opacity: 1;
+    background-color: #ff81007a;
+  }
+  
+  .bg-indigo-600 {
+    --tw-bg-opacity: 1;
+    background-color: aliceblue;
+  }
 
 /* #section{
     margin-left: 100px;

@@ -23,7 +23,7 @@ export class TagsService {
   }
 
   getAllTags(id: string): Promise<Tag[]> {
-    return axios.get(apiUrl+'owner/'+id, this.options)
+    return axios.get(apiUrl + 'owner/' + id, this.options)
       .then(rest => rest.data)
   }
 
@@ -31,7 +31,7 @@ export class TagsService {
     return axios.post(apiUrl, tag, this.options)
       .then(res => {
         return res.data;
-      }).catch((err) => console.log(err))
+      }).catch((err) => { throw err })
   }
 
   deleteTag(id: string) {

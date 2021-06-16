@@ -57,7 +57,7 @@
                 <div class="absolute flex align-center items-center align-middle content-center"
                     style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
                     <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 33%;"></div>
+                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 100%;"></div>
                     </div>
                 </div>
 
@@ -81,7 +81,7 @@
                 <div class="absolute flex align-center items-center align-middle content-center"
                     style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
                     <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 0%;"></div>
+                        <div class="w-0 bg-green-300 py-1 rounded" style="width: 100%;"></div>
                     </div>
                 </div>
 
@@ -108,6 +108,9 @@
 
 
 
+
+
+
 <!-- --------------------- -->
 
 
@@ -120,7 +123,7 @@
     <div class="flex">
         <div class="w-1/4">
             <div class="relative mb-2">
-                <div id="" class="w-10 h-10 mx-auto text-lg flex items-center">
+                <div id="" class="flex align-center items-center align-middle content-center">
                     <span class="text-center text-gray-600 w-full">
                         <label class="mx-auto" for="cars">Color cabecera:</label>
                         <input class="text-xs w-16" [(colorPicker)]="color" [style.background]="color"
@@ -133,15 +136,18 @@
         </div>
 
         <div class="w-1/4">
-            <div class="relative mb-2 ml-24">
-                <div class="absolute flex align-center items-center align-middle content-center">
+            <div class="relative mb-2">
+                <div class="flex align-center items-center align-middle content-center">
                     <span class="text-center text-gray-600 w-full">
 
                         <input [(ngModel)]="image" id="input-link"
                             class="rounded-l-lg  border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
                             placeholder="google.com/image" />
-                        <button (click)="changeImage()" id="input-button"
-                            class="rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-2 uppercase border-yellow-500 border-t border-b border-r">LINK</button>
+                            <br>
+
+                            <a type="button" (click)="changeImage()" id="input-button" class="font-bold bg-yellow-400 text-gray-800 border-yellow-500 p-1 rounded-lg" (click)='saveText()' >LINK</a>
+
+
                     </span>
 
                 </div>
@@ -150,29 +156,27 @@
         </div>
 
         <div class="w-1/4">
-            <div class="relative mb-2 ml-52">
-                <div class="w-10 h-10 mx-auto flex items-center">
+            <div class="relative mb-2">
+                <div class=" mx-auto flex items-center">
                     <span class="text-center text-gray-600 w-full">
-
+                        <a type="button" type="email" class="bg-white p-2 rounded-lg" (click)='editText()'
+                            *ngIf="!editable">Editar</a>
+                        <a type="button" class="bg-white p-2 rounded-lg" (click)='saveText()' *ngIf="editable">OK</a>
                     </span>
 
                 </div>
-                <a type="button" class="bg-white p-2 rounded-lg" (click)='editText()' *ngIf="!editable">Editar</a>
-                <a type="button" class="bg-white p-2 rounded-lg" (click)='saveText()' *ngIf="editable">OK</a>
+
             </div>
 
         </div>
 
         <div class="w-1/4">
-            <div class="relative mb-2 ml-52">
-                <div class="absolute flex align-center items-center align-middle content-center"
-                    style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+            <div class="relative mb-2">
+                <div class=" mx-auto flex items-center">
                     <span class="text-center text-gray-600 w-full">
+                        <button class="bg-white p-2 rounded-lg" (click)="saveTemplate()">Guardar</button>
                     </span>
-
                 </div>
-                <button class="bg-white p-2 rounded-lg" (click)="saveTemplate()">Guardar</button>
-                <p class="mt-8" *ngIf='successful'>Datos subidos correctamente!</p>
             </div>
 
         </div>
@@ -180,7 +184,59 @@
     </div>
 </div>
 
+<div class=" mx-auto flex items-center">
+    <span class="text-center text-gray-600 w-full">
+        <p class="mt-8" *ngIf='successful'>Datos subidos correctamente!</p>
+        <p class="mt-8" *ngIf='error'>Error, el email, alias o asunto no pueden quedarse vacios o con los valores por defecto!</p>
+    </span>
+</div>
 
+
+<div class="mt-10 sm:mt-0">
+    <div class="-my-2 overflow-x-auto sm:-mx-3 lg:-mx-3" id="section1">
+
+        <div class="mt-5 md:mt-0 md:col-span-2">
+            <div class="shadow overflow-hidden sm:rounded-md">
+                <div class="px-4 bg-white sm:p-6">
+
+                    <p class="mb-4" id="span-section1">Añadir datos:</p>
+
+                    <div class="grid grid-cols-6 gap-6">
+
+                        <div class="col-span-6 sm:col-span-2">
+
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">Alias:</label>
+                            <input type="text" id="name" [(ngModel)]="customTemplate.alias" *ngIf='editable'
+                                autocomplete="given-name"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <p *ngIf='!editable'>{{customTemplate.alias}}</p>
+                        </div>
+                        <div class="col-span-6 sm:col-span-2">
+
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">Email de
+                                envío:</label>
+                            <input type="text" id="name" [(ngModel)]="customTemplate.email" *ngIf='editable'
+                                autocomplete="given-name"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <p *ngIf='!editable'>{{customTemplate.email}}</p>
+                        </div>
+                        <div class="col-span-6 sm:col-span-2">
+
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">Asunto:</label>
+                            <input type="text" id="name" [(ngModel)]="customTemplate.subject" *ngIf='editable'
+                                autocomplete="given-name"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <p *ngIf='!editable'>{{customTemplate.subject}}</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="px-4 py-1 bg-gray-50 text-right sm:px-6">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- Template  -->
@@ -225,7 +281,7 @@
                                                                             <td style="margin: 0; padding-left: 10px; padding-right: 10px; padding-top: 25px; padding-bottom: 25px; font-size: 0px;"
                                                                                 align="center">
                                                                                 <img id="header-image"
-                                                                                    src="https://i.imgur.com/OFEnBd2.png"
+                                                                                    src=""
                                                                                     alt
                                                                                     style="display: block; border: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border-radius: 4px;"
                                                                                     class="adapt-img" width="560" />

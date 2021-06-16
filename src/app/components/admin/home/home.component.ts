@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
       this.adminInfo = u;
       this.formatedDate = this.adminInfo.senddate;
       this.dateState = this.adminInfo.sendstate;
- 
 
       console.log(this.adminInfo)
     })

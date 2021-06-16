@@ -8,4 +8,7 @@ export class Newsletter {
     webText: string;
     webUrl: string;
     footerDirection: string;
+    alias: string;
+    email: string;
+    subject: string;
 }

@@ -97,7 +97,7 @@
         class="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Reportes</a>
 
       <a href="#" routerLinkActive="bg-gray-700 text-white" [routerLink]="['/#']"
-        [routerLinkActiveOptions]="{exact: true}"
+        [routerLinkActiveOptions]="{exact: true}" (click)="logOut()"
         class="text-gray-900 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Cerrar sesión</a>
 
     </div>
