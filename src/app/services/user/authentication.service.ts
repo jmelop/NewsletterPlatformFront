@@ -23,41 +23,40 @@ export class AuthenticationService {
 
   registerAdmin(admin: Admin) {
     return axios.post(`${apiUrl}admin/register`, admin, options)
-      .then(res => {
-        console.log("adioooo", res);
-        
-        return res.data
-      })
+      .then(res => res.data)
       .catch((err) => {
         if (err.response.status === 403) {
           err.response.data = "Faltan campos por rellenar";
         }
-        else if (err.response.status === 400) {
-          err.response.data = 'Email y/o username ya existentes, requeridos o inválidos';
-        }
-        else if (err.response.status === 500) {
-          err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
-        }
+        // else if (err.response.status === 400) {
+        //   err.response.data = 'Email y/o username ya existentes, requeridos o inválidos';
+        // }
+        // else if (err.response.status === 500) {
+        //   err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
+        // }
         throw err
       });
     }
 
     registerUser(user: User) {
+      console.log(`${apiUrl}register`);
+      console.log("el usuarioooo", user);
+      
       return axios.post(`${apiUrl}register`, user, options)
         .then(res => res.data)
         .catch((err) => {
-          if (err.response.status === 403) {
-            err.response.data = "Faltan campos por rellenar";
-          }
-          else if (err.response.status === 400) {
-            err.response.data = 'Faltan campos por rellenar y/o hay campos erróneos';
-          }
-          else if (err.response.status === 500) {
-            err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
-          }
-          else if (err.response.status === 404) {
-            err.response.data = 'El owner no existe'
-          }
+          // if (err.response.status === 403) {
+          //   err.response.data = "Faltan campos por rellenar";
+          // }
+          // else if (err.response.status === 400) {
+          //   err.response.data = 'Faltan campos por rellenar y/o hay campos erróneos';
+          // }
+          // else if (err.response.status === 500) {
+          //   err.response.data = 'Ha habido un fallo, inténtelo de nuevo más tarde'
+          // }
+          // if (err.response.status === 404) {
+          //    err.response.data = 'El owner no existe'
+          //  }
           throw err
         });
       }

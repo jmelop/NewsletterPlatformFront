@@ -26,7 +26,6 @@ export class RegisterAdminComponent implements OnInit {
   register() {
     this.authenticationService.registerAdmin(this.newAdmin)
         .then(res => {
-          console.log("holaaaa", res);
           this.newAdmin.name = '';
           this.newAdmin.username = '';
           this.newAdmin.email = '';
