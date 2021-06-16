@@ -209,12 +209,15 @@ export class UsersComponent implements OnInit {
     this.newUser.tags = newMappedUser;
     this.userServices.post(this.newUser).then(res => {
       if (typeof res !== 'undefined') {
+        console.log(res)
         res.tags = temporalTags;
         this.users.push(res);
         this.newUser = { name: '', email: '', owner: this.adminInfo, tags: this.newTags, password: '' };
         this.userAdded = true;
+        this.userAddedError = false;
       } 
     }).catch(err => {
+      this.userAdded = false;
       this.userAddedError = true;
       this.errorType = err.response.data;
     })

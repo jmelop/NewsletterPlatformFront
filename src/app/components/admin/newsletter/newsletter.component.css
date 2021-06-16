@@ -265,11 +265,11 @@ a[x-apple-data-detectors] {
     }
 
     #input-link{
-       height: 10%; 
+       width: 100%; 
     }
 
     #input-button{
-        width: 10%; 
+        width: 50%; 
 
     }
 
@@ -278,7 +278,7 @@ a[x-apple-data-detectors] {
 
 @media screen and (max-width: 800px) {
     #section1{
-      width: 90%;
+      width: 100%;
       margin-left: auto;
       margin-right: auto;
       margin-top: 20px;
@@ -287,7 +287,7 @@ a[x-apple-data-detectors] {
   }
 
 #section1{
-    width: 50%;
+    width: 60%;
     margin-left: auto !important;
     margin-right: auto !important;
     margin-top: 20px;

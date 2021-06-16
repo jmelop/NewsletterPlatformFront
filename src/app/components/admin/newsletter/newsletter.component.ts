@@ -14,7 +14,7 @@ export class NewsletterComponent implements OnInit {
 
   newExampleTitle = 'Jun 29 2021 and Jul 01 2021 in Virtual'
   newExample = 'Switzerland From 29 June to 1 July 2021, Composites United Switzerland with thesupport of Enterprise Europe Network Switzerland is organising an onlineevent where all players in the field of composites and hybrid materialscan get informed, meet, interact and discuss about sustainability, circulareconomy and recycling.'
-  color: string = '#0472EE'
+  color: string = ''
   image: string = '';
   selector: string = '';
   headerTitle: string = 'Título ejemplo:';
@@ -28,19 +28,29 @@ export class NewsletterComponent implements OnInit {
   email: string = 'Ponga un email';
   subject: string = 'Ponga un asunto';
   editable: boolean = false;
-  customTemplate: Newsletter = { templateColor: this.color, templateImage: '', headerTitle: this.headerTitle, headerText: this.headerText, footer1: this.footer1, footer2: this.footer2, webText: this.webText, webUrl: this.webUrl, footerDirection: this.footerDirection, alias: this.alias, email: this.email, subject: this.subject};
+  customTemplate: Newsletter = { templateColor: '', templateImage: '', headerTitle: '', headerText: '', footer1: '', footer2: '', webText: '', webUrl: '', footerDirection: '', alias: '', email: '', subject: '' };
   idAdmin: string = ''
   adminInfo: any = [];
   successful: boolean = false;
+  error: boolean = false;
 
   ngOnInit(): void {
     this.idAdmin = this.cookieService.get("currentAdminId");
+    console.log(this.idAdmin)
+
     this.adminsService.getById(this.idAdmin).then(u => {
       this.adminInfo = u;
-      this.customTemplate = this.adminInfo.newsletterCustom;
-      document.getElementById('color-table').style.backgroundColor = this.adminInfo.newsletterCustom.templateColor;
-      document.getElementById('colot-td').style.backgroundColor = this.adminInfo.newsletterCustom.templateColor;
-      document.getElementById('header-image').setAttribute('src', this.adminInfo.newsletterCustom.templateImage);
+      console.log(this.adminInfo.newsletterCustom.email)
+       if (this.adminInfo.newsletterCustom === '') {
+  
+        this.customTemplate = { templateColor: this.color, templateImage: this.image, headerTitle: this.headerTitle, headerText: this.headerText, footer1: this.footer1, footer2: this.footer2, webText: this.webText, webUrl: this.webUrl, footerDirection: this.footerDirection, alias: this.alias, email: this.email, subject: this.subject };
+      }  else {
+        this.customTemplate = this.adminInfo.newsletterCustom;
+        document.getElementById('color-table').style.backgroundColor = this.adminInfo.newsletterCustom.templateColor;
+        document.getElementById('colot-td').style.backgroundColor = this.adminInfo.newsletterCustom.templateColor;
+        document.getElementById('header-image').setAttribute('src', this.adminInfo.newsletterCustom.templateImage);
+      } 
+
     })
   }
 
@@ -66,13 +76,21 @@ export class NewsletterComponent implements OnInit {
   }
 
   saveTemplate() {
-    this.adminInfo.newsletterCustom = this.customTemplate;
-    this.adminsService.updateAdmin(this.idAdmin, this.adminInfo).then(u => {
-      if (typeof u !== 'undefined') {
-        console.log('Datos actualizados');
-        this.successful = true;
-      }
-    })
+    if (this.customTemplate.email === 'Ponga un email' || this.customTemplate.email === '' ||
+      this.customTemplate.alias === 'Ponga un alias' || this.customTemplate.alias === '' || this.customTemplate.subject === 'Ponga un asunto'
+      || this.customTemplate.subject === '') {
+      this.error = true;
+      this.successful = false;
+    } else {
+      this.adminInfo.newsletterCustom = this.customTemplate;
+      this.adminsService.updateAdmin(this.idAdmin, {'newsletterCustom': this.customTemplate}).then(u => {
+        if (typeof u !== 'undefined') {
+          console.log('Datos actualizados');
+          this.successful = true;
+          this.error = false;
+        }
+      })
+    }
   }
 
 }

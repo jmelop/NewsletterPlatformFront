@@ -40,9 +40,12 @@ export class TagsComponent implements OnInit {
         this.tags.push(u);
         this.newTag = { name: '', owner: this.adminInfo }
         this.tagAdded = true;
+        this.tagAddedError = false;
+
 
       }
     }).catch(err => {
+      this.tagAdded = false;
       this.tagAddedError = true;
       this.errorType = err.response.data;
     })

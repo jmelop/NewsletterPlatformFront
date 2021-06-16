@@ -36,7 +36,7 @@ export class NewsComponent implements OnInit {
   }
 
   editState(notice: New) {
-
+    notice.editable = true;
     this.tags.map((u: Tag) => {
       u.editable = false;
       notice.editable = true;
@@ -68,8 +68,11 @@ export class NewsComponent implements OnInit {
         this.news.push(u);
         this.newNew = { title: '', body: '', link: '', owner: this.adminInfo, tags: [] }
         this.newAdded = true;
+        this.newAddedError = false;
+
       }
     }).catch(err => {
+      this.newAdded = false;
       this.newAddedError = true;
       this.errorType = err.response.data;
     })  }
