@@ -9,7 +9,7 @@
                     <h2 [innerHTML]="new.title"></h2>
                     <p [innerHTML]="new.body"></p>
                     <p>Categorías:</p>
-                    <p *ngFor="let tag of new.tag">
+                    <p *ngFor="let tag of new.tags">
                         <label>- {{tag.name}}</label>
                     </p>
                     <spam class="link">Link: </spam><a class="link" target='_blank' [href]="new.link">{{new.link}}</a>
