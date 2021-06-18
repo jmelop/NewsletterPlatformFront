@@ -20,7 +20,6 @@ export class TagsService {
   constructor() { }
 
   getAlltags(id: string): Promise<Tag[]> {
-    console.log(id);
     return axios.get(`${apiUrl}owner/${id}`, options)
       .then(res => res.data)
   }

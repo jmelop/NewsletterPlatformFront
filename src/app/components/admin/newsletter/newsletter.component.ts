@@ -36,11 +36,9 @@ export class NewsletterComponent implements OnInit {
 
   ngOnInit(): void {
     this.idAdmin = this.cookieService.get("currentAdminId");
-    console.log(this.idAdmin)
 
     this.adminsService.getById(this.idAdmin).then(u => {
       this.adminInfo = u;
-      console.log(this.adminInfo.newsletterCustom.email)
        if (this.adminInfo.newsletterCustom === '') {
   
         this.customTemplate = { templateColor: this.color, templateImage: this.image, headerTitle: this.headerTitle, headerText: this.headerText, footer1: this.footer1, footer2: this.footer2, webText: this.webText, webUrl: this.webUrl, footerDirection: this.footerDirection, alias: this.alias, email: this.email, subject: this.subject };

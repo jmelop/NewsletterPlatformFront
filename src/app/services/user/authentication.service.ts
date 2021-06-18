@@ -39,8 +39,6 @@ export class AuthenticationService {
     }
 
     registerUser(user: User) {
-      console.log(`${apiUrl}register`);
-      console.log("el usuarioooo", user);
       
       return axios.post(`${apiUrl}register`, user, options)
         .then(res => res.data)

@@ -21,7 +21,7 @@ export class TagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminInfo = this.cookieService.get("currentAdminId");
-    this.tagServices.getAllTags(this.adminInfo).then(u => { this.tags = u, console.log(this.tags) })
+    this.tagServices.getAllTags(this.adminInfo).then(u => { this.tags = u })
   }
 
   editState(tag: Tag) {

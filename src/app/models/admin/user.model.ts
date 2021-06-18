@@ -8,5 +8,6 @@ export class User {
     password: string;
     _id?: string
     editable?: boolean;
+    createdAt?: string;
 }
 

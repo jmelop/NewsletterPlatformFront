@@ -32,7 +32,7 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
     this.adminInfo = this.cookieService.get("currentAdminId");
     this.newsService.getAllNews(this.adminInfo).then(u => { this.news = u});
-    this.tagsService.getAllTags(this.adminInfo).then(u => { this.tags = u });
+    this.tagsService.getAllTags(this.adminInfo).then(u => { this.tags = u});
   }
 
   editState(notice: New) {

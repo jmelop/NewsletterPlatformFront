@@ -8,4 +8,5 @@ export class New {
     owner: string;
     _id?: string;
     editable?: boolean;
+    createdAt?: string;
 }
